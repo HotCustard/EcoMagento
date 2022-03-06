@@ -7,33 +7,34 @@
 version: "3.1"
 
 services:
-    manager:
-        build: ./manager/magento2
-        hostname: manager
-        domainname: "${APPDOMAIN}"
-        volumes:
-            #- "${CONTAINERDATA}/${PROJECT_NAME}/www:/var/www"
-            - "${CONTAINERDATA}/${PROJECT_NAME}/data:/home/data"
-            - "${MANAGERDEV}:/var/www/dev"
-            - /var/run/docker.sock:/var/run/docker.sock
-            - ./varnish/varnish.secret:/etc/varnish/secret
-        networks:
-            - wwwserver
-            - database
-            #- proxy_server
-        environment:
-            SCALE_MANAGER_PROJECTNAME: "${PROJECT_NAME}"
-            SCALE_CONTAINER_NAME: "${SCALE_CONTAINER_NAME}"
-            PROXY_NETWORK_NAME: "${PROXY_NETWORK_NAME}"
-            PROXY_TYPE: "${PROXY_TYPE}"
-            APPDOMAIN: "${APPDOMAIN}"
 
-    memcached:
-        image: memcached:latest
-        networks:
-            - wwwserver
-        depends_on:
-            - manager
+    # manager:
+    #     build: ./manager/magento2
+    #     hostname: manager
+    #     domainname: "${APPDOMAIN}"
+    #     volumes:
+    #         #- "${CONTAINERDATA}/${PROJECT_NAME}/www:/var/www"
+    #         - "${CONTAINERDATA}/${PROJECT_NAME}/data:/home/data"
+    #         - "${MANAGERDEV}:/var/www/dev"
+    #         - /var/run/docker.sock:/var/run/docker.sock
+    #         - ./varnish/varnish.secret:/etc/varnish/secret
+    #     networks:
+    #         - wwwserver
+    #         - database
+    #         #- proxy_server
+    #     environment:
+    #         SCALE_MANAGER_PROJECTNAME: "${PROJECT_NAME}"
+    #         SCALE_CONTAINER_NAME: "${SCALE_CONTAINER_NAME}"
+    #         PROXY_NETWORK_NAME: "${PROXY_NETWORK_NAME}"
+    #         PROXY_TYPE: "${PROXY_TYPE}"
+    #         APPDOMAIN: "${APPDOMAIN}"
+
+    # memcached:
+    #     image: memcached:latest
+    #     networks:
+    #         - wwwserver
+    #     depends_on:
+    #         - manager
 
     php-apache:
         build:
