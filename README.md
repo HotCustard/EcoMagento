@@ -1,32 +1,25 @@
 
-# Docker Magento 2.4.X Open Source (CE) 01-2022
+# Docker Magento 2.4.4 Open Source (CE)
 
 Docker containers for Magento 2.4.x development including :
 
-  - PHP 7.4
-  - Apache 2.4
-  - MYSQL 8
-  - Varnish 6 FPC  
-  - RabbitMQ  
-  - PhpMyAdmin
-  - memcached
-  - ELASTIC search 7.x
-  - REDIS Session, System, FPC
-  - Scaleable php-apache service
-
+- PHP 7.4
+- Apache 2.4
+- MYSQL 8
+- Varnish 6 FPC  
+- RabbitMQ  
+- PhpMyAdmin
+- ELASTIC search 7.x
+- REDIS Session, System, FPC
+  
 ## Installation
 
-1. git clone https://github.com/gaiterjones/docker-magento2  
-2. EDIT .env - **add your Magento authentication keys**  
-3. `docker-compose build`
-4. `docker-compose up -d`   
-5. Install sample data
-`docker-compose exec -u magento php-apache install-sampledata`
-
-6. Install Magento
+1. git clone https://github.com/HotCustard/EcoMagento.git 
+2. `docker-compose build`
+3. `docker-compose up -d`   
+4. Install Magento
 `docker-compose exec -u magento php-apache install-magento`
-
-7. Disable 2FA for testing
+5. Disable 2FA for testing
 `docker-compose exec -u magento php-apache bin/magento module:disable Magento_TwoFactorAuth`
 
 ## Test
