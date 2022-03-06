@@ -45,4 +45,3 @@ to fix layout issues with demo data : `docker-compose exec -u magento php-apache
 
 https://blog.gaiterjones.com/docker-magento-2-development-deployment-php7-apache2-4-redis-varnish-scaleable/ for further deployment instructions.
 
-![MAGENTO2 INSTALL](https://blog.gaiterjones.com/dropbox/docker-install-magento240.gif)
