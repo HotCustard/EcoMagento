@@ -1,0 +1,46 @@
+<?php 
+$product_has_video = false;
+$_product = $block->getProduct();
+$images = $_product->getMediaGalleryImages();
+//$images = $block->getGalleryImages()->getItems();
+foreach($images as $image){
+    if($image->getMediaType() == "external-video") { 
+        $product_has_video = true;
+    }
+}
+?>
+
+
+
+<!--<div class="product-top-buttons">
+    <a href="javascript:void(0);" onclick="showDownloads();" class="downloadsButton">DOWNLOADS</a>-->&nbsp;&nbsp;
+    <a href="javascript:void(0);"  onclick="playVideos();" class="videoButton" style="<?=!$product_has_video?'display:none;':''?>"> PLAY VIDEOS</a>
+<!--</div> -->
+
+<script>
+    function findFotoramaVideo(vidUrl){
+        //console.log(vidUrl.type);
+        return (vidUrl.type == "video");
+    }
+    function playVideos(){
+        var $fotoramaDiv = jQuery('.fotorama').fotorama();
+        var fotorama = $fotoramaDiv.data('fotorama');
+        var videoElm = null;
+        //note there is an issue with fotorama, where when the slide is already selected to 
+        // video, the full screen does not work, turnaround: 1st slide cant be video, 
+        // so here, we go back to first slide then go full screen
+        fotorama.show(0);
+
+        fotorama.requestFullScreen();
+        videoElm = fotorama.data.find(findFotoramaVideo);
+        console.log(videoElm);
+
+        if(videoElm){
+            fotorama.show(videoElm.i -1);
+        }
+        //fotorama.show(0);
+    }
+    function showDownloads(){
+        jQuery('a[href="#attachment.tab"]').click().focus();
+    }    
+</script>

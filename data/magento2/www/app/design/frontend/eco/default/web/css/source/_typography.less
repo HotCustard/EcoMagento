@@ -1,0 +1,74 @@
+// /**
+//  * Copyright © Magento, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    @font-face {
+      font-family: @font-family-name__base;
+      src:  url('../fonts/GillSansMT-Light.eot?#iefix') format('embedded-opentype'),  
+            url('../fonts/GillSansMT-Light.woff') format('woff'), 
+            url('../fonts/GillSansMT-Light.ttf')  format('truetype'), 
+            url('../fonts/GillSansMT-Light.svg#GillSansMT-Light') format('svg');
+      font-weight: 300;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: @font-family-name__base;
+      src:  url('../fonts/GillSansMTPro-Medium.eot?#iefix') format('embedded-opentype'),  
+            url('../fonts/GillSansMTPro-Medium.woff') format('woff'), 
+            url('../fonts/GillSansMTPro-Medium.ttf')  format('truetype'), 
+            url('../fonts/GillSansMTPro-Medium.svg#GillSansMTPro-Medium') format('svg');
+      font-weight: 400;
+      font-style: normal;
+    }
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    h1 {
+        font-size: 29px;
+        color: @title-color;
+        text-transform: uppercase;
+    }
+    h2 {
+        font-size: 25px;
+        color: @title-color;
+        text-transform: uppercase;
+    }
+    h3 {
+        font-size: 22px;
+        color: @title-color;
+        text-transform: uppercase;
+    }
+    h4 {
+        font-size: 20px;
+        color: @title-color;
+        text-transform: uppercase;
+    }
+    h5 {
+        font-size: 16px;
+        color: @title-color;
+        text-transform: uppercase;
+    }
+    p {
+        font-weight: 300;
+    }
+}
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    .items {
+        .lib-list-reset-styles();
+    }
+}

@@ -1,0 +1,15 @@
+<?php
+$_product = $block->getProduct();
+$artLink = $_product->getData('article_link');
+?>
+
+<div class="product-right-col">
+    <?php if($artLink && $artLink != ""): ?>
+        <a href="<?= $artLink ?>" class="rightRelatedArticlesTitle">RELATED ARTICLES</a>
+    <?php endif; ?>
+    <!--<div class="rightRelatedProductsTitle">
+        <div>RELATED PRODUCTS</div>
+    </div>
+    <div class="rightRelatedProductsContainer">
+    </div>-->
+</div>

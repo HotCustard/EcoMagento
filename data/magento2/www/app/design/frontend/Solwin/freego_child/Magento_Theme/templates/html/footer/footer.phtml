@@ -1,0 +1,145 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+// @codingStandardsIgnoreFile
+
+/**
+ * @var \Magento\Theme\Block\Html\Header\Logo $block
+ */
+?>
+<!--[if IE ]>
+  <link href="iecss.css" rel="stylesheet" type="text/css">
+<![endif]-->
+<?php
+$helper = $this->helper('Solwin\Cpanel\Helper\Data');
+$showsocial = $helper->getShowsocialicons();
+
+$baseUrl = $helper->getBaseUrl();
+$mediaurl = $helper->getMediaUrl() . 'social/';
+$f_logo = $helper->getFooterlogo();
+$footer_logo = $mediaurl . $helper->getFooterlogo();
+$helper = $this->helper('Solwin\Cpanel\Helper\Data');
+$mediasocialurl = $helper->getMediaUrl() . 'social/';
+$newsletter_title = $helper->getFooternewslettertitle();
+$newsletter_text = $helper->getFooternewslettertext();
+$newsletter_show = $helper->getShowfooternewsletter();
+?>
+
+<div class="page-footer">
+  <div class="footer-newsletter">
+    <div class="page-main"> <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer_newsletter')->toHtml(); ?> </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-3">
+          <div class="footer-company-info">
+            <?php if ($f_logo != '') { ?>
+            <p> <a  href="<?php echo $baseUrl; ?>"> <img src="<?php echo $footer_logo; ?>" alt="Logo"> </a>
+              <?php } ?>
+            </p>
+            <p> <strong>Email us:</strong> <br /><a href="mailto:<?php echo $helper->getStorecontactemail(); ?>"><?php echo $helper->getStorecontactemail(); ?></a> </p>
+            <p> <strong>Telephone:</strong> <br /><?php echo $helper->getStorecontactno(); ?> </p>
+            <p> <strong>Office Hours:</strong> <br /><?php echo $helper->getContactstoreaddress(); ?> </p>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-9">
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-4">
+            <div class="footer-menu-inner-wrapper">
+             <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-information')->toHtml(); ?>
+            </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4">
+            <div class="footer-menu-inner-wrapper">
+             <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-customer-service')->toHtml(); ?>
+             </div>
+            </div>
+            <?php /*?><div class="col-xs-12 col-sm-12 col-md-3">
+            <div class="footer-menu-inner-wrapper">
+             <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-payment-shipping')->toHtml(); ?>
+             </div>
+            </div><?php */?>
+            <div class="col-xs-12 col-sm-12 col-md-4">
+            <div class="footer-menu-inner-wrapper">
+             <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('footer-my-account')->toHtml(); ?>
+             </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="footer-social">
+  <div class="container">
+    <?php
+                        if ($showsocial) {
+                            $showfacebook = $helper->getShowfacebook();
+                            $showtwitter = $helper->getShowtwitter();
+                            $showlinkedin = $helper->getShowlinkedin();
+                            //$showgoogle = $helper->getShowgoogle();
+                            $showpinterest = $helper->getShowpinterest();
+                            ?>
+    <div class="social-icons">
+      <?php if ($showfacebook) { ?>
+      <a href="<?php echo $helper->getFacebookurl(); ?>" target="_blank"><i class="fa fa-facebook"></i></a>
+      <?php } ?>
+      <?php if ($showtwitter) { ?>
+      <a href="<?php echo $helper->getTwitterurl(); ?>" target="_blank"><i class="fa fa-twitter"></i></a>
+      <?php } ?>
+      <?php if ($showlinkedin) { ?>
+      <a href="<?php echo $helper->getLinkdnurl(); ?>" target="_blank"><i class="fa fa-linkedin"></i></a>
+      <?php } ?>
+      <?php /*if ($showgoogle) { ?>
+      <a href="<?php echo $helper->getGoogleurl(); ?>" target="_blank"><i class="fa fa-google-plus"></i></a>
+      <?php } */ ?>
+     <?php /*?> <?php if ($showpinterest) { ?>
+      <a href="<?php echo $helper->getPinteresturl(); ?>" target="_blank"><i class="fa fa-pinterest"></i></a>
+      <?php } ?><?php */?>
+    </div>
+    <?php } ?>
+  </div>
+</div>
+<?php
+$enable = $helper->getShowsharingaddon();
+$pubid = $helper->getAddthispubid();
+
+if ($enable) {
+    ?>
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=<?php echo $pubid; ?>" async="async"></script>
+<?php } ?>
+
+
+
+
+<script>
+require(['jquery'], function(jQuery){
+	setTimeout(function(){
+jQuery(document).ready(function(){
+	
+  if(jQuery('.header.links li.welcome span').hasClass("logged-in")) 
+     jQuery("body").addClass("logged-in");
+	 
+	 
+	 if(jQuery('.header.links li.welcome span').hasClass("not-logged-in")) 
+     jQuery("body").addClass("not-logged-in");
+	 
+	 
+});
+}, 7000);
+
+
+
+
+ });
+</script>
+
+
+
+
+
+

@@ -1,0 +1,115 @@
+//
+//  Grid system
+//  _____________________________________________
+
+//
+//  Make container
+//  ---------------------------------------------
+
+.make-container(@_gutter: @gutter__width) {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: (@_gutter / 2);
+    padding-right: (@_gutter / 2);
+    box-sizing: border-box;
+}
+
+.container-width(@i: 1) when (@i =< length(@container__max-widths)) {
+    @width: extract(@container__max-widths, @i);
+
+    @media (min-width: ~"@{screen__@{width}}") {
+        max-width: ~"@{container__@{width}}";
+    }
+    .container-width(@i + 1);
+}
+
+.container-box() {
+    .container-width();
+    .make-container();
+    min-width: @screen__xxs;
+}
+
+& when (@media-target = 'mobile') {
+    .container {
+        .container-box;
+    }
+}
+
+//
+//  Make row
+//  ---------------------------------------------
+
+.make-row() {
+    margin-left: floor((@gutter__width / -2));
+    margin-right: floor((@gutter__width / -2));
+}
+
+& when (@media-target = 'mobile') {
+    .row {
+        .make-flex();
+        flex-wrap: wrap;
+        .make-row;
+        box-sizing: border-box;
+    }
+}
+
+//
+//  Make columns
+//  ---------------------------------------------
+
+.columns-base(@_i: 1) when (@_i =< length(@screen__names)) {
+    @_resolution: extract(@screen__names, @_i);
+    [class*='col-@{_resolution}-'] {
+        position: relative;
+        width: 100%;
+        padding-right: floor((@gutter__width / 2));
+        padding-left: floor((@gutter__width / 2));
+        box-sizing: border-box;
+    }
+    .columns-base(@_i + 1);
+}
+
+@_resolution-count: length(@screen__names);
+.make-columns (@_i-resolution: 1) when (@_i-resolution < (@_resolution-count + 1)) {
+    @_resolution: extract(@screen__names, @_i-resolution);
+    @_i-numb: @column__count;
+    .make-columns__numb (@_i-numb) when (@_i-numb > 0) {
+        @media (min-width: ~"@{screen__@{_resolution}}") {
+            .col-@{_resolution}-@{_i-numb} {
+                flex-basis: (@_i-numb / @column__count) * 100%;
+                max-width: (@_i-numb / @column__count) * 100%;
+            }
+        }
+        .make-columns__numb(@_i-numb - 1);
+    }
+    .make-columns__numb(@_i-numb);
+    .make-columns(@_i-resolution + 1);
+}
+
+& when (@media-target = 'mobile') {
+    .columns-base();
+    .make-columns();
+}
+
+//
+//  Make prefix
+//  ---------------------------------------------
+
+.make-preffix (@_i-resolution: 1) when (@_i-resolution < (@_resolution-count + 1)) {
+    @_resolution: extract(@screen__names, @_i-resolution);
+    @_i-numb: @column__count;
+    .make-preffix__numb (@_i-numb) when (@_i-numb >= 0) {
+        @media (min-width: ~"@{screen__@{_resolution}}") {
+            .col-@{_resolution}-preffix-@{_i-numb} {
+                margin-left: (@_i-numb / @column__count) * 100%
+            }
+        }
+        .make-preffix__numb(@_i-numb - 1);
+    }
+    .make-preffix__numb(@_i-numb);
+    .make-preffix(@_i-resolution + 1);
+}
+
+& when (@media-target = 'mobile') {
+    .make-preffix();
+}

@@ -29,6 +29,8 @@ services:
             #- "${CONTAINERDATA}/${PROJECT_NAME}/www:/var/www"
             - "${CONTAINERDATA}/${PROJECT_NAME}/data:/home/data"
             #- "${CONTAINERDATA}/${PROJECT_NAME}/logs:/var/www/logs"
+            - "${CONTAINERDATA}/${PROJECT_NAME}/www/app/etc/env.php:/var/www/dev/magento2/app/etc/env.php"
+            - "${CONTAINERDATA}/${PROJECT_NAME}/www/app/design/frontend:/var/www/dev/magento2/app/design/frontend"
         networks:
             - database
             - wwwserver

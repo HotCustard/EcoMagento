@@ -1,0 +1,57 @@
+<?php
+/**
+ * @category    FishPig
+ * @package     FishPig_WordPress
+ * @author      Ben Tideswell <help@fishpig.co.uk>
+ */
+?>
+<?php $posts = $this->getPosts() ?>
+
+
+<?php if (count($posts) > 0): ?>
+
+<div class="view-toolbar">
+  <div class="view-mode"> 
+  <button class="list-view active"></button>
+  <button class="grid-view"></button>
+  </div>
+</div>
+
+
+	<div class="post-list-wrapper">
+		<ul class="post-list">
+			<?php foreach($posts as $post): ?>
+				<?php if ($renderedPostHtml = $this->renderPost($post)): ?>
+					<li class="item<?php if ($post->isSticky()): ?> featured is-sticky<?php endif; ?> <?php echo $post->getPostFormat() ?>">
+						<?php echo $renderedPostHtml ?>
+					</li>
+				<?php endif; ?>
+			<?php endforeach; ?>
+		</ul>
+		<?php echo $this->getPagerHtml() ?>
+	</div>
+<?php endif; ?>
+
+			 <script>
+             require(['jquery', 'cpowlcarousel'], function ($) {
+					listButton = $('button.list-view');
+					gridButton = $('button.grid-view');
+					postlist = $('.post-list');
+					
+					
+					listButton.on('click',function(){
+					  gridButton.removeClass('active');
+					  listButton.addClass('active');
+					  postlist.removeClass('grid').addClass('list');
+					  
+					});
+					
+					gridButton.on('click',function(){
+					  listButton.removeClass('active');
+					  gridButton.addClass('active');
+					  postlist.removeClass('list').addClass('grid');
+					  
+					});
+
+                    });
+                </script>

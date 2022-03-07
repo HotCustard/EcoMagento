@@ -1,0 +1,111 @@
+// /**
+//  * Copyright © Magento, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Luma theme variables
+//  _____________________________________________
+
+//
+//  Typography
+//  ---------------------------------------------
+
+//  Fonts
+@font-family-name__base: 'GillSansMTPro-Medium';
+@font-family__base: @font-family-name__base, @font-family__sans-serif;
+
+//  Colors nesting
+@color-primary: #464646;
+@color-secondary: #486383;
+@color-accent: #990000;
+
+@color-light: #B7C2C5;
+
+@main-text-color: @color-primary;
+@title-color: @main-text-color;
+
+
+@page__background-color: @color-white;
+
+@navigation__bg: #3c3c3c; 
+
+@copyright__background-color: @color-white;
+//
+//  Icons
+//  ---------------------------------------------
+
+@icon-success: '\e60e';
+@icon-error: '\e61f';
+@icon-edit: '\e601';
+@icon-print: '\e624';
+@icon-star-empty: '\e625';
+@icon-download: '\e626';
+@icon-private: '\e629';
+@icon-present: '\e62a';
+@icon-gift-registry: '\e62b';
+
+
+// Buttons
+// -----------------------
+@button__background: @color-white;
+@button__hover__background: @color-primary;
+@button__color: @color-primary;
+@button__hover__color: @color-white;
+@button__border: 1px solid @color-primary;
+@button__hover__border: 1px solid @button__hover__background;
+@button__border-width: 1px;
+@button__border-radius: 0;
+@button__font-size: 16px;
+@button__line-height: 20px;
+@button__padding: 11px 30px 7px 30px;
+@button__font-weight: 400;
+
+
+@button-primary__font-weight: 400;
+@button-primary__color: @color-white;
+@button-primary__background: @color-primary;
+@button-primary__border: 1px solid @button-primary__background;
+@button-primary__hover__color: @color-primary;
+@button-primary__hover__background: @color-white;
+@button-primary__hover__border: 1px solid @button-primary__background;
+
+//
+//  Sidebar
+//  ---------------------------------------------
+
+@sidebar__background-color: @color-white-smoke; // Used in cart sidebar, Checkout sidebar, Tier Prices, My account navigation, Rating block background
+
+//
+//  Sidebar blocks
+//  ---------------------------------------------
+
+@block-items__counter__color: @color-gray43;
+
+
+//
+//  Responsive variables
+//  ---------------------------------------------
+
+@screen__xxs: 320px;
+@screen__xs: 480px;
+@screen__s: 640px;
+@screen__m: 768px;
+@screen__l: 1024px;
+@screen__xl: 1280px;
+@screen__xxl: 1600px;
+
+//
+//  Grid system
+//  ---------------------------------------------
+
+@column__count: 12;
+@gutter__width: 30px;
+
+@container__m: @screen__m;
+@container__l: @screen__l;
+@container__xl: @screen__xl - @gutter__width;
+@container__xxl: @screen__xxl - @gutter__width;
+
+@container__max-widths: m, l, xl, xxl;
+@screen__names: xs, m, l, xl, xxl;

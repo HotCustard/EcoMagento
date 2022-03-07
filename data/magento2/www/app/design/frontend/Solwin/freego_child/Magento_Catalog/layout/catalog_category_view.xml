@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <move element="columns.top" destination="content.top" before="-"/>
+
+        <referenceContainer name="div.sidebar.main">
+           <!-- <block class="FME\Productattachments\Block\Productattachments" name="product_list_download" template="product/view/download-list.phtml"/>
+            -->
+
+
+            <block name="product.info.productattachments_additional" class="FME\Productattachments\Block\Productattachments" template="FME_Productattachments::category-download-list.phtml">
+                        
+                    </block>
+             <!--
+            <block name="list.attachments" class="FME\Productattachments\Block\Listattachments" template="FME_Productattachments::category-download-list.phtml"/>-->       
+        </referenceContainer>
+		 <move element="category.cms" destination="content" after="category.products" />
+
+    </body>
+</page>

@@ -1,0 +1,7 @@
+var config = {
+    map: {
+        '*': {
+            jquery_cookie:           'js/jquery_cookie',
+        }
+    }
+};

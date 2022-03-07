@@ -1,0 +1,55 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/**
+ * Pager template
+ *
+ * @see \Magento\Theme\Block\Html\Pager
+ */
+?>
+<?php if ($block->getCollection()->getSize()) : ?>
+
+    <?php if ($block->getUseContainer()) : ?>
+    <div class="pager">
+    <?php endif ?>
+
+        <?php if ($block->getShowAmounts()) : ?>
+        <p class="toolbar-amount">
+            <span class="toolbar-number">
+            <?php if ($block->getLastPageNum()>1) : ?>
+                <?= $block->escapeHtml(__('Items %1 to %2 of %3 total', $block->getFirstNum(), $block->getLastNum(), $block->getTotalNum())) ?>
+            <?php elseif ($block->getTotalNum() == 1) : ?>
+                <?= $block->escapeHtml(__('%1 Item', $block->getTotalNum())) ?>
+            <?php else : ?>
+                <?= $block->escapeHtml(__('%1 Item(s)', $block->getTotalNum())) ?>
+            <?php endif; ?>
+            </span>
+        </p>
+        <?php endif ?>
+
+    <?php echo $this->getLayout()->createBlock('html/pageNos')->setTemplate('html/pageNos.phtml')->toHtml(); ?>    
+
+    <?php if ($block->isShowPerPage()) : ?>
+        <div class="limiter">
+            <strong class="limiter-label"><?= $block->escapeHtml(__('Show')) ?></strong>
+            <select id="limiter" data-mage-init='{"redirectUrl": {"event":"change"}}' class="limiter-options">
+                <?php foreach ($block->getAvailableLimit() as $_key => $_limit) : ?>
+                    <option value="<?= $block->escapeHtmlAttr($block->getLimitUrl($_key)) ?>"
+                        <?php if ($block->isLimitCurrent($_key)) : ?>
+                        selected="selected"<?php endif ?>>
+                        <?= $block->escapeHtml($_limit) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+            <span class="limiter-text"><?= $block->escapeHtml(__('per page')) ?></span>
+        </div>
+    <?php endif ?>
+
+    <?php if ($block->getUseContainer()) : ?>
+    </div>
+    <?php endif ?>
+
+<?php endif ?>

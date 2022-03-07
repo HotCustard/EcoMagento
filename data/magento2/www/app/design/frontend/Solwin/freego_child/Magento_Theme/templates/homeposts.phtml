@@ -1,0 +1,63 @@
+<?php
+function substrwords($text, $maxchar, $end='...') {
+    if (strlen($text) > $maxchar || $text == '') {
+        $words = preg_split('/\s/', $text);      
+        $output = '';
+        $i      = 0;
+        while (1) {
+            $length = strlen($output)+strlen($words[$i]);
+            if ($length > $maxchar) {
+                break;
+            } 
+            else {
+                $output .= " " . $words[$i];
+                ++$i;
+            }
+        }
+        $output .= $end;
+    } 
+    else {
+        $output = $text;
+    }
+    return $output;
+}
+
+
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$posts = $objectManager->create('\FishPig\WordPress\Model\ResourceModel\Post\Collection')
+	->addPostTypeFilter('post')
+	->setOrderByPostDate()
+	->addIsViewableFilter()
+	->setPageSize(4)
+	->load();
+?>
+
+
+
+<?php if (count($posts) > 0): ?>
+	<div class="home-blog">
+		<h3>PRODUCT ARTICLES</h3>
+		<div class="row">
+
+		<?php foreach($posts as $post): ?>
+			<div class="col-xs-12 col-sm-3 col-md-3">
+				<div class="home-post-wrapper">
+					<?php 
+					$orgDate = $post->getPostDate();  
+					$newDate = date("m / F Y.", strtotime($orgDate));  
+					
+					?>
+					<div class="postdate"><?php echo $newDate ?></div>
+					<div class="post-featured-img">
+					<?php if ($featuredImage = $post->getFeaturedImage()): ?>
+						<img src="<?php echo $featuredImage->getAvailableImage() ?>" alt="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"/>
+					<?php endif; ?>
+					</div>
+					<div class="postname"><a href="<?php echo $post->getUrl() ?>" title="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"><?php echo substrwords($this->escapeHtml($post->getPostTitle()),60); ?></a></div>
+				</div>
+			</div>
+		<?php endforeach; ?>
+		</div>
+	</div>
+<?php endif; ?>
+

@@ -1,0 +1,64 @@
+@navigation__background: @navigation__bg;
+
+
+// BEGIN reset styles
+a,
+button {
+    transition: .3s ease;
+}
+
+em {
+    color: @color-primary;
+}
+
+pre {
+    white-space: normal;
+}
+
+dl {
+    dt {
+        font-weight: 700;
+    }
+
+    dd {
+        font-style: italic;
+        padding-left: 8px;
+    }
+}
+
+*,
+ul,
+ul>li,
+ol>li {
+    margin: 0;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+
+// END reset
+
+
+
+// Navigation
+[id="store.menu"] {
+    background-color: @navigation__bg;
+}
+
+.sections.nav-sections {
+    .navigation {
+        background-color: @navigation__bg;
+        color: #fff;
+
+        .level0>.level-top {
+            padding: 10px 20px 10px;
+
+            span {
+                color: #fff;
+                text-transform: none;
+            }
+        }
+    }

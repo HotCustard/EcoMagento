@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+  <body>
+
+    <referenceContainer name="header.panel">
+      <block class="Magento\Framework\View\Element\Template" name="cpanel.header.notification" as="cpanel_header_notification" before="-" template="Magento_Theme::html/header/notification.phtml"></block>
+    </referenceContainer>
+
+
+    <referenceContainer name="page.top">
+      <!-- <block class="Magento\Cms\Block\Block" name="my.custom.block" before="breadcrumbs">
+        <arguments>
+          <argument name="block_id" xsi:type="string">header-services</argument>
+        </arguments>
+      </block> -->
+    </referenceContainer>
+
+    <referenceBlock name="header.panel">
+      <arguments>
+        <argument name="logo_img_width" xsi:type="number">148</argument>
+        <argument name="logo_img_height" xsi:type="number">43</argument>
+      </arguments>
+    </referenceBlock>
+
+
+
+
+    <referenceBlock name="header-wrapper">
+      <block class="Magento\Cms\Block\Block" name="header-contact" after="logo">
+        <arguments>
+          <argument name="block_id" xsi:type="string">header-contact</argument>
+        </arguments>
+      </block>
+    </referenceBlock>
+
+
+    <referenceContainer name="footer">
+      <block class="Magento\Store\Block\Switcher" name="store_switcher" as="store_switcher" after="footer_links" template="switch/stores.phtml"/>
+    </referenceContainer>
+    <referenceContainer name="footer-top">
+      <block class="Magento\Framework\View\Element\Template" name="cpanel.footer" as="cpanel_footer" after="form.subscribe" before="-" template="Magento_Theme::html/footer/footer.phtml">
+        <block class="Magento\Framework\View\Element\Html\Links" name="footer_links">
+          <arguments>
+            <argument name="css_class" xsi:type="string">footer links</argument>
+          </arguments>
+        </block>
+        <block class="Magento\Newsletter\Block\Subscribe" name="footer.newsletter" template="subscribe.phtml"/>
+        <block class="Magento\Theme\Block\Html\Header\Logo" name="footer_logo">
+          <arguments>
+            <argument name="logo_img_width" xsi:type="number">189</argument>
+            <argument name="logo_img_height" xsi:type="number">64</argument>
+          </arguments>
+        </block>
+      </block>
+    </referenceContainer>
+    <referenceContainer name="footer-top">
+      <block class="Magento\Theme\Block\Html\Footer" name="copyright" after="cpanel.footer" template="html/copyright.phtml"/>
+      <block class="Magento\Framework\View\Element\Template" name="report.bugs" template="Magento_Theme::html/bugreport.phtml" />
+    </referenceContainer>
+    <referenceBlock name="report.bugs" remove="true"/>
+    <referenceBlock name="footer" remove="true"/>
+    <move element="minicart" destination = "header.panel" before="header.links" />
+
+    <!--
+   <referenceContainer name="sidebar.main">
+            <block class="Magento\Theme\Block\Html\Topmenu" name="catalog.topnav.aside" template="html/topmenu-aside.phtml" ttl="3600" before="-"/>
+        </referenceContainer>
+    -->
+    <referenceBlock name="top.search">
+      <!-- <block class="Pr\CmsSearch\Block\Index\Index" name="pr.cmssearch.selector" template="Pr_CmsSearch::index/search_type_selector.phtml" after="top.search"/> -->
+    </referenceBlock>
+
+    <!-- GTM -->
+    <referenceBlock name="head.additional">
+      <block class="Magento\Framework\View\Element\Template" name="gtm.head" before="-" template="Magento_Theme::html/gtm_head.phtml" />
+    </referenceBlock>
+    <referenceContainer name="after.body.start">
+      <block class="Magento\Framework\View\Element\Template" name="gtm.body" before="-" template="Magento_Theme::html/gtm_body.phtml" />
+    </referenceContainer>
+
+
+    <!-- cart page-->
+
+    <move element="cart.summary" destination="checkout.cart.container" before="checkout.cart.noitems" />
+
+
+
+
+  </body>
+</page>

@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <move element="page.main.title" destination="product.info.main" before="-"/>
+    
+		
+        <!-- Video Button -->
+        <referenceContainer name="product.info.main">
+            <container name="product.info.topbuttons" htmlTag="div" htmlClass="product-top-buttons" after="page.main.title">
+		        <block class="Magento\Catalog\Block\Product\View" name="product.info.product-top-buttons" template="product/view/product-top-buttons.phtml" after="-"/>
+            </container>
+	    </referenceContainer>
+
+        <referenceContainer name="product.info.main">
+            <container name="product.info.overview.container" htmlTag="div" htmlClass="product-overview-container" after="product.info.title">
+                <block class="Magento\Catalog\Block\Product\View" name="product.info.product-desc-head" template="product/view/product-desc-head.phtml" before="-" />
+            </container>
+	    </referenceContainer>
+        <move element="product.info.overview" destination="product.info.overview.container" after="product.info.product-desc-head"/>
+
+
+        <move element="product.info.stock.sku" destination="product.info.price" after="product.price.final"/>
+        <move element="product.info.review" destination="product.info.main" before="product.info.price"/>
+
+        <move element="product.price.tier" destination="product.info.main" after="product.price.final"/>
+        <move element="alert.urls" destination="product.info.main" after="product.price.tier"/>
+        
+
+
+
+        <!-- clear floats for add to cart -->
+        <referenceContainer name="product.info.main">
+            <container name="product.info.form.container" htmlTag="div" htmlClass="product-form-container">
+            </container>
+        </referenceContainer>
+        <!-- <move element="product.info" destination="product.info.price" after="product.price.final"/> -->
+        <move element="product.info" destination="product.info.form.container" before="-"/>
+        <move element="product.info.extrahint" destination="product.info.main" after="product.info.price"/>
+        <!--<move element="product.info" destination="product.info.form.left" before="-"/>
+        <move element="product.info.addtocart" destination="product.info.form.right" before="-"/>-->
+
+        <!-- Right col 
+        <referenceContainer name="content">
+		    
+	    </referenceContainer>-->
+
+        <referenceContainer name="content">
+            <container name="product.info.right-col-related" htmlTag="div" htmlClass="product-col-related" before="product.info.main">
+            <block class="Magento\Catalog\Block\Product\View" name="product.info.product-right-col" template="product/view/product-right-col.phtml" before="product.info.main"/>
+            
+            </container>
+        </referenceContainer>
+		
+
+	
+	<referenceContainer name="content">
+            <referenceBlock name="product.info.details">
+                <block class="Magento\Catalog\Block\Product\View\Description" name="product_delivery_returns_tab" template="product/view/product_custom_tab.phtml" group="detailed_info">
+                    <arguments>
+                        <argument translate="true" name="title" xsi:type="string">Delivery/Return</argument>
+                        <argument name="priority" xsi:type="string">2</argument>
+ <argument name="sort_order" xsi:type="string">30</argument>
+                    </arguments>
+                </block>
+            </referenceBlock>
+            <referenceBlock name="look" remove="true"/>
+        </referenceContainer>
+		
+		
+		
+
+
+<referenceBlock name="product.info.sku" remove="true"/>
+  <move element="catalog.product.related" destination="product.info.right-col-related" after="product.info.product-right-col"/>
+   <move element="product.info.price" destination="product.info.main" after="page.main.title"/>
+   <move element="product.info.form.container" destination="product.info.main" after="product.info.price"/>
+   <move element="product.price.tier" destination="product.info.main" after="product.info.price"/>
+
+
+		
+		
+		
+        
+    </body>
+</page>
