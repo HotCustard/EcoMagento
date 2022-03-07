@@ -1,0 +1,293 @@
+<?php
+/**
+ * @var $this \Scommerce\GoogleTagManagerPro\Block\View
+ */
+?>
+<?php
+$helper = $this->getHelper();
+
+if (!$helper->isEnhancedEcommerceEnabled()) return;
+
+$_product = $this->getProduct();
+
+$_category = $this->getCurrentCategory();
+
+if ($_category){
+	$_categoryName = $_category->getName();
+}
+else{
+	$_categoryName = $helper->getProductCategoryName($_product);
+}
+
+$_relatedProductIds = $_product->getRelatedProductIds();
+$_JsRelatedProducts = '';
+$_JsRelatedProductUrls='';
+if (count($_relatedProductIds)){
+	$_relatedProducts =  $this->getProducts($_relatedProductIds);
+
+	$_relatedProductUrls = array();
+	$_relatedProductItems = array();
+	$_relatedImpressionList = 'Related Product';
+	$_relatedClickLabel = 'Related';
+	$_loop = 1;
+
+	foreach ($_relatedProducts as $_relatedProduct){
+		$_relatedProductUrls[] = $_relatedProduct->getProductUrl();
+
+		$_relatedProductItems[] = array(
+			'id' => $this->escapeJsQuote($_relatedProduct->getSku()),
+			'name'  => $this->escapeJsQuote($_relatedProduct->getName()),
+			'category' => $this->escapeJsQuote($helper->getProductCategoryName($_relatedProduct)),
+			'brand' => $this->escapeJsQuote($helper->getBrand($_relatedProduct)),
+            'price' => $helper->productPrice($_relatedProduct),
+			'list'  => $_relatedImpressionList,
+			'position' => $_loop
+		);
+
+		$_loop++;
+	}
+
+	$_JsRelatedProducts = json_encode($_relatedProductItems);
+	$_JsRelatedProductUrls = json_encode($_relatedProductUrls);
+}
+
+$_upsellProductIds = $_product->getUpSellProductIds();
+$_JsUpsellProducts = '';
+$_JsUpsellProductUrls = '';
+
+if (count($_upsellProductIds)){
+	$_upsellProducts = $this->getProducts($_upsellProductIds);
+
+	$_upsellProductUrls = array();
+	$_upsellProductItems = array();
+	$_upsellImpressionList = 'Upsell Product';
+	$_upsellClickLabel = 'Upsell';
+	$_loop = 1;
+
+	foreach ($_upsellProducts as $_upsellProduct) {
+		$_upsellProductUrls[] = $_upsellProduct->getProductUrl();
+		//$_upsellProductUrls[] = substr($_upsellProductUrl, 0, strpos($_upsellProductUrl, '?'));
+
+		$_upsellProductItems[] = array(
+			'id' => $this->escapeJsQuote($_upsellProduct->getSku()),
+			'name' => $this->escapeJsQuote($_upsellProduct->getName()),
+			'category' => $this->escapeJsQuote($helper->getProductCategoryName($_upsellProduct)),
+			'brand' => $this->escapeJsQuote($helper->getBrand($_upsellProduct)),
+            'price' => $helper->productPrice($_upsellProduct),
+			'list' => $_upsellImpressionList,
+			'position' => $_loop
+		);
+
+		$_loop++;
+	}
+
+	$_JsUpsellProducts = json_encode($_upsellProductItems);
+	$_JsUpsellProductUrls = json_encode($_upsellProductUrls);
+}
+?>
+<?php if (count($_relatedProductIds)) { ?>
+	<script type='text/javascript'>
+		//<![CDATA[
+        var jsRelatedProducts = <?php echo $_JsRelatedProducts ?>;
+        var jsRelatedClickLabel = '<?php echo $_relatedClickLabel ?>';
+
+        require(['jquery'], function($) {
+            window.dataLayer = window.dataLayer || [];
+            dataLayer.push({
+                'ecommerce': {
+                    'currencyCode': '<?php echo $helper->getCurrencyCode();?>',                       // Local currency is optional.
+                    'impressions': [
+                        <?php foreach ($_relatedProductItems as $_relatedProduct):?>
+                        {
+                            'name': '<?php echo $_relatedProduct['name']?>',
+                            'id': '<?php echo $_relatedProduct['id']?>',
+                            'price': '<?php echo $_relatedProduct['price']?>',
+                            'brand': '<?php echo $_relatedProduct['brand']?>',
+                            'category': '<?php echo $_relatedProduct['category']?>',
+                            'list': '<?php echo $_relatedProduct['list']?>',
+                            'position': '<?php echo $_relatedProduct['position']?>'
+                            <?php if ($_relatedProduct['position']==count($_relatedProductItems)):?>
+                        }]
+                            <?php else:?>
+                        },
+                            <?php endif;?>
+                        <?php endforeach;?>
+                     }
+                });
+            });
+		//]]>
+	</script>
+<?php } ?>
+<?php if (count($_upsellProductIds)) { ?>
+	<script type='text/javascript'>
+		//<![CDATA[
+		var jsUpsellProducts = <?php echo $_JsUpsellProducts ?>;
+		var jsUpsellClickLabel = '<?php echo $_upsellClickLabel ?>';
+
+        require(['jquery'], function($) {
+            window.dataLayer = window.dataLayer || [];
+            dataLayer.push({
+                'ecommerce': {
+                    'currencyCode': '<?php echo $helper->getCurrencyCode();?>',                       // Local currency is optional.
+                    'impressions': [
+                        <?php foreach ($_upsellProductItems as $_upsellProductItem):?>
+                        {
+                            'name': '<?php echo $_upsellProductItem['name']?>',
+                            'id': '<?php echo $_upsellProductItem['id']?>',
+                            'price': '<?php echo $_upsellProductItem['price']?>',
+                            'brand': '<?php echo $_upsellProductItem['brand']?>',
+                            'category': '<?php echo $_upsellProductItem['category']?>',
+                            'list': '<?php echo $_upsellProductItem['list']?>',
+                            'position': '<?php echo $_upsellProductItem['position']?>'
+                            <?php if ($_upsellProductItem['position']==count($_upsellProductItems)):?>
+                        }]
+                    <?php else:?>
+                     },
+                <?php endif;?>
+                <?php endforeach;?>
+            }
+            });
+        });
+		//]]>
+	</script>
+<?php } ?>
+<script>
+	//<![CDATA[
+    window.dataLayer = window.dataLayer || [];
+    dataLayer.push({
+        'ecommerce': {
+            'detail': {
+                'actionField': {'list': '<?php echo 'Category - '. $this->escapeJsQuote($_categoryName) ?>'},    // 'detail' actions have an optional list property.
+                'products': [{
+                    'name': '<?php echo $this->escapeJsQuote($_product->getName()) ?>',         // Name or ID is required.
+                    'id': '<?php echo $this->escapeJsQuote($_product->getSku()) ?>',
+                    'price': '<?php echo $helper->productPrice($_product)?>',
+                    'brand': '<?php echo $this->escapeJsQuote($helper->getBrand($_product)) ?>',
+                    'category': '<?php echo $this->escapeJsQuote($_categoryName) ?>'
+                }]
+            }
+        }
+    });
+    //console.log('Sent detailed view - <?php echo $this->escapeJsQuote($_product->getName()) ?>');
+	//]]>
+</script>
+<?php if (count($_relatedProductIds) || count($_upsellProductIds)) { ?>
+	<script type='text/javascript'>
+		//<![CDATA[
+        var jsRelatedProductUrls='';
+        var jsUpsellProductUrls='';
+        <?php if (strlen($_JsUpsellProductUrls)):?>
+        jsUpsellProductUrls = <?php echo $_JsUpsellProductUrls ?>;
+        <?php endif;?>
+        <?php if (strlen($_JsRelatedProductUrls)):?>
+        jsRelatedProductUrls = <?php echo $_JsRelatedProductUrls ?>;
+        <?php endif;?>
+
+        require(['jquery', 'mage/cookies'], function($) {
+            $(document).on('click', 'a:not([href$="\\.jpg"])', function (e) {
+                var product, index;
+                var href = $(this).attr('href');
+
+                if (jsRelatedProductUrls == undefined) {
+                    index = -1;
+                }
+                else {
+                    index = jsRelatedProductUrls.indexOf(href);
+                }
+
+                if (index != -1) {
+                    //event.preventDefault();
+                    product = jsRelatedProducts[index];
+
+                    //console.log('Related Product Clicked - ' + product.name);
+
+                    $.mage.cookies.set('productlist', product.list);
+
+                    dataLayer.push({
+                        'event': 'productClick',
+                        'ecommerce': {
+                            'click': {
+                                'actionField': {'list': product.list},      // Optional list property.
+                                'products': [{
+                                    'name': product.name,                      // Name or ID is required.
+                                    'id': product.id,
+                                    'price': product.price,
+                                    'brand': product.brand,
+                                    'category': product.category,
+                                    'position': product.position
+                                }]
+                            }
+                        },
+                        'eventCallback': function() {
+                            if (!(e.ctrlKey || e.which==2)){
+                                document.location = href;
+                            }
+                        }
+                    });
+                }
+                if (jsUpsellProductUrls == undefined) {
+                    index = -1;
+                }
+                else {
+                    index = jsUpsellProductUrls.indexOf(href);
+                }
+
+                if (index != -1) {
+                    // event.preventDefault();
+                    product = jsUpsellProducts[index];
+                    //console.log('Upsell Product Clicked - ' + product.name);
+
+                    $.mage.cookies.set('productlist', product.list);
+					
+                    dataLayer.push({
+                        'event': 'productClick',
+                        'ecommerce': {
+                            'click': {
+                                'actionField': {'list': product.list},      // Optional list property.
+                                'products': [{
+                                    'name': product.name,                      // Name or ID is required.
+                                    'id': product.id,
+                                    'price': product.price,
+                                    'brand': product.brand,
+                                    'category': product.category,
+                                    'position': product.position
+                                }]
+                            }
+                        },
+                        'eventCallback': function() {
+                            if (!(e.ctrlKey || e.which==2)){
+                                document.location = href;
+                            }
+                        }
+                    });
+                }
+            });
+        });
+		//]]>
+	</script>
+<?php } ?>
+<?php if ($helper->isAjaxEnabled()):?>
+<script>
+    require([
+        'jquery',
+        'mage/mage',
+        'Magento_Catalog/product/view/validation',
+        'Scommerce_GoogleTagManagerPro/js/add-to-cart'
+    ], function ($) {
+        'use strict';
+
+        $('#product_addtocart_form').mage('validation', {
+            radioCheckboxClosest: '.nested',
+            submitHandler: function (form) {
+                var widget = $(form).catalogAddToCart({
+                    bindSubmit: false
+                });
+
+                widget.catalogAddToCart('submitForm', $(form));
+
+                return false;
+            }
+        });
+    });
+</script>
+<?php endif;?>

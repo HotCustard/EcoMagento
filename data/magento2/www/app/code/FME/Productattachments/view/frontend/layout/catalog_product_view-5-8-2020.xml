@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!--
+/**
+* FME Extensions
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the fmeextensions.com license that is
+* available through the world-wide-web at this URL:
+* https://www.fmeextensions.com/LICENSE.txt
+*
+* DISCLAIMER
+*
+* Do not edit or add to this file if you wish to upgrade this extension to newer
+* version in the future.
+*
+* @category FME
+* @package FME_Productattachments
+* @copyright Copyright (c) 2019 FME (http://fmeextensions.com/)
+* @license https://fmeextensions.com/LICENSE.txt
+*/
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        
+        <css src="FME_Productattachments::css/prettyPhoto.css"/> 
+        
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <!--            <referenceBlock name="product.info">
+                <referenceBlock name="product.info.additional">
+                    <block name="product.info.productattachments_additional" class="FME\Productattachments\Block\Productattachments" template="FME_Productattachments::productattachments.phtml">
+                        <block name="attachments" as="attachments" class="FME\Productattachments\Block\Productattachments" template="FME_Productattachments::items/attachments.phtml"/>
+                    </block>
+                </referenceBlock>
+            </referenceBlock>-->
+      
+        <!-- to show downloads in popup, productattachments.phtml.OLD.30-apr-2020 needs to be used...
+        <referenceContainer name="product.info.topbuttons">
+            <block class="FME\Productattachments\Block\Productattachments" name="pattachments" as="pattachments" template="FME_Productattachments::productattachments.phtml" before="-">
+                    <arguments>
+                        <argument name="title" xsi:type="helper" helper="FME\Productattachments\Helper\Data::getProductPageTabTitle">
+                            <param name="title">Product Attachments</param>
+                        </argument>
+                    </arguments>
+                    <block name="attachments" as="attachments" class="FME\Productattachments\Block\Productattachments" template="FME_Productattachments::items/attachments.phtml"/>
+            </block>
+	    </referenceContainer>
+        -->
+        
+            <referenceBlock name="product.info.details">
+                <block class="FME\Productattachments\Block\Productattachments" name="pattachments.tab" as="pattachments" template="FME_Productattachments::productattachments.phtml" group="detailed_info" after="reviews.tab">
+                    <arguments>
+                        <argument name="title" xsi:type="helper" helper="FME\Productattachments\Helper\Data::getProductPageTabTitle">
+                            <param name="title">Product Attachments</param>
+                        </argument>
+                        <argument name="sort_order" xsi:type="string">100</argument>
+                    </arguments>
+                    <block name="attachments" as="attachments" class="FME\Productattachments\Block\Productattachments" template="FME_Productattachments::items/attachments.phtml"/>
+                </block>
+            </referenceBlock>
+        
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,83 @@
+<?php
+/**
+* FME Extensions
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the fmeextensions.com license that is
+* available through the world-wide-web at this URL:
+* https://www.fmeextensions.com/LICENSE.txt
+*
+* DISCLAIMER
+*
+* Do not edit or add to this file if you wish to upgrade this extension to newer
+* version in the future.
+*
+* @category FME
+* @package FME_Productattachments
+* @copyright Copyright (c) 2019 FME (http://fmeextensions.com/)
+* @license https://fmeextensions.com/LICENSE.txt
+*/
+
+// @codingStandardsIgnoreFile
+
+/* @var $block \Magento\Backend\Block\Store\Switcher */
+?>
+
+
+<div class="store-switcher store-view">
+    <span class="store-switcher-label"><?php /* @escapeNotVerified */ echo __('View:') ?></span>
+    <div class="actions dropdown closable">
+        
+        <button
+            type="select"
+            class="admin__action-dropdown"
+            data-mage-init='{"dropdown":{}}'
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            id="store-change-button">
+            <?php /* @escapeNotVerified */ echo $block->getselectedpage() ?>
+        </button>
+        <ul class="dropdown-menu" data-role="stores-list">
+            <?php if($block->getselectedpage() == 'Attachments') { } else{?>
+                <li class="store-switcher-all">
+                    
+                        <a data-role="store-view-id" data-value="" href="<?php echo $block->getattachmentsurl(); ?>">
+                            Attachment's
+                        </a>
+                    
+                </li>
+                <?php } ?>
+                <?php if($block->getselectedpage() == 'Categories') { } else{?>
+                <li class="store-switcher-all">
+                    
+                        <a data-role="store-view-id" data-value="" href="<?php echo $block->getcategoryurl(); ?>">
+                            Categories
+                        </a>
+                    
+                </li>
+                 <?php } ?>
+                 <?php if($block->getselectedpage() == 'By Product') { } else{?>
+                 <li class="store-switcher-all">
+                    
+                        <a data-role="store-view-id" data-value="" href="<?php echo $block->getbyproductsurl(); ?>">
+                            By Product
+                        </a>
+                    <?php } ?>
+                </li>
+                
+                <!-- <li class="store-switcher-all">
+                    
+                        <a data-role="store-view-id" data-value="" href="<?php echo $block->getconfigurl(); ?>">
+                            Settings
+                        </a>
+                   
+                </li> -->
+            
+        </ul>
+    </div>
+    
+</div>
+
+
+

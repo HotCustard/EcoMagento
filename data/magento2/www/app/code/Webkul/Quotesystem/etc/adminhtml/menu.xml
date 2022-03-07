@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!-- /**
+ * Menu in admin
+ *
+ * @category  Webkul
+ * @package   Webkul_Quotesystem
+ * @author    Webkul
+ * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+       	<add id="Webkul_Quotesystem::quotesystem" title="Webkul Quote System" module="Webkul_Quotesystem" sortOrder="10" resource="Webkul_Quotesystem::quotesystem"/>
+       	<add id="Webkul_Quotesystem::quotes" title="Manage Quotes" module="Webkul_Quotesystem" sortOrder="1" parent="Webkul_Quotesystem::quotesystem" action="quotesystem/managequotes" resource="Webkul_Quotesystem::quotes"/>
+    </menu>
+</config>

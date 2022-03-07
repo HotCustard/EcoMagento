@@ -29,8 +29,11 @@ services:
             #- "${CONTAINERDATA}/${PROJECT_NAME}/www:/var/www"
             - "${CONTAINERDATA}/${PROJECT_NAME}/data:/home/data"
             #- "${CONTAINERDATA}/${PROJECT_NAME}/logs:/var/www/logs"
+            - "${CONTAINERDATA}/${PROJECT_NAME}/www/composer.json:/var/www/dev/magento2/composer.json"
+            - "${CONTAINERDATA}/${PROJECT_NAME}/www/app/etc/config.php:/var/www/dev/magento2/app/etc/config.php"
             - "${CONTAINERDATA}/${PROJECT_NAME}/www/app/etc/env.php:/var/www/dev/magento2/app/etc/env.php"
             - "${CONTAINERDATA}/${PROJECT_NAME}/www/app/design/frontend:/var/www/dev/magento2/app/design/frontend"
+            - "${CONTAINERDATA}/${PROJECT_NAME}/www/app/code:/var/www/dev/magento2/app/code"
         networks:
             - database
             - wwwserver

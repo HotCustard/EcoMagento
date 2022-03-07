@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Webkul
+ *
+ * @category  Webkul
+ * @package   Webkul_Quotesystem
+ * @author    Webkul
+ * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Customer\CustomerData\SectionPoolInterface">
+        <arguments>
+            <argument name="sectionSourceMap" xsi:type="array">
+                <item name="cart" xsi:type="string">Magento\Checkout\CustomerData\Cart</item>
+                <item name="directory-data" xsi:type="string">Magento\Checkout\CustomerData\DirectoryData</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Checkout\Block\Checkout\LayoutProcessor">
+        <plugin name="Webkul_Quotesystem::aroundProcess" type="Webkul\Quotesystem\Plugin\DiscountConfigureProcess"/>
+    </type>
+    <preference for="Magento\Catalog\Pricing\Render" type="Webkul\Quotesystem\Pricing\Render" />
+    <type name="Magento\Catalog\Block\Product\View\Options\AbstractOptions">
+        <plugin name="Webkul_Quotesystem::afterFormatPrice" type="Webkul\Quotesystem\Plugin\Catalog\Block\Product\View\Options\AbstractOptions" />
+    </type>
+    <type name="Magento\Catalog\Block\Product\ListProduct">
+        <plugin name="Webkul_Quotesystem::afterGetProductPriceList" type="Webkul\Quotesystem\Plugin\Catalog\Block\Product\ListProduct" />
+    </type>
+    <type name="Magento\CatalogSearch\Model\Layer\Category\ItemCollectionProvider">
+        <plugin name="Webkul_Quotesystem::afterItemCollectionProvider" type="Webkul\Quotesystem\Plugin\CatalogSearch\Model\Layer\Category\ItemCollectionProvider" />
+    </type>
+    <type name="Magento\Catalog\Model\Layer\Search\ItemCollectionProvider">
+        <plugin name="Webkul_Quotesystem::afterSearchItemCollectionProvider" type="Webkul\Quotesystem\Plugin\Catalog\Model\Layer\Search\ItemCollectionProvider" />
+    </type>
+    <type name="Magento\CatalogWidget\Block\Product\ProductsList">
+        <plugin name="Webkul_Quotesystem::afterGetProductPriceHtmlCms" type="Webkul\Quotesystem\Plugin\CatalogWidget\Block\Product\ProductsList" />
+    </type>
+    <type name="Webkul\Quotesystem\Block\Product\ListProduct">
+        <plugin name="Webkul_Quotesystem::beforeGetProductPrice1" type="Webkul\Quotesystem\Plugin\Product\ListProduct" />
+    </type>
+    <virtualType name="Magento\CatalogSearch\Block\SearchResult\ListProduct" type="Webkul\Quotesystem\Block\Product\ListProduct">
+        <arguments>
+            <argument name="catalogLayer" xsi:type="object">Magento\Catalog\Model\Layer\Search</argument>
+        </arguments>
+    </virtualType>
+    <preference for="Magento\Wishlist\CustomerData\Wishlist" type="Webkul\Quotesystem\CustomerData\Rewrite\Wishlist" />
+    <preference for="Magento\Sales\CustomerData\LastOrderedItems" type="Webkul\Quotesystem\CustomerData\Rewrite\LastOrderedItems" />
+</config>

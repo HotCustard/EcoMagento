@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<!--
+/**
+* FME Extensions
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the fmeextensions.com license that is
+* available through the world-wide-web at this URL:
+* https://www.fmeextensions.com/LICENSE.txt
+*
+* DISCLAIMER
+*
+* Do not edit or add to this file if you wish to upgrade this extension to newer
+* version in the future.
+*
+* @category FME
+* @package FME_Productattachments
+* @copyright Copyright (c) 2019 FME (http://fmeextensions.com/)
+* @license https://fmeextensions.com/LICENSE.txt
+*/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="fmeextensions" translate="label" sortOrder="2001">
+            <label>FME Extensions</label>
+        </tab>
+        <section id="productattachments" translate="label" sortOrder="124" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Product Attachments</label>
+            <tab>fmeextensions</tab>
+            <resource>FME_Productattachments::fmeextensions_productattachments_config</resource>
+            <group id="general" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Product Attachments Settings</label>
+                <field id="enable_footer_link" translate="label" type="select" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Footer Link (Quick Links)</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="show_counter" translate="label" type="select" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Downloads Counter</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="login_before_download" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Login Before Download?</label>
+                    <comment>(User must be login before downloading this file)</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="list_layout" type="select" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>List page layout</label>
+                    <source_model>FME\Productattachments\Model\System\Layouts</source_model>
+                </field>
+         
+                <field id="front_name" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Front Name</label>
+                    <comment>(Make sure to use unique Front Name)</comment>
+                </field>
+                
+                <field id="front_desc" translate="label" type="editor" sortOrder="33" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Front Description</label>
+                     <frontend_model>FME\Productattachments\Block\Adminhtml\System\Config\Editor</frontend_model>
+                </field>
+            </group>
+            <group id="productattachments" type="text" sortOrder="16" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Product Detail Page Settings</label>
+                <field id="enabled" translate="label" type="select" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Product Attachments!</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="newtab_enabled" translate="label" type="select" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Open Pdf in new tab</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="product_attachment_heading" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product Attachments Heading</label>
+                    <comment>(Product Detail page Attachments Heading)</comment>
+                </field>
+                <field id="showcontent" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Content with Attachments ?</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+         
+                <field id="tab_title" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product Attachments Tab Title</label>
+                    <comment>(Product Detail page Tab Title. Default is "Product Attachments")</comment>
+                </field>
+         
+            </group>
+            <group id="cmspagesattachments" type="text" sortOrder="17" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>CMS Page Settings</label>
+                <field id="enabled" translate="label" type="select" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable CMS Attachments!</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="newtab_enabledcms" translate="label" type="select" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Open Pdf in new tab</label>
+                    <comment>(This setting is also applied on listattachments)</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="cms_page_attachment_heading" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>CMS Page Attachments Heading</label>
+                    <comment>(CMS page Attachments Heading)</comment>
+                </field>
+                <field id="showcontent" translate="label" type="select" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Content with Attachments ?</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

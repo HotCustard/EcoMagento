@@ -1,0 +1,83 @@
+/**
+* FME Extensions
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the fmeextensions.com license that is
+* available through the world-wide-web at this URL:
+* https://www.fmeextensions.com/LICENSE.txt
+*
+* DISCLAIMER
+*
+* Do not edit or add to this file if you wish to upgrade this extension to newer
+* version in the future.
+*
+* @category FME
+* @package FME_Productattachments
+* @copyright Copyright (c) 2019 FME (http://fmeextensions.com/)
+* @license https://fmeextensions.com/LICENSE.txt
+*/
+
+@media (min-width: 200px) and (max-width: 400px) {
+
+    .attachment_sections_box ul {
+        text-align: center;
+}
+
+    .attachment_sections_box ul li {
+        float: none;
+        display: inline-table;
+        width: 96%;
+}
+
+    .attachment_sections_box ul li.last {
+        margin-right: 5px;
+}
+
+}
+
+@media (min-width: 400px) and (max-width: 600px) {
+
+    .attachment_sections_box ul {
+        text-align: center;
+}
+
+    .attachment_sections_box ul li {
+        float: none;
+        display: inline-table;
+        width: 45%;
+}
+
+    .attachment_sections_box ul li.last {
+        margin-right: 5px;
+}
+
+}
+
+@media (min-width: 600px) and (max-width: 1000px) {
+
+    .attachment_sections_box ul {
+        text-align: center;
+}
+
+    .attachment_sections_box ul li {
+        float: none;
+        display: inline-table;
+        width: 30%;
+}
+
+    .attachment_sections_box ul li.last {
+        margin-right: 5px;
+}
+
+}
+
+@media (min-width: 1000px) and (max-width: 1060px) {
+
+    .attachment_sections_box ul li {
+        float: left;
+        width: 32%;
+        margin: 5px;
+}
+
+}

@@ -1,0 +1,70 @@
+Legend
+
++ Features
+- Bugs
+-------------------------------- Version 3.0.0 --------------------------------------
+
+	+ Compatible with Magento 2.3.x.
+
+-------------------------------- Version 2.2.0 --------------------------------------
+
+	+ Added quote functionality at admin end
+
+-------------------------------- Version 2.1.1 --------------------------------------
+
+	+ Min Qty problem fixed.
+	+ Quote status attribute updated.
+	
+-------------------------------- Version 2.1.0 --------------------------------------
+
+	+ Compatible with Magento 2.3.x.
+	+ Hide Price in CMS, Advanced Search page and Search page fixed.
+	+ Quote on custom options fixed.
+	+ Multiple currency issue fixed. 
+
+-------------------------------- Version 2.0.5 --------------------------------------
+
+	+ Hide Price in CMS, Advanced Search page and Search page fixed.
+	+ Quote on custom options fixed.
+	+ Multiple currency issue fixed.
+
+-------------------------------- Version 2.0.4 --------------------------------------
+
+	+ Added configuration to hide Add to Cart button on Quote Products.
+	+ Added configuration to hide Price info on Quote Products.
+	+ Issue related to custom option when trying to add to quote fixed.
+
+-------------------------------- Version 2.0.3 --------------------------------------
+
+	+ Added upload attachments option while requesting for quote.
+	+ Added upload attachments option while sending messages regarding quote.
+
+-------------------------------- Version 2.0.2 --------------------------------------
+
+	+ Compatible with Magento 2.2.x version.
+	+ Now a product which is a quoted product can added with normal product in cart.
+	+ Add a product to Quote from Category page which not have options to select.
+	+ Admin can set whether to allow discount on quoted product or not.
+	- Issues solved.
+
+--------------------------------- Version 2.0.1 ---------------------------------------
+
+    + Admin can select their own email templates for sending different emails for Quote system.
+    + Admin can enable or disable Quote system module from configuration setting.
+    - Issues solved.
+
+-------------------------------- Version 2.0.0 --------------------------------------
+
+	+ Can add custom quote for products to buy in bulk.
+	+ Works with every type of product viz. Simple, Virtual, Downloadable, Configurable and Bundle except Grouped.
+	+ Email notification for each action to customer and admin as well.
+	+ Multi Lingual Support.
+	+ Works with multi-store and multi-website of Magento.
+	+ Can communicate with the admin via conversation system (inbuilt).
+	+ Works with every type of custom option excluding file type.
+	+ Admin can approve or decline customer quote.
+	+ Convert retail Magento store into wholesale store.
+	+ Admin can enable or disable Quote system for product.
+	+ Bulk order form for wholesaler.
+	+ Buyer can view the bulk orders and price and many more.
+	+ Enter custom prices for products.

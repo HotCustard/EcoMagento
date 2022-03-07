@@ -1,0 +1,16 @@
+--- app/code/Magento/Email/Model/Template/Filter.php
++++ app/code/Magento/Email/Model/Template/Filter.php
+@@ -636,12 +666,7 @@
+ 
+         $text = __($text, $params)->render();
+ 
+-        $pattern = '/{{.*?}}/';
+-        do {
+-            $text = preg_replace($pattern, '', (string)$text);
+-        } while (preg_match($pattern, $text));
+-
+-        return $this->applyModifiers($text, $modifiers);
++        return $this->applyModifiers($this->sanitizeValue($text), $modifiers);
+     }
+ 
+     /**

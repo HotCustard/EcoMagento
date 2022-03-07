@@ -1,0 +1,22 @@
+{
+    "name": "pr/module-cmssearch",
+    "description": "Search Content Area",
+    "type": "magento2-module",
+    "license": "proprietary",
+    "authors": [
+        {
+            "email": "prai@live.in",
+            "name": "p.rai"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Pr\\CmsSearch\\": ""
+        },
+        "files": [
+            "registration.php"
+        ]
+    }
+}

@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!-- /**
+ * events.xml
+ *
+ * @category  Webkul
+ * @package   Webkul_Quotesystem
+ * @author    Webkul
+ * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="checkout_cart_update_items_after">
+        <observer name="webkul_quote_cart_update_after" instance="Webkul\Quotesystem\Observer\CartUpdateAfter" />
+    </event>
+    <event name="checkout_submit_all_after">
+        <observer name="webkul_quote_sales_order_place_after" instance="Webkul\Quotesystem\Observer\SalesOrderPlaceAfter" />
+    </event>
+    <event name="checkout_cart_product_add_after">
+        <observer name="webkul_quote_cart_product_add_after" instance="Webkul\Quotesystem\Observer\CartUpdateAfter" />
+    </event>
+    <event name="checkout_cart_save_after">
+        <observer name="webkul_quote_sales_quote_add_item" instance="Webkul\Quotesystem\Observer\CheckoutCartSaveafter" />
+    </event>
+    <event name="sales_quote_add_item">
+        <observer name="webkul_quote_add_item" instance="Webkul\Quotesystem\Observer\SalesQuoteAddItem" />
+    </event>
+    <!-- controller predispatch checkour cart index -->
+    <event name="controller_action_predispatch_checkout_cart_index">
+        <observer name="webkul_quotesystem_predispatch_checkout_cart" instance="Webkul\Quotesystem\Observer\CheckoutCartPredispatch" />
+    </event>
+    <!-- checkout index index controller pre dispatch -->
+    <event name="controller_action_predispatch_checkout_index_index">
+        <observer name="webkul_quotesystem_predispatch_checkout_index" instance="Webkul\Quotesystem\Observer\CheckoutIndexPredispatch" />
+    </event>
+    <event name="controller_action_postdispatch_adminhtml_system_config_save">
+        <observer name="quotesystem_config_save_observer" instance="Webkul\Quotesystem\Observer\PostDispatchConfigSaveObserver"/>
+    </event>
+</config>

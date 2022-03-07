@@ -1,0 +1,120 @@
+<?php
+/**
+* FME Extensions
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the fmeextensions.com license that is
+* available through the world-wide-web at this URL:
+* https://www.fmeextensions.com/LICENSE.txt
+*
+* DISCLAIMER
+*
+* Do not edit or add to this file if you wish to upgrade this extension to newer
+* version in the future.
+*
+* @category FME
+* @package FME_Productattachments
+* @copyright Copyright (c) 2019 FME (http://fmeextensions.com/)
+* @license https://fmeextensions.com/LICENSE.txt
+*/
+?>
+<?php $object_manager = \Magento\Framework\App\ObjectManager::getInstance(); ?>
+<?php 
+$_helper = $object_manager->create('FME\Productattachments\Helper\Data');
+
+$dataMix = $this->view();
+$data = $dataMix['current_category'];
+$subCategories = array();
+$attachments = array();
+$_media = $this->_urlInterface->getBaseUrl(array('_type' => 'media'));
+
+$front = true;
+
+$frontName = $_helper->getFrontName();
+?>
+
+
+<?php if (count($data->getData()) > 0): ?>
+
+    <?php
+    $collection = $_helper->getSubCategories($data->getCategoryId(), $front);
+    
+    if ($collection->count() > 0) {
+        $subCategories = $collection;
+    }
+
+    if ($_helper->getProductAttachments($data->getCategoryId())->count() > 0) {
+        $attachments = $_helper->getProductAttachments($data->getCategoryId());
+    }
+    
+    ?>
+    <div id="productattachments-wrapper">
+        <div class="attachment_sections_detail">
+            <div class="headbar">
+                <p><?php echo __('Downloads'); ?></p>
+            </div>
+            <div class="product">
+                <div class="name">
+                    <p><?php echo trim($data->getCategoryName()) ?><a href="#" id="backbtn"><img src="<?php echo $this->getViewFileUrl('FME_Productattachments::images/back.png'); ?>" alt="Back" /></a></p>
+                </div>
+                <script type="text/javascript">
+                    require(['jquery'],function($){
+                        $(document).ready(function(){
+                            $("#backbtn").click(function (){
+                              window.history.back();
+                            });
+                        });
+                    });
+                </script>
+                <?php if ($data->getCategoryImage() != ''): ?>
+                    <img src="<?php echo $this->_urlInterface->getBaseUrl(array('_type' => 'media')) . $data->getCategoryImage(); ?>" alt="<?php echo $data->getCategoryName() ?>" />
+                <?php endif; ?>
+            </div>
+            <?php if (!empty($subCategories)): ?>
+                <div class="attachment_categories">
+                    <ul>
+                        <?php foreach ($subCategories as $i): ?>
+                            <li><p><a href="<?php 
+                            
+                                //echo $this->_urlInterface->getUrl('*/*/view', array('u' => $i->getCategoryUrlKey())) 
+                            
+                                echo $this->_urlInterface->getUrl($frontName).$i->getCategoryUrlKey();
+                                        
+                            ?>"><?php echo $i->getCategoryName(); ?></a> <?php echo __('(' . $this->countAttachments($i->getCategoryId()) . ')'); ?></p></li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            <?php endif; ?>
+
+            <?php if (!empty($attachments)): ?>
+
+                <div class="attachment_categories attachments">
+                    <div class="product">
+                        <div class="name">
+                            <p><?php echo __('Attachments:') ?></p>
+                        </div>
+
+                    </div>
+
+                    <ul>
+                        <?php foreach ($attachments as $j): ?>
+                        <li><p><a href="<?php 
+                            
+                                //echo $this->_urlInterface->getUrl('*/*/attachments', array('v' => $j->getId()))  
+                            
+                                
+                                echo $this->_urlInterface->getUrl($frontName) .$data->getCategoryUrlKey(). '/' .$j->getId();
+                            
+                            ?>"><?php echo $j->getTitle(); ?></a></p></li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+
+            <?php endif; ?>
+
+        </div>
+    </div>
+<?php else: ?>
+    <h2><?php __('Currently there\'re no attachment to display'); ?></h2>
+<?php endif; ?>

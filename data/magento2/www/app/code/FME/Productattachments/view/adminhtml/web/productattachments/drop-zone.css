@@ -1,0 +1,74 @@
+/**
+* FME Extensions
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the fmeextensions.com license that is
+* available through the world-wide-web at this URL:
+* https://www.fmeextensions.com/LICENSE.txt
+*
+* DISCLAIMER
+*
+* Do not edit or add to this file if you wish to upgrade this extension to newer
+* version in the future.
+*
+* @category FME
+* @package FME_Productattachments
+* @copyright Copyright (c) 2019 FME (http://fmeextensions.com/)
+* @license https://fmeextensions.com/LICENSE.txt
+*/
+.drop.hover
+{
+    color: #090;
+    border-color: #090;
+    border-style: solid;
+}
+.drop {
+    overflow: hidden;
+     background-color: lightgray;
+    border: 1px dashed;
+    font-size: 13px;
+    margin: 5px 0;
+    padding: 6px;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+}
+
+td .upload-attachment .spinner {
+    display: none;
+    position: absolute;
+     background:url(../images/ajax-loader.gif)no-repeat scroll left center;
+    left: 36%;
+    top: 11%;
+    background-size: 31px 31px;
+    z-index: 1000;
+}
+
+td .upload-attachment {
+    position: relative;
+}
+
+td .success-upload-image
+{
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    left: 39%;
+    top: 20%;
+    background: url(../images/check_green.png)no-repeat scroll left center;
+    background-size: 31px 31px;
+}
+
+.drop input {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    opacity: 0;
+    -ms-filter: 'alpha(opacity=0)';
+    font-size: 200px;
+    direction: ltr;
+    cursor: pointer;
+}

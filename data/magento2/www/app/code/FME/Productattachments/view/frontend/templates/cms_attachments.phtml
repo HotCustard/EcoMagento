@@ -1,0 +1,257 @@
+<?php
+/**
+* FME Extensions
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the fmeextensions.com license that is
+* available through the world-wide-web at this URL:
+* https://www.fmeextensions.com/LICENSE.txt
+*
+* DISCLAIMER
+*
+* Do not edit or add to this file if you wish to upgrade this extension to newer
+* version in the future.
+*
+* @category FME
+* @package FME_Productattachments
+* @copyright Copyright (c) 2019 FME (http://fmeextensions.com/)
+* @license https://fmeextensions.com/LICENSE.txt
+*/ 
+$object_manager = \Magento\Framework\App\ObjectManager::getInstance();
+//Get Javascript folder base path
+$jspath = $this->_storeManager->getStore()->getBaseUrl();
+$_helper = $object_manager->create('FME\Productattachments\Helper\Data');
+
+if (!$_helper->enableAtCmsPage()) {
+    return;
+}
+$cmsPageFile = $this->getCmsPageRelatedAttachments();
+$prevcat = null;
+$i=0;
+//$this->getcats();
+if ($cmsPageFile->getSize() > 0):
+    $categoriesCollection = $_helper->getAllCategories();
+
+
+$blockTitle = $_helper->getCMSPageAttachmentHeading(); 
+    ?> 
+
+    <?php if ($categoriesCollection->getSize() > 0) : ?>
+        <div id="productattachments-wrapper">
+            <div class="attachment_sections_box">
+                <div class="headbar">
+                    <p><?php  /** @noEscape */ echo __($_helper->getCMSPageAttachmentHeading()) ?></p> 
+                </div>
+
+
+                <?php foreach ($cmsPageFile as $category): ?>
+                    <?php
+                        if($prevcat ==null){
+                            $prevcat = $category['cat_id'];
+                        }
+                        if($prevcat == $category['cat_id'] && $i!=0){
+
+                        }
+                        else{
+                            $i++;
+                            $prevcat = $category['cat_id'];
+                    ?>
+                    
+                    
+                    
+                        <div class="box_cms">
+                            <div class="name">
+                                <h2><?php  /** @noEscape */ echo __($category->getCategoryName()) ?></h2> 
+                            </div>
+
+                            <ul>    
+                                <?php //fetch collection by category id ?>
+                                <?php foreach ($cmsPageFile as $item): ?>
+                                <?php
+                                    $userArray=explode(',', $item['customer_group_id']);
+                                    //print_r($userArray);
+                                    $session=$object_manager->create('Magento\Customer\Model\Session');
+                                    if ($session->isLoggedIn()){
+                                        $customerGroup=$session->getCustomer()->getGroupId();
+                                    } else {
+                                        $customerGroup = 0;
+                                    }
+                                ?>
+                                    <?php if($item['cat_id'] == $category['cat_id']) { ?>
+                                    <?php //if ($item->getDownloadLink() != ''): 
+                                   $ext = pathinfo($item['filename'], PATHINFO_EXTENSION);
+
+                                   $icon = $this->getnewicon($item['file_type']);
+                                   if($icon){
+                                    $item['file_icon'] = $icon;
+                                   }
+                                   else{
+                                    
+                                   }
+                                   if (in_array($customerGroup, $userArray)) {
+
+                                    ?>
+                                    <li>
+                                        <?php
+                                        // check if file is attached
+                                        if ($item['file_size'] > 0) {
+                                            //check download limit
+                                            if ($item['limit_downloads'] != "" && $item['limit_downloads'] != 0) {
+                                                if ($item['downloads'] >= $item['limit_downloads']) {
+                                                    echo '<a href="javascript:;" onclick="alert(\'You can not download because this attachment excceds the number of download\');">' . $item['file_icon'] . '&nbsp;<b>' . $item['title'] . '</b></a>  Size: (' . $item['file_size'] . ')';
+
+                                                    
+
+                                                }
+                                                 else {
+                                                    if(($ext == 'pdf' || $ext == 'PDF') && $this->iscms_pdflink()){
+                                                        echo '<a class="downloadlink" id="'.$item['productattachments_id'].'" counter="' . $this->_storeManager->getStore()->getUrl('productattachments') . 'index/counter?id=' . $item['productattachments_id'] . '" href="' . $item['download_link'] . '">' . $item['file_icon'] . '&nbsp;<b>' . $item['title'] . '</b></a>  Size: (' . $item['file_size'] . ')';
+                                                    }else{
+                                                        echo '<a class="downloadlink" id="'.$item['productattachments_id'].'" href="' . $this->_storeManager->getStore()->getUrl('productattachments') . 'index/download?id=' . $item['productattachments_id'] . '" counter="' . $this->_storeManager->getStore()->getUrl('productattachments') . 'index/counter?id=' . $item['productattachments_id'] . '">' . $item['file_icon'] . '&nbsp;<b>' . $item['title'] . '</b></a>  Size: (' . $item['file_size'] . ')';
+                                                    }
+
+                                                }
+                                            } 
+                                            else {
+                                                if(($ext == 'pdf' || $ext == 'PDF') && $this->iscms_pdflink()){
+                                                        echo '<a class="downloadlink" id="'.$item['productattachments_id'].'" counter="' . $this->_storeManager->getStore()->getUrl('productattachments') . 'index/counter?id=' . $item['productattachments_id'] . '" href="' . $item['download_link'] . '">' . $item['file_icon'] . '&nbsp;<b>' . $item['title'] . '</b></a>  Size: (' . $item['file_size'] . ')';
+                                                    }else{
+                                                        echo '<a class="downloadlink" id="'.$item['productattachments_id'].'" href="' . $this->_storeManager->getStore()->getUrl('productattachments') . 'index/download?id=' . $item['productattachments_id'] . '" counter="' . $this->_storeManager->getStore()->getUrl('productattachments') . 'index/counter?id=' . $item['productattachments_id'] . '">' . $item['file_icon'] . '&nbsp;<b>' . $item['title'] . '</b></a>  Size: (' . $item['file_size'] . ')';
+                                                    }
+                                            }
+
+                                            if ($this->_scopeConfig->getValue('productattachments/general/show_counter')) {
+                                                 /** @noEscape */ echo '&nbsp;&nbsp;' . __('Downloads: ' .'<span id="item_counter_'.$item['productattachments_id'].'">'. $item['downloads'].'</span>');
+                                            }
+                                        } else {
+                                            /** @noEscape */ echo '<b>' . $item['title'] . '</b>';
+                                        }
+                                        ?>
+                                        <?php if ($this->_scopeConfig->getValue('productattachments/productattachments/showcontent')): ?>
+                                            <?php if (isset($item['content']) && $item['content'] != ''): ?>
+                                                <br /><?php  /** @noEscape */ echo $item['content']; ?><br />
+                                            <?php endif; ?>
+                                        <?php endif; ?>
+                                    </li>
+                                    
+
+                                    <?php if ($item->getLinkUrl() != ''): ?>
+                                        <?php
+                                        $linkTitle = 'Go To';
+                                        if ($item->getLinkTitle() != '') {
+                                            $linkTitle = trim($item->getLinkTitle());
+                                        }
+                                        ?>
+                                        <li>
+                                            <a href="<?php  /** @noEscape */ echo $item->getLinkUrl() ?>">
+                                                <img src="<?php  /** @noEscape */ echo $this->getViewFileUrl('FME_Productattachments::images/link.jpg') ?>" width="18"/>
+                                                <?php  /** @noEscape */echo __($linkTitle) ?>
+                                            </a>
+                                        </li>
+                                    <?php endif; ?> 
+
+                                    <?php if ($item->getEmbedVideo() != ''): ?>
+
+                                        <?php $vidTitle = trim($item->getVideoTitle()); ?>
+
+                                        <li>
+                                            <a href="<?php  /** @noEscape */ echo $item->getEmbedVideo(); ?>" rel="prettyPhoto" title="Vimeo video">
+                                                <img src="<?php  /** @noEscape */ echo $this->getViewFileUrl('FME_Productattachments::images/videoicon.jpeg') ?>"/>&nbsp;<?php echo ($vidTitle != '') ? $vidTitle : ''; ?>
+                                            </a>
+                                        </li>
+                                    <?php endif; ?> 
+                                        
+                                    <?php }} ?>
+                                <?php endforeach; ?>
+                            </ul>
+                        </div>
+                        <?php } ?>
+                    
+                <?php endforeach; ?>
+            </div>
+        </div>
+        <div class="clear"></div>
+        
+        
+        <script type="text/javascript" charset="utf-8">
+
+            require(["jquery", "prettyphoto"], function($){
+                // plugin code
+                // where $ == "jquery"
+                $(document).ready(function () {
+                        //$("a[rel^='prettyPhoto']").prettyPhoto();
+                    $("a[rel^='prettyPhoto']").prettyPhoto({
+                        animation_speed: 'fast', 
+                        slideshow: 10000, 
+                        hideflash: true
+                    });
+
+                });
+            }); 
+            
+            require(["jquery"], function($){
+            
+                $('.downloadlink').click(function(e){
+
+                    e.preventDefault();                
+                    var downloadUrl = $(this).attr('href');
+                    
+                    if(downloadUrl == 'javascript:;'){
+                        return;
+                    }
+                    
+                    window.open(downloadUrl, '_blank');
+                    
+                    
+                    var countUrl = $(this).attr('counter');
+                    var id = $(this).attr('id');
+                    var current_element = $(this);
+                    
+                    $.ajax({
+                        url : countUrl,
+                        type : "GET",                        
+                        success : function(data) {
+                            
+                            var html_counter = parseInt($('#item_counter_'+id).text());
+                            var counter = parseInt(data.counter);
+                            var limit = parseInt(data.limit);
+                            var stop = false;
+                            
+                            if(counter == html_counter){
+                                $('#item_counter_'+id).text(counter+1);
+                                if(limit == counter+1){
+                                    stop = true;
+                                }
+                                
+                            }else{
+                                $('#item_counter_'+id).text(counter);
+                                if(limit == counter){
+                                    stop = true;
+                                }
+                            }
+                            
+                            if(stop == true){
+                                
+                                current_element.removeClass("downloadlink");
+                                current_element.attr("href", "javascript:;");                                
+                                current_element.attr("onclick", "alert('You can not download because this attachment excceds the number of download')");
+                            }
+                            
+                           
+                        }
+                    });
+                    
+                    
+                    
+                    
+
+                });
+
+            });    
+        </script>
+
+
+    <?php endif; ?>
+    <div class="clear"></div>
+<?php endif; ?>

@@ -1,0 +1,366 @@
+/**
+* FME Extensions
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the fmeextensions.com license that is
+* available through the world-wide-web at this URL:
+* https://www.fmeextensions.com/LICENSE.txt
+*
+* DISCLAIMER
+*
+* Do not edit or add to this file if you wish to upgrade this extension to newer
+* version in the future.
+*
+* @category FME
+* @package FME_Productattachments
+* @copyright Copyright (c) 2019 FME (http://fmeextensions.com/)
+* @license https://fmeextensions.com/LICENSE.txt
+*/
+ul, ol {
+}
+
+ol {
+    list-style-type: decimal;
+}
+
+nav ul, nav li {
+    margin: 0;
+    list-style: none;
+    list-style-image: none;
+}
+
+.clear {
+    clear: both;
+    width: 100%
+}
+
+#wrapper {
+    width: 100%;
+    margin: 0 auto;
+}
+
+ul > li, ol > li {
+    list-style: none
+}
+
+/*Main Style*/
+
+.attachment_sections_box {
+    width: 100%;
+    text-align: center;
+}
+
+.attachment_sections_box .headbar {
+    width: 100%;
+    background: #F0F0F0;
+    padding: 8px 0;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.attachment_sections_box .headbar p {
+    font-size: 24px;
+    font-weight: normal;
+    color: #333;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+
+.attachment_sections_box .box {
+    float: left;
+    width: 30%;
+    min-height: 110px;
+    display: inline-block;
+    background: #FFF;
+    padding: 5px;
+    box-shadow: 0 0 3px #F0F0F0;
+    box-shadow: 0 0 3px #F0F0F0;
+    margin: 5px;
+}
+
+.attachment_sections_box .box .name {
+    background: #F0F0F0;
+    padding: 5px;
+}
+
+.attachment_sections_box .box .name p {
+    font-size: 12px;
+    color: #1979C3;
+    line-height: 22px;
+}
+
+.attachment_sections_box .box .name p a {
+    font-size: 14px;
+    color: #1979C3;
+    font-weight: bold;
+}
+
+.attachment_sections_box .box .name p a:hover {
+    color: #333;
+}
+
+.attachment_sections_box .box ul {
+    list-style: none;
+    margin: 8px 0;
+    margin-left: 5px;
+    text-align: left;
+}
+
+.attachment_sections_box .box ul li {
+    clear: both;
+    background: url(../images/li-list-icon.png) no-repeat left top 5px;
+    line-height: 24px;
+    padding-left: 6px;
+}
+
+.attachment_sections_box .box ul li a {
+    font-size: 12px;
+    color: #333;
+    padding-left: 18px;
+    line-height: 19px;
+}
+
+.attachment_sections_box .box ul li a:hover {
+    color: #1979C3;
+}
+
+.clear {
+    clear: both;
+}
+
+/*Detail Page*/
+
+.attachment_sections_detail {
+    width: 100%;
+}
+
+.attachment_sections_detail .headbar {
+    background: #F0F0F0;
+    padding: 8px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.attachment_sections_detail .headbar p {
+    font-size: 24px;
+    font-weight: normal;
+    color: #333;
+}
+
+.attachment_sections_detail .product {
+    width: 100%;
+}
+
+.attachment_sections_detail .product .name {
+    background: #F0F0F0;
+    padding: 5px;
+    margin-bottom: 10px;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.attachment_sections_detail .product .name p {
+    font-size: 18px;
+    font-weight: normal;
+    color: #5A5A5A;
+}
+
+.attachment_sections_detail .product .name p img {
+    float: right;
+}
+
+.attachment_sections_detail .product img {
+    max-width: 100%;
+    height: auto;
+}
+
+.attachment_sections_detail .attachment_categories {
+    background: #FAFAFA;
+    border: #E9E9E9 1px solid;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+.attachment_sections_detail .attachment_categories ul {
+    list-style: none;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.attachment_sections_detail .attachment_categories ul li {
+    clear: both;
+    background: url(../images/li-list-icon.png) no-repeat left top 5px;
+    line-height: 24px;
+}
+
+.attachment_sections_detail .attachments ul li {
+    clear: both;
+    background: url(../images/li-list-attachment.png) no-repeat left top 5px;
+    line-height: 24px;
+}
+
+.attachment_sections_detail .attachment_categories ul li p {
+    color: #5A5A5A;
+}
+
+.attachment_sections_detail .attachment_categories ul li p a {
+    font-size: 12px;
+    color: #333;
+    padding-left: 18px;
+    line-height: 19px;
+}
+
+.attachment_sections_detail .attachment_categories ul li p a:hover {
+    color: #1979C3;
+}
+
+/*Responsive CSS*/
+
+@media (min-width: 200px) and (max-width: 400px) {
+
+    .attachment_sections_box {
+        width: 98%;
+        margin: 0 auto;
+}
+
+    .attachment_sections_box .box {
+        width: 98%;
+        margin: 5px auto;
+}
+
+}
+
+@media (min-width: 400px) and (max-width: 600px) {
+
+    .attachment_sections_box {
+        width: 98%;
+        margin: 0 auto;
+}
+
+    .attachment_sections_box .box {
+        width: 44%;
+        margin: 5px;
+}
+
+}
+
+@media (min-width: 600px) and (max-width: 700px) {
+
+    .attachment_sections_box {
+        width: 98%;
+        margin: 0 auto;
+}
+
+    .attachment_sections_box .box {
+        width: 29%;
+        margin: 5px;
+}
+
+}
+
+.attachment_sections_box .box_cms {
+    margin-top: 12px;
+    float: left;
+    width: 100%;
+    min-height: 110px;
+    display: inline-block;
+    background: #FFF;
+    box-shadow: 0 0 3px #F0F0F0;
+    box-shadow: 0 0 3px #F0F0F0;
+    margin: 5px 5px 35px 5px;
+}
+
+.attachment_sections_box .box_cms h2 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.attachment_sections_box .box_cms .name {
+    background: #F0F0F0;
+    padding: 5px;
+}
+
+.attachment_sections_box .box_cms .name p {
+    font-size: 12px;
+    color: #1979C3;
+    line-height: 22px;
+}
+
+.attachment_sections_box .box_cms .name p a {
+    font-size: 14px;
+    color: #1979C3;
+    font-weight: bold;
+}
+
+.attachment_sections_box .box_cms .name p a:hover {
+    color: #333;
+}
+
+.attachment_sections_box .box_cms ul {
+    list-style: none;
+    margin: 8px 0;
+    margin-left: 5px;
+    text-align: left;
+}
+
+.attachment_sections_box .box_cms ul li {
+    clear: both;
+    line-height: 24px;
+    padding-left: 6px;
+}
+
+.attachment_sections_box .box_cms ul li a {
+    font-size: 12px;
+    color: #333;
+    padding-left: 18px;
+    line-height: 19px;
+}
+
+.attachment_sections_box .box_cms ul li a:hover {
+    color: #1979C3;
+}
+
+@media (min-width: 200px) and (max-width: 400px) {
+
+    .attachment_sections_box {
+        width: 98%;
+        margin: 0 auto;
+}
+
+    .attachment_sections_box .box_cms {
+        width: 98%;
+        margin: 5px auto;
+}
+
+}
+
+@media (min-width: 400px) and (max-width: 600px) {
+
+    .attachment_sections_box {
+        width: 98%;
+        margin: 0 auto;
+}
+
+    .attachment_sections_box .box_cms {
+        width: 44%;
+        margin: 5px;
+}
+
+}
+
+@media (min-width: 600px) and (max-width: 700px) {
+
+    .attachment_sections_box {
+        width: 98%;
+        margin: 0 auto;
+}
+
+    .attachment_sections_box .box_cms {
+        width: 29%;
+        margin: 5px;
+}
+
+}

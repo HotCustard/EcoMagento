@@ -1,0 +1,236 @@
+<?php
+/**
+* FME Extensions
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the fmeextensions.com license that is
+* available through the world-wide-web at this URL:
+* https://www.fmeextensions.com/LICENSE.txt
+*
+* DISCLAIMER
+*
+* Do not edit or add to this file if you wish to upgrade this extension to newer
+* version in the future.
+*
+* @category FME
+* @package FME_Productattachments
+* @copyright Copyright (c) 2019 FME (http://fmeextensions.com/)
+* @license https://fmeextensions.com/LICENSE.txt
+*/
+    $error = [];
+    $media = $this->helper->getMediaType('path');
+?>
+<style type="text/css">
+    .isok {
+        float:left;
+        padding-right: 10px;
+    }
+    .importnotebody{
+        text-align:left;
+    }
+    .importnotebody ul{
+        text-align:left;
+        list-style:none;
+        margin: 13px 0;
+    }
+    .importnotebody ul li{
+        text-align:left;
+        float: left;
+        clear: both;
+        padding: 3px 0;
+    }
+
+    .importnotebody ul li b{
+
+        clear: both;
+    }
+</style>
+<div class="content-header">
+    <table cellspacing="0">
+        <tr>
+            <td><h3 class="icon-head head-tax-rate-importExport">
+                    <?php echo __('Update Attachments Database') ?>
+                </h3>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="importnote">
+    <div class="importnotehead">
+    </div>
+    <div class="importnotebody">
+
+        Make sure that all checks are green.
+        <ul>
+            <li>
+
+                <?php
+                    $gifcVal = 'cross';
+                    if(is_readable($media.$this->path.'ProductAttachments_Categories.csv')){
+                        $gifcVal = 'check';
+
+                    } else {
+                        $error['categories'] = __('File does not exist or is not readable.');
+                    }
+                ?>
+                    <div id="isok1" class="isok">
+                        <img src="<?php echo $this->getViewFileUrl('FME_Productattachments::images/'.$gifcVal.'.gif'); ?>"/>
+                    </div>
+
+                <b><code>ProductAttachments_Categories.csv</code></b>
+                <?php if ($gifcVal == 'cross'): ?>
+
+                    <i style="color:red;"><?php echo $error['categories']; ?></i>
+                <?php endif; ?>
+                <a href="<?php echo $this->getViewFileUrl('FME_Productattachments::ProductAttachments_Categories_Sample.csv'); ?>"><?php echo __('Sample'); ?></a>
+            </li>
+            <li>
+                <?php
+                    $gifaVal = 'cross';
+                    if(is_readable($media.$this->path.'ProductAttachments.csv')){
+                        $gifaVal = 'check';
+
+                    } else {
+                        $error['attachment'] = __('File does not exist or is not readable.');
+                    }
+
+                ?>
+                <div id="isok2" class="isok">
+                    <img src="<?php echo $this->getViewFileUrl('FME_Productattachments::images/'.$gifaVal.'.gif'); ?>"/>
+                </div>
+                <b><code>ProductAttachments.csv</code></b>
+                <?php if ($gifaVal == 'cross'): ?>
+
+                    <i style="color:red;"><?php echo $error['attachment']; ?></i>
+                <?php endif; ?>
+                <a href="<?php echo $this->getViewFileUrl('FME_Productattachments::ProductAttachments_Sample.csv'); ?>"><?php echo __('Sample'); ?></a>
+            </li>
+            <li>
+                <?php
+                    $gifrVal = 'cross';
+
+                    if(is_readable($media.$this->path.'ProductAttachments_Relations.csv')){
+                        $gifrVal = 'check';
+
+                    } else {
+                        $error['relation'] = __('File does not exist or is not readable.');
+                    }
+                ?>
+                <div id="isok3" class="isok">
+                    <img src="<?php echo $this->getViewFileUrl('FME_Productattachments::images/'.$gifrVal.'.gif'); ?>"/>
+                </div>
+                <b><code>ProductAttachments_Relations.csv</code></b>
+                <?php if ($gifrVal == 'cross'): ?>
+                    <i style="color:red;"><?php echo $error['relation']; ?></i>
+                <?php endif; ?>
+
+                <a href="<?php echo $block->getViewFileUrl('FME_Productattachments::ProductAttachments_Relations_Sample.csv'); ?>"><?php echo __('Sample'); ?></a>
+            </li>
+            <li>
+                <?php
+                    $gifVal = 'cross';
+                    $getVal = (int)ini_get('max_input_vars');
+                    if ($getVal >= 9000) {
+                        $gifVal = 'check';
+                    } else {
+                        $error['ini'] = __('Value must be set to 9000 at the least');
+                    }
+                ?>
+                <div id="isok3" class="isok">
+                    <img src="<?php echo $this->getViewFileUrl('FME_Productattachments::images/'.$gifVal.'.gif'); ?>"/>
+                </div>
+
+                <b><code>max_input_vars</code></b> value is set to <b> 9000</b>
+                <?php if ($gifVal == 'cross'): ?>
+                    <i style="color:red;"><?php echo $error['ini']; ?></i>
+                <?php endif; ?>
+            </li>
+        </ul>
+
+    </div>
+    <div style="clear:both;">
+        Above mentioned files must exists under <b><code>media/productattachments</code></b>
+
+        with read permissions applied to the directory and files.
+        <br/>
+        Copy all the attachment files to <b><code>/pub/media/productattachments/files/downloads/</code></b>
+        <br/>
+        <!--Importing will erase the previous record and new record will be imported.-->
+    </div>
+</div>
+<?php if (count($error) == 0)
+{
+  ?>
+  <div class="entry-edit">
+      <div class="box-left">
+          <form id="updateform" action="<?php echo $this->getFormAction() ?>" method="post" enctype="multipart/form-data">
+              <?php echo $this->getBlockHtml('formkey') ?>
+              <div class="entry-edit-head">
+                  <h4 class="icon-head head-edit-form fieldset-legend"><?php //echo __('Import Attachments') ?></h4>
+              </div>
+              <fieldset>
+                  <legend><?php echo __('Update Attachments') ?></legend>
+                  <input type="hidden" name="import_file" value=""/>
+
+                      <?php echo $this->getButtonHtml('Import', "startImport()") ?>
+
+                  <div id="show-spinner" style="display:none;"><img src="<?php echo $this->getViewFileUrl('FME_Productattachments::images/ajax-loader.gif');?>"/></div>
+              </fieldset>
+          </form>
+      </div>
+      <div class="clear"></div>
+      <br/>
+      <b>Note:</b> This operation will take time to complete.
+  </div>
+
+  <script type='text/javascript'>
+      function startImport() {
+
+          require(["jquery","jquery/ui"], function($){
+
+              var buttonId = $("#<?php echo $block->getHtmlId() ?>");
+              var formAction = "<?php echo $this->getFormAction() ?>";
+              var spinner = $("#show-spinner");
+
+              buttonId.prop("disabled", true);
+              $("#updateform").submit();
+          });
+      }
+
+  </script>
+<?php
+}
+else
+{
+  ?>
+  <div class="entry-edit">
+      <div class="box-left">
+          <form id="updateform" action="<?php echo $this->getFormAction() ?>" method="post" enctype="multipart/form-data">
+              <?php echo $this->getBlockHtml('formkey') ?>
+              <div class="entry-edit-head">
+                  <h4 class="icon-head head-edit-form fieldset-legend"><?php //echo __('Import Attachments') ?></h4>
+              </div>
+              <fieldset>
+                  <legend><?php echo __('Update Attachments') ?></legend>
+                  <input type="hidden" name="import_file" value=""/>
+
+                      <?php echo $this->getButtonHtml('Import',"") ?>
+
+                  <div id="show-spinner" style="display:none;"><img src="<?php echo $this->getViewFileUrl('FME_Productattachments::images/ajax-loader.gif');?>"/></div>
+              </fieldset>
+          </form>
+      </div>
+      <div class="clear"></div>
+      <br/>
+      <b>Note:</b> This operation will take time to complete.
+  </div>
+  <script>
+    require(["jquery","jquery/ui"], function($)
+    {
+      $("button[title='Import']").prop("disabled",true);
+    });
+  </script>
+  <?php
+}
+?>

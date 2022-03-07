@@ -1,0 +1,122 @@
+<?php 
+    //$_productCollectionbasic=$this->getLoadedProductCollection();
+    $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+    
+    $categoryID = 0;
+	if(isset($_REQUEST['cat']) && $_REQUEST['cat']>0){
+	    $categoryID = $_REQUEST['cat'];
+	}
+	else{
+	    /*$category = Mage::getSingleton('catalog/layer')
+                ->getCurrentCategory();
+                //var_dump($category->_data['children_count']);die;
+                if($category->_data['children_count']==0){
+                    $categoryID = $category->getId();
+                }
+        */
+
+        $category = $objectManager->get('Magento\Framework\Registry')->registry('current_category');//get current category
+        $categoryID = $category->getId();
+    }
+    
+    if($categoryID>0){
+        ?>
+        <div class="download-list-btn prdGuide"><a data-trigger="download_button" data-fancybox data-src="#download-product-list" href="javascript:;">PRODUCT GUIDES</a></div>
+        <?php
+			$_productCollectionDownload= $objectManager->get('Magento\Catalog\Model\Category')->load($categoryID)
+            ->getProductCollection()
+            ->addAttributeToSelect('*') // add all attributes - optional
+            ->addFieldToFilter('status', array('eq' => \Magento\Catalog\Model\Product\Attribute\Source\Status::STATUS_ENABLED)) // enabled
+            ->addAttributeToFilter('visibility', 4) //visibility in catalog,search
+			->setOrder('name', 'asc');
+			/*if (! Mage::helper('cataloginventory')->isShowOutOfStock()) {
+			   Mage::getSingleton('cataloginventory/stock')->addInStockFilterToCollection($_productCollectionDownload);
+			}*/
+	$pagesize=9;
+	$totalpages=$_productCollectionDownload->count();
+	$pages=ceil($totalpages/$pagesize);
+	//ceil($_productCollectionDownload->count()/$pagesize)
+    $_helper = $this->helper('Magento\Catalog\Helper\Output');
+?>
+<?php /*?><script src="<?php echo $this->getSkinUrl('js/build/modernizr.js')?>" type="text/javascript"></script>
+<script src="<?php echo $this->getSkinUrl('js/build/pdf.js')?>" type="text/javascript"></script><?php */?>
+<!--<script>
+      
+      // set the pdfjs worker source. not sure if PDFjs uses 'webworkers' API of HTML5
+		//PDFJS.workerSrc = '<?php // echo $this->getSkinUrl('js/build/pdf.worker.js')?>';
+		PDFJS.disableWorker = true;
+</script>-->
+<style>   
+.pdf-thumb{
+    width: 150px;
+    height: 150px;
+}
+</style>
+
+
+<div data-bind="mageInit: {
+        'Magento_Ui/js/modal/modal':{
+            'type': 'popup',
+            'title': 'Downloads',
+            'trigger': '[data-trigger=download_button]',
+            'responsive': true,
+            'buttons': []
+        }}">
+    <div class="content">
+        <div id="download-product-list" style="max-width:825px;">
+        <?php if(!$_productCollectionDownload->count()): ?>
+        <p class="note-msg">There are no products matching the selection.</p>
+        <?php else: ?>
+        <?php  $i=0; foreach ($_productCollectionDownload as $_productDownload): ?> 
+        <?php //echo '<pre>';print_r($_productDownload->getData());exit; ?>
+
+            <div class="product-download-list">
+                <div class="product-download-name">
+                    <h3>
+                        <?php echo $_helper->productAttribute($_productDownload, $_productDownload->getName() , 'name'); ?>
+                    </h3>
+                    <h4>
+                        <?php echo $this->getLayout()->createBlock('\FME\Productattachments\Block\Productattachments')->setData('product', $_productDownload)->setTemplate('FME_Productattachments::items/attachments-categories.phtml')->toHtml(); 
+                        ?>
+                    </h4>
+                </div>
+                </div>
+            <?php endforeach ?>
+            <ol id="pagin">
+                <?php for($i=1; $i<=$pages; $i++){ ?>
+                <li><a class="<?php if($i==1){ echo 'current'; } ?>" href="javascript:void(0);"><?php echo $i; ?></a></li>
+                <?php } ?>
+            </ol>
+            <script>
+			require(["jquery"], function($){
+            jQuery( document ).ready(function($) {
+                pageSize = <?php echo $pagesize; ?>;
+
+            showPage = function(page) {
+                $(".product-download-list").hide();
+                    $(".product-download-list").each(function(n) {
+                        if (n >= pageSize * (page - 1) && n < pageSize * page)
+                            $(this).show();
+                    });        
+                }
+                    
+                showPage(1);
+                
+                $("#pagin li a").click(function() {
+                    $("#pagin li a").removeClass("current");
+                    $(this).addClass("current");
+                    showPage(parseInt($(this).text())) 
+                });
+            });
+			 });
+            </script>
+        <?php endif; ?>
+    
+    </div>
+    </div>
+</div>
+
+
+
+
+  <?php } ?>

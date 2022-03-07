@@ -1,0 +1,93 @@
+<?php
+$blockObj= $block->getLayout()->createBlock('Mage2\Inquiry\Block\Inquiry');
+$_product = $block->getProduct();
+$is_enable = $blockObj->getQuestionDisplaySetting();
+if($is_enable)
+{
+    $inquiryCollection = $blockObj->getInquiryCollection();
+    $inquiryCount = count($inquiryCollection);
+    if($inquiryCount)
+    {
+        ?>
+
+        <div class='product-questions-container'>
+            <p class="view-question"><label class="action submit primary view-question"><?php /* @escapeNotVerified */ echo __('View Questions') ?></label></p>
+            <ul class='question-listing'>
+                <?php
+
+                foreach($inquiryCollection as $inquiry)
+                { ?>
+                    <div class="question-container">
+                        <li>
+                            <p><b> <?php /* @escapeNotVerified */ echo __('Question :') ?> </b><?php echo $inquiry->getMessage(); ?></p>
+                        </li>
+                        <li>
+                            <p><b> <?php /* @escapeNotVerified */ echo __('Answer :') ?> </b></span><?php echo $inquiry->getAdminMessage(); ?></p>
+                        </li>
+                    </div>
+                <?php } ?>
+
+            </ul>
+        </div>
+
+    <?php }
+} ?>
+
+<form class="form testimonial"
+      action="<?php /* @escapeNotVerified */ echo $blockObj->getFormAction();?>"
+      id="product-inquiry-form"
+      method="post"
+      enctype="multipart/form-data"
+      data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>"
+      data-mage-init='{"validation":{}}'>
+    <input type="hidden" name="sku" value="<?php echo $_product->getSku();?>" type="text">
+    <fieldset class="fieldset">
+
+        <div class="field name required">
+            <label class="label" for="name"><span><?php /* @escapeNotVerified */ echo __('Name') ?></span></label>
+            <div class="control">
+                <input name="name" id="name" title="<?php /* @escapeNotVerified */ echo __('Name') ?>" value="" class="input-text" type="text" data-validate="{required:true}"/>
+            </div>
+        </div>
+
+        <div class="field email required">
+            <label class="label" for="email"><span><?php /* @escapeNotVerified */ echo __('Email') ?></span></label>
+            <div class="control">
+                <input name="email" id="email" title="<?php /* @escapeNotVerified */ echo __('Email') ?>" value="" class="input-text" type="email" data-validate="{required:true, 'validate-email':true}"/>
+            </div>
+        </div>
+
+        <div class="field mobile_number">
+            <label class="label" for="mobile_number"><span><?php /* @escapeNotVerified */ echo __('Mobile Number') ?></span></label>
+            <div class="control">
+                <input name="mobile_number" id="mobile_number" title="<?php /* @escapeNotVerified */ echo __('Mobile Number') ?>" value="" class="input-text" type="text" />
+            </div>
+        </div>
+
+        <div class="field message required">
+            <label class="label" for="message"><span><?php /* @escapeNotVerified */ echo __('Message') ?></span></label>
+            <div class="control">
+                <textarea name="message" id="message" title="<?php /* @escapeNotVerified */ echo __('What’s on your mind?') ?>" class="input-text" data-validate="{required:true}" cols="5" rows="3" ></textarea>
+            </div>
+        </div>
+
+    </fieldset>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <button type="submit" title="<?php /* @escapeNotVerified */ echo __('Submit') ?>" class="action submit primary">
+                <span><?php /* @escapeNotVerified */ echo __('Submit') ?></span>
+            </button>
+        </div>
+    </div>
+
+</form>
+
+<script>
+
+    require([
+        'jquery',
+        'inquiry'
+    ], function () {
+        'use strict';
+    });
+</script>

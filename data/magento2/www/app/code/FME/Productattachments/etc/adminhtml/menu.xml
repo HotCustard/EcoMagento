@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+/**
+* FME Extensions
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the fmeextensions.com license that is
+* available through the world-wide-web at this URL:
+* https://www.fmeextensions.com/LICENSE.txt
+*
+* DISCLAIMER
+*
+* Do not edit or add to this file if you wish to upgrade this extension to newer
+* version in the future.
+*
+* @category FME
+* @package FME_Productattachments
+* @copyright Copyright (c) 2019 FME (http://fmeextensions.com/)
+* @license https://fmeextensions.com/LICENSE.txt
+*/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>      
+        <update id="FME_Extensions::fmeextensions" title="FME Extensions" module="Magento_Backend" sortOrder="70" resource="FME_Extensions::fmeextensions"/>
+        <!-- FME Extensions -->
+        <add id="FME_Extensions::productattachments" title="Product Attachments" module="FME_Productattachments" sortOrder="70" parent="FME_Extensions::fmeextensions" resource="FME_Extensions::fmeextensions"/>
+        <!-- Manage Attachments -->
+        <add id="FME_Productattachments::fmeextensions_productattachments_items" title="Manage Attachments" module="FME_Productattachments" sortOrder="80" action="productattachmentsadmin/productattachments/index" parent="FME_Extensions::productattachments" resource="FME_Productattachments::fmeextensions_productattachments_items"/>
+        <add id="FME_Productattachments::fmeextensions_productattachments_ext" title="Manage File Extensions" module="FME_Productattachments" sortOrder="85" action="productattachmentsadmin/extensions/index" parent="FME_Extensions::productattachments" resource="FME_Productattachments::fmeextensions_productattachments_ext"/>
+        <!-- Manage Categories -->
+        <add id="FME_Productattachments::fmeextensions_productattachments_productcats" title="Manage Categories" module="FME_Productattachments" sortOrder="90" action="productattachmentsadmin/productcats/index" parent="FME_Extensions::productattachments" resource="FME_Productattachments::fmeextensions_productattachments_productcats"/>
+   	    <add id="FME_Productattachments::fmeextensions_productattachments_import" title="Import Attachments" module="FME_Productattachments" sortOrder="99" action="productattachmentsadmin/import/index" parent="FME_Extensions::productattachments" resource="FME_Productattachments::fmeextensions_productattachments_import"/>
+        <add id="FME_Productattachments::fmeextensions_productattachments_config" title="Configurations" module="FME_Productattachments" sortOrder="100" action="adminhtml/system_config/edit/section/productattachments" parent="FME_Extensions::productattachments" resource="FME_Productattachments::fmeextensions_productattachments_config"/>
+    </menu>
+</config>

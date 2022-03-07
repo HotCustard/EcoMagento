@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_Quotesystem
+ * @author    Webkul
+ * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+ -->
+ <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+ 	<system>
+        <tab id="webkul" translate="label" sortOrder="1">
+            <label>Webkul</label>
+        </tab>
+        <section id="quotesystem" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+        	<label>Quote System</label>
+            <tab>webkul</tab>
+            <resource>Webkul_Quotesystem::config_quotesystem</resource>
+            <group id="wk_quotesystemsetting" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Quote System Settings</label>
+                <field id="wk_quotesystemenabledisable" translate="label comment" sortOrder="1" type="select" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <source_model>Webkul\Quotesystem\Model\Config\Source\Option</source_model>
+                    <label>Quote System Enable/Disable</label>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="discount_enable" translate="label comment" sortOrder="2" type="select" showInDefault="1" showInWebsite="1">
+                    <label>Allow To use Discount while quote product is in cart</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Allow customer to apply discount when customer added quote product in cart</comment>
+                    <depends>
+                        <field id="wk_quotesystemenabledisable">1</field>
+                    </depends>
+                </field>
+                <field id="allowed_type" translate="label comment" sortOrder="3" type="text" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Allowed File Types For Attachment</label>
+                    <comment>File type should be comma(,) separated. Use 'gz','tgz','tgzip' for 'tar.gz'. And 'bz','tbz','tbzip','tbz2','tbzip2' for 'tar.bz'</comment>
+                    <depends>
+                        <field id="wk_quotesystemenabledisable">1</field>
+                    </depends>
+                </field>
+                <field id="allowed_add_to_cart" translate="label comment" sortOrder="4" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Add to Cart</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="wk_quotesystemenabledisable">1</field>
+                    </depends>
+                </field>
+                <field id="allowed_showprice" translate="label comment" sortOrder="5" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Product Price</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="wk_quotesystemenabledisable">1</field>
+                    </depends>
+                </field>
+                <field id="min_quote_qty" translate="label comment" sortOrder="5" type="text" showInDefault="1" showInWebsite="1">
+                    <label>Minimum Quote Quantity</label>
+                    <validate>required-entry validate-number</validate>
+                    <depends>
+                        <field id="wk_quotesystemenabledisable">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="email" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Quote System Transactional Emails</label>
+                <field id="new_quote" translate="label comment" sortOrder="1" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>New Quote Email Template</label>
+                    <validate>required-entry</validate>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                </field>
+                <field id="quote_status" translate="label comment" sortOrder="1" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Quote Status Email Template</label>
+                    <validate>required-entry</validate>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                </field>
+                <field id="quote_message" translate="label comment" sortOrder="1" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Quote Message Email Template</label>
+                    <validate>required-entry</validate>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                </field>
+                <field id="quote_edit" translate="label comment" sortOrder="1" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Quote Edited Email Template</label>
+                    <validate>required-entry</validate>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!--
+/**
+* FME Extensions
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the fmeextensions.com license that is
+* available through the world-wide-web at this URL:
+* https://www.fmeextensions.com/LICENSE.txt
+*
+* DISCLAIMER
+*
+* Do not edit or add to this file if you wish to upgrade this extension to newer
+* version in the future.
+*
+* @category FME
+* @package FME_Productattachments
+* @copyright Copyright (c) 2019 FME (http://fmeextensions.com/)
+* @license https://fmeextensions.com/LICENSE.txt
+*/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+  <acl>
+     <resources>
+        <resource id="Magento_Backend::admin">
+           <resource id="FME_Extensions::fmeextensions" title="FME Extensions" sortOrder="70">
+              <resource id="FME_Productattachments::fmeextensions_productattachments" title="Product Attachments" sortOrder="80">
+                 <resource id="FME_Productattachments::fmeextensions_productattachments_items" title="Manage Attachments" sortOrder="80"/>
+                 <resource id="FME_Productattachments::fmeextensions_productattachments_ext" title="Manage File Extensions" sortOrder="85"/>
+                 <resource id="FME_Productattachments::fmeextensions_productattachments_productcats" title="Manage Categories" sortOrder="90"/>
+                 <resource id="FME_Productattachments::fmeextensions_productattachments_import" title="Import Attachments" sortOrder="100"/>
+              </resource>
+           </resource>
+            <resource id="Magento_Backend::stores">
+              <resource id="Magento_Backend::stores_settings">
+                <resource id="Magento_Config::config">
+                    <resource id="FME_Productattachments::fmeextensions_productattachments_config" title="Attachments Section"/>
+                 </resource>
+              </resource>
+           </resource>
+        </resource>
+     </resources>
+  </acl>
+</config>

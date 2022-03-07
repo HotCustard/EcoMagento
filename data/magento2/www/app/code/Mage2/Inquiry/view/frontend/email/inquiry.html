@@ -1,0 +1,21 @@
+<!--@subject Custom Product Enquiry @-->
+
+
+
+{{template config_path="design/email/header_template"}}
+
+
+
+<p>{{trans "Hello %customer_name," customer_name=$customer_name}}</p>
+
+<p>{{trans "Thank you for your Enquiry. For product"}} <a href='{{var product_url}}'>{{var product_name}}</a> </p>
+
+
+
+<p><b>{{trans "Your Enquiry:"}}</b> {{var message}}</p>
+
+<p>{{trans "Our team will contact you soon."}}</p>
+
+
+
+{{template config_path="design/email/footer_template"}}

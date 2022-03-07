@@ -1,0 +1,22 @@
+<h3>Search Results:</h3>
+
+<?php 
+$pages = $block->getSearchPages();
+if($pages !== null && count($pages) >0){
+    foreach ($pages as $key => $page) {
+        $pageId = $page->getIdentifier();
+        $pageLink = $block->getUrl($pageId);
+        $pageTitle = $page->getTitle();
+?>
+        <ul>
+            <li><a href="<?= $pageLink?>"><?= $pageTitle?></a></li>
+        </ul>
+        
+<?php    
+    }
+}
+else{
+   echo "<h4> No matching pages.</h4>" ;
+}
+
+?>

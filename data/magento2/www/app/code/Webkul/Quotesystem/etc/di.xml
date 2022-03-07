@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * Webkul Software
+ *
+ * @category  Webkul
+ * @package   Webkul_Quotesystem
+ * @author    Webkul
+ * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Webkul\Quotesystem\Api\Data\QuoteInterface" type="Webkul\Quotesystem\Model\Quotes" />
+    <preference for="Webkul\Quotesystem\Api\Data\QuoteConversationInterface" type="Webkul\Quotesystem\Model\Quoteconversation" />
+    <preference for="Webkul\Quotesystem\Api\QuoteRepositoryInterface" type="Webkul\Quotesystem\Model\QuoteRepository" />
+    <preference for="Magento\Directory\Controller\Currency\SwitchAction" type="Webkul\Quotesystem\Controller\Rewrite\Currency\SwitchAction"/>
+    <type name="Magento\Catalog\Block\Product\Compare\ListCompare">
+        <plugin name="Webkul_Quotesystem::listcompare" type="Webkul\Quotesystem\Plugin\Catalog\Block\Product\Compare\ListCompare" sortOrder="1" />
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="wk_manage_quotes_data_source" xsi:type="string">Webkul\Quotesystem\Model\ResourceModel\Quotes\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Webkul\Quotesystem\Model\ResourceModel\Quotes\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">wk_quotes</argument>
+            <argument name="eventPrefix" xsi:type="string">wk_quotes_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">wk_quotes_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Webkul\Quotesystem\Model\ResourceModel\Quotes</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Quote\Model\Quote\Item">
+        <plugin name="Webkul_Quotesystem::afterRepresentProduct" type="Webkul\Quotesystem\Model\Plugin\Quote\Item" sortOrder="1" />
+    </type>
+    <type name="Magento\Customer\Controller\Account\CreatePost">
+        <plugin name="Webkul_Quotesystem::redirectAfterRegister" type="Webkul\Quotesystem\Plugin\Customer\Controller\Account\CreatePost" sortOrder="1" />
+    </type>
+    <type name="Magento\Checkout\Model\Cart">
+        <plugin name="interceptAddingProductToCart" type="Webkul\Quotesystem\Plugin\Checkout\Model\Cart" sortOrder="10"/>
+    </type>
+    <type name="Magento\Multishipping\Model\Checkout\Type\Multishipping">
+        <plugin name="interceptUpdatingProduct" type="Webkul\Quotesystem\Plugin\Checkout\Multishipping" sortOrder="10"/>
+    </type>
+    <type name="Webkul\Quotesystem\Ui\Component\MassAction\Status\QuoteOptions">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item name="urlPath" xsi:type="string">quotesystem/managequotes/massUpdate</item>
+                <item name="paramName" xsi:type="string">quoteupdate</item>
+                <item name="confirm" xsi:type="array">
+                    <item name="title" xsi:type="string" translatable="true">Quote Status</item>
+                    <item name="message" xsi:type="string" translatable="true">Are you sure you want to update status of selected quotes?</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+</config>

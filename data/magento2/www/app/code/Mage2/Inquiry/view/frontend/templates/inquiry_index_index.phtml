@@ -1,0 +1,112 @@
+<?php
+$blockObj= $block->getLayout()->createBlock('Mage2\Inquiry\Block\Inquiry');
+$_product = $block->getProduct();
+$is_enable = $blockObj->getQuestionDisplaySetting();
+if($is_enable)
+{
+    $inquiryCollection = $blockObj->getInquiryCollection();
+    $inquiryCount = count($inquiryCollection);
+    if($inquiryCount)
+    {
+        ?>
+
+        <?php /*?><div class='product-questions-container'>
+            <p class="view-question"><label class="action submit primary view-question"><?php  echo __('View Questions') ?></label></p>
+            <ul class='question-listing'>
+                <?php
+
+                foreach($inquiryCollection as $inquiry)
+                { ?>
+                    <div class="question-container">
+                        <li>
+                            <p><b> <?php echo __('Question :') ?> </b><?php echo $inquiry->getMessage(); ?></p>
+                        </li>
+                        <li>
+                            <p><b> <?php  echo __('Answer :') ?> </b></span><?php echo $inquiry->getAdminMessage(); ?></p>
+                        </li>
+                    </div>
+                <?php } ?>
+
+            </ul>
+        </div><?php */?>
+
+    <?php }
+} ?>
+<?php if(!$_product->isSaleable()): ?>
+<div class="prdInquiry2">
+<div class="backtostock">I’d like to be notified when this product is back in stock:</div>
+<a class="prdInquiry" id="prdInquiry" href="#">Product Enquiry</a>
+</div>
+
+<div class="modal fade" id="prd-inquiry" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered" >
+    <div class="modal-content">
+    <a class="close-modal-btn" href="javascript:;">  <i class="fa fa-times" aria-hidden="true"></i></a>
+      <div class="modal-body">
+      <h2>Product Enquiry	</h2>
+      
+      
+<form class="form testimonial"
+      action="<?php /* @escapeNotVerified */ echo $blockObj->getFormAction();?>"
+      id="product-inquiry-form"
+      method="post"
+      enctype="multipart/form-data"
+      data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>"
+      data-mage-init='{"validation":{}}'>
+    <input type="hidden" name="sku" value="<?php echo $_product->getSku();?>" type="text">
+    <fieldset class="fieldset">
+
+        <div class="field name" style="display:none!important"> 
+            <label class="label" for="name"><span><?php  echo __('Name') ?></span></label>
+            <div class="control">
+                <input name="name" id="name" title="<?php  echo __('Name') ?>" value="" class="input-text" type="text" data-validate="{required:false}"/>
+            </div>
+        </div>
+
+        <div class="field email required">
+            <label class="label" for="email"><span><?php /* @escapeNotVerified */ echo __('Email') ?></span></label>
+            <div class="control">
+                <input name="email" id="email" title="<?php /* @escapeNotVerified */ echo __('Email') ?>" value="" class="input-text" type="email" data-validate="{required:true, 'validate-email':true}"/>
+            </div>
+        </div>
+
+        <div class="field mobile_number" style="display:none!important">
+            <label class="label" for="mobile_number"><span><?php /* @escapeNotVerified */ echo __('Mobile Number') ?></span></label>
+            <div class="control">
+                <input name="mobile_number" id="mobile_number" title="<?php /* @escapeNotVerified */ echo __('Mobile Number') ?>" value="" class="input-text" type="text" />
+            </div>
+        </div>
+
+        <div class="field message ">
+            <label class="label" for="message"><span><?php /* @escapeNotVerified */ echo __('Message') ?></span></label>
+            <div class="control">
+                <textarea name="message" id="message" title="<?php /* @escapeNotVerified */ echo __('What’s on your mind?') ?>" class="input-text" data-validate="{required:false}" cols="5" rows="3" >Please let me know when this item is back in stock.</textarea>
+            </div>
+        </div>
+
+    </fieldset>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <button type="submit" title="<?php /* @escapeNotVerified */ echo __('Submit') ?>" class="action submit primary">
+                <span><?php /* @escapeNotVerified */ echo __('Submit') ?></span>
+            </button>
+        </div>
+    </div>
+
+</form>
+ </div>
+      
+    </div>
+  </div>
+</div>
+<?php endif; ?>
+
+<script>
+
+    require([
+        'jquery',
+        'inquiry'
+    ], function () {
+        'use strict';
+    });
+</script>

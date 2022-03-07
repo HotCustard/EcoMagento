@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+* FME Extensions
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the fmeextensions.com license that is
+* available through the world-wide-web at this URL:
+* https://www.fmeextensions.com/LICENSE.txt
+*
+* DISCLAIMER
+*
+* Do not edit or add to this file if you wish to upgrade this extension to newer
+* version in the future.
+*
+* @category FME
+* @package FME_Productattachments
+* @copyright Copyright (c) 2019 FME (http://fmeextensions.com/)
+* @license https://fmeextensions.com/LICENSE.txt
+*/
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    
+    
+    <columns name="product_columns" class="Magento\Catalog\Ui\Component\Listing\Columns">
+       
+        <column name="upload_attachments" class="FME\Productattachments\Ui\Component\Listing\Column\Products\Uploader">
+            
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="add_field" xsi:type="boolean">true</item>
+                    <item name="component" xsi:type="string">FME_Productattachments/projs/grid/columns/uploader</item>
+                    
+                    <item name="sortable" xsi:type="boolean">false</item>
+                    <item name="label" xsi:type="string" translate="true">Upload Attachment</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                </item>
+            </argument>
+        </column>
+
+         <column name="Attachments list" class="FME\Productattachments\Ui\Component\Listing\Column\Products\FilesList">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="add_field" xsi:type="boolean">true</item>
+                    <item name="component" xsi:type="string">FME_Productattachments/projs/grid/columns/file-list</item>
+                  <!-- <item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item> -->
+                   <item name="sortable" xsi:type="boolean">false</item>
+                    <item name="label" xsi:type="string" translate="true">Attachments List</item>
+                    <item name="sortOrder" xsi:type="number">11</item>
+                </item>
+            </argument>
+        </column>
+    </columns>
+</listing>

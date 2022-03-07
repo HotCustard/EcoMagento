@@ -1,0 +1,29 @@
+<?php
+
+$current_category_id = $block->getCurrentCategoryId();
+$categoryObj = $this->categoryRepository->get($current_category_id);
+$subcategories = $categoryObj->getChildrenCategories();
+
+?>
+
+<div class="sub-category-list">
+<div class="row">
+
+<?php 
+
+foreach($subcategories as $subcat) {
+
+?>
+
+    <div class="col-xs-12 col-sm-4 col-md-4">
+    <div class="sub-category-holder">
+    <a href="<?php echo $subcat->getUrl(); ?>">
+    	<img src="<?php //echo $this->getImageUrl($subcat->getId()); ?> http://ecomv2.yantradigital.com/pub/media/catalog/DSC_5391_1.jpg" alt="<?php echo $subcat->getName(); ?>" />
+       <span class="product-name"> <?php echo $subcat->getName(); ?></span>
+        </a>
+    </div>    
+    </div>
+    
+<?php } ?>
+</div>
+</div>

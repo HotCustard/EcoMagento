@@ -1,0 +1,48 @@
+From c5bb0520051d817a0bd637e4e9dec0f1adc18db4 Mon Sep 17 00:00:00 2001
+From: oirtov <oleg.irtov@amasty.com>
+Date: Mon, 30 Nov 2020 22:48:38 +0300
+Subject: [PATCH] [264719] postcode
+
+---
+ Model/Rate.php | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
+
+diff --git a/Model/Rate.php b/Model/Rate.php
+index 63c448c..8487b9d 100644
+--- a/Model/Rate.php
++++ b/Model/Rate.php
+@@ -359,6 +359,9 @@ class Rate extends AbstractModel implements RateInterface
+ 
+         $minCounts = [];   // min empty values counts per method
+         $results = [];
++
++        $zipFrom = '';
++
+         foreach ($allRates as $rate) {
+             $emptyValuesCount = 0;
+ 
+@@ -391,8 +394,21 @@ class Rate extends AbstractModel implements RateInterface
+             }
+             $id = $rate['method_id'];
+ 
++            $zipFlag = false;
++            $newZipFrom = '';
++
++            if (strpos($rate['zip_from'], '%')) {
++                $newZipFrom = substr($rate['zip_from'], 0, strpos($rate['zip_from'], '%') + 1);
++            }
++
++            if ($newZipFrom && strcasecmp($newZipFrom, $zipFrom) > 0) {
++                $zipFlag = true;
++                $zipFrom = $newZipFrom;
++            }
++
+             if ((empty($minCounts[$id]) && empty($results[$id]))
+                 || (($minCounts[$id] > $emptyValuesCount
++                    || $zipFlag
+                     || ($minCounts[$id] == $emptyValuesCount && $cost > $results[$id]['cost']))
+                     && ($rate['shipping_type'] != 0 || $results[$id]['shipping_type'] == 0))
+                 || ($rate['city'] != $results[$id]['city']
+-- 
+2.7.4
+

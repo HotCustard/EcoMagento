@@ -1,0 +1,267 @@
+<?php
+/**
+ * Template for filter items block
+ *
+ * @var $block \Magento\LayeredNavigation\Block\Navigation\FilterRenderer
+ */
+?>
+<?php
+$_helper = $this->helper('Mconnect\Priceslider\Helper\Data');
+if ($_helper->getPricesliderEnable()) {
+?>
+<?php 
+$pageIdentifier = $this->getRequest()->getRouteName();
+ $currency = $this->getStoreCurrency();
+//echo $currency;
+?>
+<?php
+if ($filter->getName() == 'Price') :
+    $range = $this->getPriceRange($filter);
+    $url = $this->getFilterUrl();
+    
+    $maxminPrice = $this->getMaxMinPrice($filter);
+    $price = $block->getRequest()->getParam('price');
+    $productListDir = $block->getRequest()->getParam('price');
+    
+    if($pageIdentifier=='catalogsearch'){
+        
+       
+        
+         if($price != '' || $productListDir != '') {
+            if ($price != '') {
+                $p=explode('-', $price);
+                $range['min'] = $p[0];
+                $range['max'] = $p[1];
+            }
+        }
+        
+        $urlSet = str_replace('&price=', '', $url);
+        $urlSet = str_replace('price=', '', $urlSet);
+        $urlSet = str_replace('&ajax=1', '', $urlSet);
+        
+        $url = $urlSet.'&price=';
+      
+        $pageUrl = $url;
+        if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') {
+            $pageUrl = str_replace("http://", "https://", $pageUrl);
+        }        
+      
+        
+    }else{
+        
+        if ($price != '' || $productListDir != '') {
+            if ($price != '') {
+                $p=explode('-', $price);
+                $range['min'] = $p[0];
+                $range['max'] = $p[1];
+            }                     
+         
+        }
+        
+        $urlSet=$url;
+        $urlSet = str_replace('price=', '', $urlSet);            
+        $urlSet = str_replace('price=&', '', $urlSet);
+        $urlSet = str_replace('&ajax=1', '', $urlSet);
+        $pageUrl = $urlSet;        
+        
+        if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') {
+            $pageUrl = str_replace("http://", "https://", $pageUrl);
+        }       
+        
+    }    
+
+?>
+
+<script>
+var price_url = "<?php /* @noEscape */ echo $pageUrl;?>";
+var symbole = '<?php echo $currency; ?>' ;
+<?php if($pageIdentifier !='catalogsearch'){ ?>
+    price_url = price_url + "&price=" ;
+<?php } ?>
+
+
+require([
+'jquery',
+"jquery/ui",
+'domReady!',
+ "productListToolbarForm"
+], function($){
+console.log("Price Slider..!"); 
+$.mage.productListToolbarForm.prototype.changeUrl = function (paramName, paramValue, defaultValue){     
+    
+            var urlPaths = this.options.url.split('?'),
+                baseUrl = urlPaths[0],
+                urlParams = urlPaths[1] ? urlPaths[1].split('&') : [],
+                paramData = {},
+                parameters;
+                    
+            for (var i = 0; i < urlParams.length; i++) {
+                parameters = urlParams[i].split('=');
+                paramData[parameters[0]] = parameters[1] !== undefined
+                    ? window.decodeURIComponent(parameters[1].replace(/\+/g, '%20'))
+                    : '';
+            }
+                
+            paramData[paramName] = paramValue;
+            if (paramValue == defaultValue) {
+                delete paramData[paramName];
+            }
+            paramData = $.param(paramData);
+             var paramData = paramData.replace("&ajax=1", "");
+                
+            location.href = baseUrl + (paramData.length ? '?' + paramData : '');
+                
+    }   
+    
+    $("div#price-slider").slider({
+        range: true,
+    min: <?php /* @noEscape */ echo $maxminPrice['minLimitSet'] ?>,
+    max: <?php /* @noEscape */ echo $maxminPrice['maxLimitSet'] ?>,
+            
+    values: [ <?php /* @noEscape */ echo $range['min'] ?>, <?php /* @noEscape */ echo $range['max']?> ],
+        slide: function( event, ui ) {
+            $( "#amount" ).val( symbole + ui.values[ 0 ] + " - "+symbole + ui.values[ 1 ] );
+        },
+        change: function( event, ui ){              
+            
+        var getUrl= price_url+ui.values[0]+"-"+ui.values[1];
+          
+            $('#mcs-custom-loader').show(); 
+            jQuery.ajax({
+                url: getUrl,  
+                data:{ajax:1},
+                type: 'get',
+                dataType: 'json',
+                }).done(function(data){ 
+                    
+                    $('#mcs-custom-loader').hide();
+                        
+                    htmlObject=jQuery('.column').html(data.productdata);
+                    htmlObject.find('[data-role=tocart-form], .form.map.checkout')
+                    .attr('data-mage-init', JSON.stringify({'catalogAddToCart': {}}));
+                    htmlObject.trigger('contentUpdated');
+                    
+            });
+        /*-----------------------------------------------------------*/
+        }
+    });
+   
+    $( "#amount" ).val( symbole + $( "#price-slider" ).slider( "values", 0 ) +
+        " - "+symbole+ $( "#price-slider" ).slider( "values", 1 ) );        
+    $(document).on('click','.pages-items li.item > a', function (event){
+                
+        event.preventDefault(); 
+            
+        var urlPagination=jQuery(this).attr('href');            
+        var getUrl = urlPagination.replace("&ajax=1", "");
+                
+    <?php
+    if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') {
+        ?>
+            getUrl=getUrl.replace("http://", "https://"); 
+        <?php
+    }
+    ?>
+
+        $('#mcs-custom-loader').show(); 
+            
+            jQuery.ajax({
+                url: getUrl,  
+                data:{ajax:1},
+                type: 'get',
+                dataType: 'json',
+                }).done(function(data){
+                    $('#mcs-custom-loader').hide();
+                        
+                    htmlObject=jQuery('.column').html(data.productdata);
+                    htmlObject.find('[data-role=tocart-form], .form.map.checkout')
+                    .attr('data-mage-init', JSON.stringify({'catalogAddToCart': {}}));
+                    htmlObject.trigger('contentUpdated');
+                    
+            });     
+            
+        });
+});
+</script>
+      
+    <p>
+       
+        <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+    </p>
+    <div id="price-slider"></div>
+
+<?php else :?>
+
+<!----------------------------------------------Core file code ------------------------------------------------->
+
+<ol class="items">
+    <?php foreach ($filterItems as $filterItem) : ?>
+        <li class="my item">
+            <?php if ($filterItem->getCount() > 0) : ?>
+                <a href="<?php echo $block->escapeUrl($filterItem->getUrl()) ?>">
+                    <?php /* @noEscape */ echo $filterItem->getLabel() ?>
+                    <?php if ($this->helper('\Magento\Catalog\Helper\Data')->shouldDisplayProductCountOnLayer()) : ?>
+                        <span class="count">
+                            <?php /* @noEscape */ echo $filterItem->getCount()?>
+                        <span class="filter-count-label">
+                            <?php if ($filterItem->getCount() == 1) :
+?> <?php /* @noEscape */ echo __('item')?><?php
+else :
+?> <?php /* @noEscape */ echo __('items') ?><?php
+endif;?></span></span>
+                    <?php endif; ?>
+                </a>
+            <?php else :?>
+                <?php /* @noEscape */ echo $filterItem->getLabel() ?>
+                <?php if ($this->helper('\Magento\Catalog\Helper\Data')->shouldDisplayProductCountOnLayer()) : ?>
+                    <span class="count">
+                        <?php /* @noEscape */ echo $filterItem->getCount()?>
+                    <span class="filter-count-label">
+                        <?php if ($filterItem->getCount() == 1) :
+?><?php /* @noEscape */ echo __('item')?><?php
+else :
+?><?php /* @noEscape */ echo __('items') ?><?php
+endif;?></span></span>
+                <?php endif; ?>
+            <?php endif; ?>
+        </li>
+    <?php endforeach ?>
+</ol>
+<?php endif;?>
+
+<?php } else { ?>
+
+<ol class="items">
+    <?php foreach ($filterItems as $filterItem) : ?>
+        <li class="my item">
+            <?php if ($filterItem->getCount() > 0) : ?>
+                <a href="<?php echo $block->escapeUrl($filterItem->getUrl()) ?>">
+                    <?php /* @noEscape */ echo $filterItem->getLabel() ?>
+                    <?php if ($this->helper('\Magento\Catalog\Helper\Data')->shouldDisplayProductCountOnLayer()) : ?>
+                        <span class="count">
+                            <?php /* @noEscape */ echo $filterItem->getCount()?>
+                        <span class="filter-count-label">
+                            <?php if ($filterItem->getCount() == 1) :
+?> <?php /* @noEscape */ echo __('item')?><?php
+else :
+?> <?php /* @noEscape */ echo __('items') ?><?php
+endif;?></span></span>
+                    <?php endif; ?>
+                </a>
+            <?php else :?>
+                <?php /* @noEscape */ echo $filterItem->getLabel() ?>
+                <?php if ($this->helper('\Magento\Catalog\Helper\Data')->shouldDisplayProductCountOnLayer()) : ?>
+                    <span class="count">
+                        <?php /* @noEscape */ echo $filterItem->getCount()?>
+                    <span class="filter-count-label">
+                        <?php if ($filterItem->getCount() == 1) :
+?><?php /* @noEscape */ echo __('item')?><?php
+else :
+?><?php /* @noEscape */ echo __('items') ?><?php
+endif;?></span></span>
+                <?php endif; ?>
+            <?php endif; ?>
+        </li>
+    <?php endforeach ?>
+</ol>
+<?php } ?>

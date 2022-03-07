@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Webkul Software
+ *
+ * @category  Webkul
+ * @package   Webkul_Quotesystem
+ * @author    Webkul
+ * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="layout_generate_blocks_after">
+        <observer name="remove_block_for_quote_system" instance="Webkul\Quotesystem\Observer\RemoveBlockForDiscount" />
+    </event>
+    <event name="controller_action_predispatch_customer_account_create">
+        <observer name="webkul_quote_redirect_setcookie" instance="Webkul\Quotesystem\Observer\SetRefererUrl" />
+    </event>
+</config>

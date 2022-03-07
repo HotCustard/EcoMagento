@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!-- /**
+ * buyer quote edit.xml
+ *
+ * @category  Webkul
+ * @package   Webkul_Quotesystem
+ * @author    Webkul
+ * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */ -->
+<!-- Use to display edit quote page -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="customer_account"/>
+    <head>
+        <css src="Webkul_Quotesystem::css/quotesystem.css"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Webkul\Quotesystem\Block\Editquotes" name="qs_edit" template="Webkul_Quotesystem::buyer/quoteedit.phtml" cacheable="false"/>
+        </referenceContainer>
+    </body>
+</page>

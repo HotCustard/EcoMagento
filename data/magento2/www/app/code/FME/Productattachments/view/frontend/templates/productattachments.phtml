@@ -1,0 +1,66 @@
+<?php
+/**
+* FME Extensions
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the fmeextensions.com license that is
+* available through the world-wide-web at this URL:
+* https://www.fmeextensions.com/LICENSE.txt
+*
+* DISCLAIMER
+*
+* Do not edit or add to this file if you wish to upgrade this extension to newer
+* version in the future.
+*
+* @category FME
+* @package FME_Productattachments
+* @copyright Copyright (c) 2019 FME (http://fmeextensions.com/)
+* @license https://fmeextensions.com/LICENSE.txt
+*/
+?>
+<?php $object_manager = \Magento\Framework\App\ObjectManager::getInstance(); ?>
+<?php ?>
+<?php
+
+$_helper = $object_manager->create('FME\Productattachments\Helper\Data');
+
+if (!$_helper->enableAtProductView()) {
+    return;
+}
+
+// we need to make sure that the attachment for the block exists!
+if (!count($this->getProductRelatedAttachments())) {
+    return;
+}
+
+$categoriesCollection = $_helper->getAllCategories();
+
+$jspath = $this->_storeManager->getStore()->getBaseUrl();
+$_customerGroupId = $this->getCustomerGroupId();
+
+$blockTitle = $_helper->getProductPageAttachmentHeading(); 
+?> 
+
+<a href="javascript:void(0);" data-trigger="download_button" class="downloadsButton">DOWNLOADS</a>
+<div data-bind="mageInit: {
+        'Magento_Ui/js/modal/modal':{
+            'type': 'popup',
+            'title': 'Downloads',
+            'trigger': '[data-trigger=download_button]',
+            'responsive': true,
+            'buttons': []
+        }}">
+    <div class="content">
+    <?php if ($categoriesCollection->getSize() != 0): ?>
+        <?php
+
+        $this->getChildBlock('attachments')
+                ->setBlockMainTitle($blockTitle)
+                ->setCategoriesCollection($categoriesCollection);
+                //->setBlockPos('other');
+        echo $this->getChildHtml('attachments');
+        ?>
+    <?php endif; ?>
+    </div>
+</div>

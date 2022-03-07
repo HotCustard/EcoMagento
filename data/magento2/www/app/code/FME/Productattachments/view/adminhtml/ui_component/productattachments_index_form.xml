@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+* FME Extensions
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the fmeextensions.com license that is
+* available through the world-wide-web at this URL:
+* https://www.fmeextensions.com/LICENSE.txt
+*
+* DISCLAIMER
+*
+* Do not edit or add to this file if you wish to upgrade this extension to newer
+* version in the future.
+*
+* @category FME
+* @package FME_Productattachments
+* @copyright Copyright (c) 2019 FME (http://fmeextensions.com/)
+* @license https://fmeextensions.com/LICENSE.txt
+*/
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">productattachments_index_form.productattachments_form_data_source</item>
+            <item name="deps" xsi:type="string">productattachments_index_form.productattachments_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">General Information</item>
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">productattachments_index_form</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+        <item name="buttons" xsi:type="array">
+            <item name="back" xsi:type="string">FME\Productattachments\Block\Adminhtml\Productattachments\Edit\BackButton</item>
+            <item name="delete" xsi:type="string">FME\Productattachments\Block\Adminhtml\Productattachments\Edit\DeleteButton</item>
+            <item name="reset" xsi:type="string">FME\Productattachments\Block\Adminhtml\Productattachments\Edit\ResetButton</item> 
+            <item name="save" xsi:type="string">FME\Productattachments\Block\Adminhtml\Productattachments\Edit\SaveButton</item>
+            <item name="save_and_continue" xsi:type="string">FME\Productattachments\Block\Adminhtml\Productattachments\Edit\SaveAndContinueButton</item> 
+        </item>
+    </argument>
+    <dataSource name="productattachments_form_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">FME\Productattachments\Model\Productattachments\DataProvider</argument>
+            <argument name="name" xsi:type="string">productattachments_form_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">productattachments_id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="submit_url" xsi:type="url" path="productattachmentsadmin/productattachments/save"/>
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+    <fieldset name="general">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string">File Information</item>
+                <item name="collapsible" xsi:type="boolean">false</item>
+            </item>
+        </argument>
+        <field name="productattachments_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">productattachments</item>
+                    <item name="dataScope" xsi:type="string">productattachments_id</item>
+                </item>
+            </argument>
+        </field>
+         <field name="cat_id">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">FME\Productattachments\Model\Config\Source\cats</item>
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Select Category</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">productattachments</item>
+                    <item name="sortOrder" xsi:type="number">1</item>
+                    <item name="dataScope" xsi:type="string">cat_id</item>
+                    <item name="prefer" xsi:type="string">toggle</item>
+                    <item name="notice" xsi:type="string" translate="true">Only enable category will be display</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="default" xsi:type="number">1</item>
+                </item>
+            </argument>
+        </field>         
+
+         <field name="title">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Title</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">productattachments</item>
+                    <item name="sortOrder" xsi:type="number">2</item>
+                    <item name="dataScope" xsi:type="string">title</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+
+        <field name="filename">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="dataType" xsi:type="string">string</item>
+                <item name="source" xsi:type="string">faqs</item>
+                <item name="label" xsi:type="string" translate="true">Browse File</item>
+                <item name="visible" xsi:type="boolean">true</item>
+                <item name="formElement" xsi:type="string">fileUploader</item>
+                <item name="elementTmpl" xsi:type="string">ui/form/element/uploader/uploader</item> 
+               <item name="previewTmpl" xsi:type="string">FME_Productattachments/image-preview</item>  
+               <item name="notice" xsi:type="string" translate="true">(Your Server's php maximum upload size must be greater than file size)</item>
+               <item name="dataScope" xsi:type="string">filename</item>
+                <item name="required" xsi:type="boolean">false</item>
+                <item name="sortOrder" xsi:type="number">3</item>
+                <item name="component" xsi:type="string">FME_Productattachments/projs/components/uploader-extended</item>
+                <item name="uploaderConfig" xsi:type="array">
+                    <item name="url" xsi:type="url" path="productattachmentsadmin/productattachments_image/upload"/>
+                </item>
+            </item>
+        </argument>
+    </field>
+
+     <field name="maxvalues">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">FME\Productattachments\Model\Config\Source\Maxvalues</item>
+                <item name="config" xsi:type="array">
+
+                    <item name="dataType" xsi:type="string">int</item>
+                    <item name="sortOrder" xsi:type="number">6</item>
+                    <item name="label" xsi:type="string" translate="true">Max values</item>
+                    <item name="formElement" xsi:type="string">multiselect</item>
+                    <item name="source" xsi:type="string">productattachments</item>
+                    <item name="dataScope" xsi:type="string">maxvalues</item>
+                    <item name="default" xsi:type="string">0</item>
+                    <item name="visible" xsi:type="boolean">false</item>
+                </item>
+            </argument>
+        </field> 
+
+
+    <field name="storeviews">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magento\Cms\Ui\Component\Listing\Column\Cms\Options</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">int</item>
+                    <item name="sortOrder" xsi:type="number">4</item>
+                    <item name="label" xsi:type="string" translate="true">Store View</item>
+                    <item name="formElement" xsi:type="string">multiselect</item>
+                    <item name="source" xsi:type="string">productattachments</item>
+                    <item name="dataScope" xsi:type="string">store_id</item>
+                    <item name="default" xsi:type="string">0</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field> 
+
+
+        
+
+        <field name="status">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">boolean</item>
+                    <item name="label" xsi:type="string" translate="true">Enable</item>
+                    <item name="formElement" xsi:type="string">checkbox</item>
+                    <item name="source" xsi:type="string">productattachments</item>
+                    <item name="sortOrder" xsi:type="number">5</item>
+                    <item name="dataScope" xsi:type="string">status</item>
+                    <item name="prefer" xsi:type="string">toggle</item>
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="number">1</item>
+                        <item name="false" xsi:type="number">0</item>
+                    </item>
+                    <item name="default" xsi:type="number">0</item>
+                </item>
+            </argument>
+        </field> 
+
+        <field name="customer_group_id">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">FME\Productattachments\Model\Config\Source\cgroups</item>
+                <item name="config" xsi:type="array">
+
+                    <item name="dataType" xsi:type="string">int</item>
+                    <item name="sortOrder" xsi:type="number">6</item>
+                    <item name="label" xsi:type="string" translate="true">Customer Group</item>
+                    <item name="formElement" xsi:type="string">multiselect</item>
+                    <item name="source" xsi:type="string">productattachments</item>
+                    <item name="dataScope" xsi:type="string">customer_group_id</item>
+                    <item name="default" xsi:type="string">0</item>
+                    <item name="notice" xsi:type="string" translate="true">(This Option will override the configration settings)</item>
+                </item>
+            </argument>
+        </field> 
+
+       
+         <field name="limit_downloads">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="readonly" xsi:type="boolean">true</item> 
+                    <item name="label" xsi:type="string" translate="true">Limit Downloads</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">productattachments</item>
+                    <item name="sortOrder" xsi:type="number">7</item>
+                    <item name="dataScope" xsi:type="string">limit_downloads</item>
+                      <item name="notice" xsi:type="string" translate="true">(Enter number of downloads for this attachment. If empty then unlimited.</item>
+                </item>
+            </argument>
+        </field>
+
+   
+
+        <field name="link_url">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="readonly" xsi:type="boolean">true</item> 
+                    <item name="label" xsi:type="string" translate="true">URL</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">productattachments</item>
+                    <item name="sortOrder" xsi:type="number">8</item>
+                    <item name="dataScope" xsi:type="string">link_url</item>
+                    <item name="notice" xsi:type="string" translate="true">Link will appear</item>
+                     
+                </item>
+            </argument>
+        </field>
+
+         <field name="link_title">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="readonly" xsi:type="boolean">true</item> 
+                    <item name="label" xsi:type="string" translate="true">Link Title</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">productattachments</item>
+                    <item name="sortOrder" xsi:type="number">9</item>
+                    <item name="dataScope" xsi:type="string">link_title</item>
+                    <item name="notice" xsi:type="string" translate="true">Title for link.</item>
+                    
+                </item>
+            </argument>
+        </field>
+
+        <field name="embed_video">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="readonly" xsi:type="boolean">true</item> 
+                    <item name="label" xsi:type="string" translate="true">Video</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">productattachments</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                    <item name="dataScope" xsi:type="string">embed_video</item>
+                    <item name="notice" xsi:type="string" translate="true">Add Video Url</item>
+                    
+                </item>
+            </argument>
+        </field>
+
+        <field name="video_title">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="readonly" xsi:type="boolean">true</item> 
+                    <item name="label" xsi:type="string" translate="true">Video Title</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">productattachments</item>
+                    <item name="sortOrder" xsi:type="number">11</item>
+                    <item name="dataScope" xsi:type="string">video_title</item>
+                    <item name="notice" xsi:type="string" translate="true">Title for video</item>
+                </item>
+            </argument>
+        </field>
+
+        <field name="content">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Content</item>
+                    <item name="formElement" xsi:type="string">textarea</item>
+                    <item name="source" xsi:type="string">productattachments</item>
+                    <item name="dataScope" xsi:type="string">content</item>
+                    <item name="sortOrder" xsi:type="number">12</item>
+                </item>
+            </argument>
+        </field>
+         
+        
+        
+    </fieldset>
+   
+   <fieldset name="assign_products">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Attach With Products</item>
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="sortOrder" xsi:type="number">40</item>
+            </item>
+        </argument>
+        
+        <container name="assign_products_container" >
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">160</item>
+                </item>
+            </argument>
+            <htmlContent name="html_content">
+                <argument name="block" xsi:type="object">FME\Productattachments\Block\Adminhtml\Productattachments\AssignProducts</argument>
+            </htmlContent>
+        </container>
+    
+    </fieldset>    
+
+     <fieldset name="assign_cms">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Attach With CMS</item>
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="sortOrder" xsi:type="number">50</item>
+            </item>
+        </argument>
+        <field name="cmspage_ids">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">FME\Productattachments\Model\Config\Source\cmspages</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">int</item>
+                    <item name="sortOrder" xsi:type="number">6</item>
+                    <item name="label" xsi:type="string" translate="true">Customer Group</item>
+                    <item name="formElement" xsi:type="string">multiselect</item>
+                    <item name="source" xsi:type="string">productattachments</item>
+                    <item name="dataScope" xsi:type="string">cmspage_ids</item>
+                    <item name="default" xsi:type="string">0</item>
+                    
+                </item>
+            </argument>
+        </field> 
+    </fieldset>    
+
+
+</form>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!-- /**
+ * Catalog Advance Search View layout
+ *
+ * @category  Webkul
+ * @package   Webkul_Quotesystem
+ * @author    Webkul
+ * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */ -->
+ <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+     <head>
+         <css src="Webkul_Quotesystem::css/quotesystem.css"/>
+     </head>
+     <body>
+         <referenceContainer name="content">
+             <block class="Webkul\Quotesystem\Block\Product\ListProduct" name="quoteAdvanceSearch.list" ifconfig="quotesystem/wk_quotesystemsetting/wk_quotesystemenabledisable" template="Webkul_Quotesystem::catalog/list.phtml" />
+         </referenceContainer>
+     </body>
+ </page>

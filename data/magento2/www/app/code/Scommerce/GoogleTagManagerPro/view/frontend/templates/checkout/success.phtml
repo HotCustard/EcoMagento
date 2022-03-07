@@ -1,0 +1,59 @@
+<?php
+/**
+ * @var $this Scommerce_GoogleTagManagerPro_Block_Checkout_Success
+ */
+?>
+<?php $helper = $this->getHelper();
+if (!$helper->isEnhancedEcommerceEnabled()) return;
+$order = $this->getOrder();
+if ($helper->sendBaseData()):
+    $orderCurrency 		= $order->getBaseCurrencyCode();
+    $orderGrandTotal 	= $order->getBaseGrandTotal();
+    $orderShippingTotal	= $order->getBaseShippingAmount();
+    $orderTax			= $order->getBaseTaxAmount();
+else:
+    $orderCurrency 		= $order->getOrderCurrencyCode();
+    $orderGrandTotal 	= $order->getGrandTotal();
+    $orderShippingTotal	= $order->getShippingAmount();
+    $orderTax			= $order->getTaxAmount();
+endif;
+$orderItems = $order->getAllVisibleItems();?>
+
+<script type="text/javascript">
+    //<![CDATA[
+    window.dataLayer = window.dataLayer || [];
+    <?php $intCtr=0;?>
+    dataLayer.push({
+        'ecommerce': {
+            'currencyCode': '<?php echo $orderCurrency?>',
+            'purchase': {
+                'actionField': {
+                    'id': '<?php echo $order->getIncrementId()?>',                         // Transaction ID. Required for purchases and refunds.
+                    'affiliation': '<?php echo $order->getAffiliation() ?>',
+                    'revenue': '<?php echo $orderGrandTotal?>',                     // Total transaction value (incl. tax and shipping)
+                    'tax': '<?php echo $orderTax?>',
+                    'shipping': '<?php echo $orderShippingTotal?>',
+                    'coupon': '<?php echo $order->getCouponCode() ?>'
+                },
+                'products': [
+                    <?php foreach($orderItems as $item): ?>
+                    <?php $intCtr++;?>
+                        <?php if($item->getParentItemId()) continue;?>
+                            {
+                                'name': '<?php echo $this->escapeJsQuote($item->getName()) ?>',     // Name or ID is required.
+                                'id': '<?php echo $this->escapeJsQuote($item->getSku()) ?>',
+                                'price': '<?php echo ($helper->sendBaseData()==true ? $item->getBasePrice() : $item->getPrice()) ?>',
+                                'brand': '<?php echo $this->escapeJsQuote($helper->getBrand($item->getProduct())) ?>',
+                                'category': '<?php echo $this->escapeJsQuote($helper->getQuoteCategoryName($item))?>',
+                                'quantity': <?php echo $item->getQtyOrdered()?>
+                                <?php if ($intCtr==count($orderItems)):?>
+                            }]
+                        <?php else:?>
+                            },
+                        <?php endif;?>
+                    <?php endforeach;?>
+                }
+            }
+        });
+    //]]>
+</script>

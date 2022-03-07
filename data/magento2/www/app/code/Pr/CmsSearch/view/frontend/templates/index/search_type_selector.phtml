@@ -1,0 +1,31 @@
+<div id="search_in" class="yantra">
+    <h3>Search In</h3>
+    <div class="search_in">
+        <ul>
+            <li class="first"><input type="radio" name="search_type" id="content_search" value="1"> <label for="content_search">Content</label></li>
+            <li><input type="radio" name="search_type" id="product_search" value="2"> <label for="product_search">Product</label></li>
+        </ul>
+    </div>
+</div>
+
+<script> 
+
+
+require([
+            'jquery'
+        ], function ($) {
+        
+            jQuery( '#search_in input[type="radio"]' ).on( "click", function() { 
+                if(jQuery(this).val() == "1")
+                {			
+                    jQuery("#search_mini_form").attr('action',"<?= $block->getUrl('cmssearch');?>"); 
+                    jQuery("#search_in").addClass('search_in_active');
+                }
+                else{
+                    jQuery("#search_mini_form").attr('action',"<?= $block->getUrl('catalogsearch/result/');?>"); 
+                    jQuery("#search_in").addClass('search_in_active');
+                }
+            });
+    
+});
+</script>
