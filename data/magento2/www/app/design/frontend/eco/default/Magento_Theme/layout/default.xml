@@ -1,13 +1,9 @@
 <page layout="3columns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
 
-        <referenceContainer name="page.top">
-            <block class="Magento\Cms\Block\Block" name="header.top.contact.bar" before="-">
-                <arguments>
-                    <argument name="block_id" xsi:type="string">header-top-contact-bar</argument>
-                </arguments>
-            </block>
+        <referenceContainer name="page.wrapper">
+            <block name="header.top.contact.bar" template="Magento_Theme::header/top-contact-bar.phtml" before="-" />
         </referenceContainer>
-
+   
     </body>
 </page>

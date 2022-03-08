@@ -160,8 +160,6 @@ em {
 	height: auto;
 }
 header.page-header .panel.wrapper {
-	background-color: #125799;
-	border-bottom: 3px solid #54b848;
 	font: 14px/36px 'robotomedium';
 	padding: 0px;
 }
@@ -292,16 +290,12 @@ body .copyright {
 	color: #ffffff;
 	padding: 0px;
 	text-align: left;
-	background-color: #125799;
 	color: #fff;
 	line-height: 54px;
 }
 body .page-header .header.panel {
 	padding-bottom: 0px;
 	padding-top: 0px;
-}
-.nav-sections {
-	background: #125799;
 }
 .nav-sections .navigation .level0 > .level-top {
 	color: #ffffff;
@@ -344,25 +338,16 @@ body .page-header .header.panel {
 	padding-left: 5px;
 	border: none;
 }
-.page-header .block-search input {
-	border-color: #54b848;
-	height: 55px;
-	
-}
 .page-header .block-search {
 	padding-top: 0px;
 	padding-bottom: 0px;
 }
 .sections.nav-sections {
-	background-color: #3c3c3c;
 	border: none;
 }
 .sections.nav-sections .navigation li.level0 {
 	padding: 0px;
 	margin: 0px;
-}
-.sections.nav-sections .navigation .level0.active > .level-top, .sections.nav-sections .navigation .level0.has-active > .level-top {
-	background: #125799;
 }
 .sections.nav-sections .navigation .level0 > .level-top {
 	font-weight: normal;
@@ -371,9 +356,6 @@ body .page-header .header.panel {
 	padding-right: 23px;
 	font-family: 'robotomedium';
 	font-size: 15px;
-}
-.sections.nav-sections .navigation .level0 > .level-top:hover, .sections.nav-sections .navigation .level0 > .level-top.ui-state-focus {
-	background: #125799;
 }
 .header-services-sl {
 	background-color: #f3f6fa;
@@ -605,6 +587,7 @@ body.cms-home.cms-index-index #maincontent.page-main {
 	cursor: pointer;
 	transition: all 0.2s ease-out 0s;
 	box-sizing: border-box;
+	border-radius: 25px;
 }
 .products-grid .itembox h4 {
 	font-family: 'robotomedium';
@@ -1383,11 +1366,10 @@ nav.navigation ul {
 	background-color: #125799;
 }
 .navigation .menu > ul > li a {
-	padding: 10px 23px;
+	padding: 15px 23px;
 	color: #fff;
 	font-family: 'robotomedium';
 	font-size: 15px;
-	text-transform: uppercase;
 	font-weight: normal;
 }
 .navigation .menu > ul > li > ul {

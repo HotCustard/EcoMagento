@@ -57,7 +57,7 @@ class Productoptions
         $this->variationPrices = $variationPrices ?: ObjectManager::getInstance()->get(
             \Magento\ConfigurableProduct\Model\Product\Type\Configurable\Variations\Prices::class
         );
-        parent::__construct($context);
+       // parent::__construct($context);
     }
 
     public function getJsonConfig()
