@@ -4,6 +4,7 @@ data/magento2/www/pub/media/.htaccess
 data/magento2/www/pub/media/*
 data/magento2/www/pub/media/catalog/*
 data/magento2/www/media/wysiwyg/*
-data/DB.sql
 data/DB-WP.sql
+data/DB.sql
 data/magento2/www/wp/*
+
