@@ -34,6 +34,10 @@ services:
             - "${CONTAINERDATA}/${PROJECT_NAME}/www/app/etc/env.php:/var/www/dev/magento2/app/etc/env.php"
             - "${CONTAINERDATA}/${PROJECT_NAME}/www/app/design/frontend:/var/www/dev/magento2/app/design/frontend"
             - "${CONTAINERDATA}/${PROJECT_NAME}/www/app/code:/var/www/dev/magento2/app/code"
+            - "${CONTAINERDATA}/${PROJECT_NAME}/www/wp:/var/www/dev/magento2/wp"
+            - "${CONTAINERDATA}/${PROJECT_NAME}/www/media:/var/www/dev/magento2/media"
+            - "${CONTAINERDATA}/${PROJECT_NAME}/www/var/logs:/var/www/dev/magento2/var/logs"
+            - "${CONTAINERDATA}/${PROJECT_NAME}/www/pub/media:/var/www/dev/magento2/pub/media"
         networks:
             - database
             - wwwserver

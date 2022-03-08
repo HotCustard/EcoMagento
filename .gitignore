@@ -1,2 +1,9 @@
 data/magento2/mysql/*
 data/magento2/rabbitmq/*
+data/magento2/www/pub/media/.htaccess
+data/magento2/www/pub/media/*
+data/magento2/www/pub/media/catalog/*
+data/magento2/www/media/wysiwyg/*
+data/DB.sql
+data/DB-WP.sql
+data/magento2/www/wp/*

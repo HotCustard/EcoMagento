@@ -12,10 +12,11 @@
     },
     "version": "2.4.3-p1",
     "require": {
-        "fishpig/magento2-wordpress-integration-yoastseo": "^2.0",       
-        "magento/product-community-edition": "2.4.3-p1",
-        "magento/composer-root-update-plugin": "~1.1",
+        "fishpig/magento2-wordpress-integration": "^3.7",
+        "fishpig/magento2-wordpress-integration-yoastseo": "^3.0",
         "magento/composer-dependency-version-audit-plugin": "~0.1",
+        "magento/composer-root-update-plugin": "~1.1",
+        "magento/product-community-edition": "2.4.3-p1",
         "mageplaza/module-banner-slider": "^4.0",
         "olegkoval/magento2-regenerate-url-rewrites": "^1.5",
         "scommerce/core": "^2.0"
@@ -82,4 +83,3 @@
         "magento-force": "override"
     }
 }
-
