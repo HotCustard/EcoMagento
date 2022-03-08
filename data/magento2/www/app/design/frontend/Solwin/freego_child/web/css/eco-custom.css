@@ -1183,6 +1183,7 @@ h1.page-title {
 ul.resp-tabs-list {
 	margin: 0px;
 	padding: 0px;
+	text-align: center;
 }
 .resp-tabs-list li {
 	font-weight: 600;
@@ -1192,7 +1193,6 @@ ul.resp-tabs-list {
 	margin: 0;
 	list-style: none;
 	cursor: pointer;
-	float: left;
 }
 .resp-tabs-container {
 	padding: 0px;

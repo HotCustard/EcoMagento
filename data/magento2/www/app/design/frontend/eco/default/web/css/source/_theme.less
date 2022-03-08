@@ -88,6 +88,7 @@ ul {
 
     .block-search {
         flex: 1;
+
         input {
             border-color: #f3f3f3;
             height: 50px;
@@ -96,10 +97,16 @@ ul {
             border-radius: 25px;
             padding: 0 25px;
 
-            &::placeholder{
+            &::placeholder {
                 color: #5E5E5E;
+                font-size: 1.2em;
             }
         }
+
+        input::placeholder {
+            color: #5E5E5E;
+        }
+
         .action.search {
             position: absolute;
             right: -80px;
@@ -107,5 +114,159 @@ ul {
             height: 50px;
             top: 20px;
         }
+    }
+}
+
+
+.round-button {
+    border-radius: 50px;
+    background-color: @color-primary;
+    padding: 15px 30px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+
+.home-categories {
+    margin: 100px 0 200px;
+
+    &>.row {
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        color: #fff;
+        font-size: 34px;
+        margin: 10px 0;
+    }
+
+    .cat-box {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-end;
+        padding: 40px;
+    }
+
+    .new-product {
+        background-image: url(/media/home/category-new-products.png);
+        background-size: cover;
+        aspect-ratio: 1;
+
+        a {
+            background-color: #D6B125;
+        }
+    }
+
+    .windows-doors {
+        background-image: url(/media/home/category-windows-doors.png);
+        background-size: cover;
+        aspect-ratio: 2 / 1;
+
+        a {
+            background-color: #53B848;
+        }
+    }
+
+    .airtightness {
+        background-image: url(/media/home/category-airtightness.png);
+        background-size: cover;
+        aspect-ratio: 1;
+
+        a {
+            background-color: #2FAACC;
+        }
+    }
+
+    .paints {
+        background-image: url(/media/home/category-paints.png);
+        background-size: cover;
+        aspect-ratio: 1;
+
+        a {
+            background-color: #008487;
+        }
+    }
+
+    .lime-products {
+        background-image: url(/media/home/category-lime-products.png);
+        background-size: cover;
+        aspect-ratio: 2 / 1;
+
+        a {
+            background-color: #DC211C;
+        }
+    }
+
+    .drainage-water {
+        background-image: url(/media/home/category-drainage-water.png);
+        background-size: cover;
+        aspect-ratio: 2 / 1;
+
+        a {
+            background-color: #FA8422;
+        }
+    }
+
+
+}
+
+
+.home-about {
+    margin: 100px 0 200px;
+    position: relative;
+
+    h1 {
+        color: #035193;
+        font-size: 50px;
+    }
+
+    h2 {
+        color: #035193;
+        font-size: 25px;
+        margin: 30px 0;
+        text-transform: none;
+    }
+
+    .about-image {
+        position: relative;
+        background-image: url(/media/home/about.png);
+        background-size: cover;
+        aspect-ratio: 1;
+    }
+
+    .about-text{
+        padding: 0 40px;
+        p{
+            font-size: 17px;
+        }
+    }
+
+    .round-button {
+        margin: 30px 0;
+        font-size: 20px;
+        background-color: #035193;
+        color: #fff;
+        display: inline-block;
+    }
+
+    .home-about-light-blue-area{
+        background-color: #E2E5EC;
+        width: 200px;
+        height: 362px;
+        position: absolute;
+        top: 70px;
+        left: -180px;
+        z-index: -1;
+    }
+
+    .home-about-blue-area{
+        background-color: #035193;
+        width: 40px;
+        height: 220px;
+        position: absolute;
+        top: 0;
+        right: -20px;
     }
 }
