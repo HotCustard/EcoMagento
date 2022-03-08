@@ -392,10 +392,9 @@ body .page-header .header.panel {
 	font-family: 'robotomedium';
 	padding-top: 5px;
 	padding-bottom: 5px;
-	background: url(../images/divider.png) no-repeat;
 	background-position: right center
 }
-.header-services-sl ul li a{color: #51b747;}
+.header-services-sl ul li a{color: #3C3C3C;}
 .header-services-sl .hsicon {
 	float: left;
 }
@@ -406,7 +405,7 @@ body .page-header .header.panel {
 	margin: 0px;
 	padding: 0px;
 	font-size: 20px;
-	color: #13569a;
+	color: #3C3C3C;
 	font-family: 'robotobold';
 	font-weight: normal;
 }
@@ -712,8 +711,6 @@ body.cms-home.cms-index-index #maincontent.page-main {
 	margin: 0px 0 0 15px;
 }
 .page-header .minicart-wrapper .action.showcart {
-	background-color: #54b848;
-	color: #fff;
 	display: block;
 	padding-left: 10px;
 	padding-right: 10px;
@@ -721,7 +718,7 @@ body.cms-home.cms-index-index #maincontent.page-main {
 .page-header .minicart-wrapper .action.showcart:before {
 	font-size: 18px;
 	line-height: 32px;
-	color: #fff;
+	color: #000;
 }
 .page-header .minicart-wrapper .action.showcart .counter.qty {
 	height: 32px;

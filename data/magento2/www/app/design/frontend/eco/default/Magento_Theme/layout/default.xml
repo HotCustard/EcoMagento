@@ -1,9 +1,21 @@
-<page layout="3columns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<page layout="3columns"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
 
         <referenceContainer name="page.wrapper">
             <block name="header.top.contact.bar" template="Magento_Theme::header/top-contact-bar.phtml" before="-" />
         </referenceContainer>
-   
+
+
+        <move element="header.panel.wrapper" destination="header-wrapper" after="top.search" />
+
+<!-- <referenceContainer name="page.top">
+            <block class="Magento\Cms\Block\Block" name="my.custom.block" after="homepage.category.banner">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">header-services</argument>
+                </arguments>
+            </block>
+        </referenceContainer> -->
+
     </body>
 </page>
