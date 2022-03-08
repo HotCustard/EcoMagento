@@ -8,3 +8,5 @@ data/DB-WP.sql
 data/DB.sql
 data/magento2/www/wp/*
 
+DB.sql
+DB-WP.sql

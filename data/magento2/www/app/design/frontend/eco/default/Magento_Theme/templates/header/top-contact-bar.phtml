@@ -1,5 +1,7 @@
 <div class="top-contact-bar">
-  <a href="#">
-    Test
-  </a>
+  <?php echo $this->getLayout()
+    ->createBlock('Magento\Cms\Block\Block')
+    ->setBlockId('top-contact-bar')
+    ->toHtml();
+  ?>
 </div>
