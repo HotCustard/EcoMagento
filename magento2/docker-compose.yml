@@ -38,6 +38,7 @@ services:
             - "${CONTAINERDATA}/${PROJECT_NAME}/www/media:/var/www/dev/magento2/media"
             - "${CONTAINERDATA}/${PROJECT_NAME}/www/var/logs:/var/www/dev/magento2/var/logs"
             - "${CONTAINERDATA}/${PROJECT_NAME}/www/pub/media:/var/www/dev/magento2/pub/media"
+            - "${CONTAINERDATA}/${PROJECT_NAME}/www/vendor:/var/www/dev/magento2/vendor"
         networks:
             - database
             - wwwserver
