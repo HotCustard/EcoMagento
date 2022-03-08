@@ -362,6 +362,7 @@ body .page-header .header.panel {
 	width: 100%;
 	float: left;
 	padding: 10px 0;
+	margin: 20px 0 50px;
 }
 .header-services-sl ul {
 	padding: 0px;
@@ -387,20 +388,15 @@ body .page-header .header.panel {
 	max-width: 25%;
 	margin: 0px;
 	text-transform: uppercase;
-	color: #51b747;
-	font-size: 14px;
+	font-size: 13px;
 	font-family: 'robotomedium';
 	padding-top: 5px;
 	padding-bottom: 5px;
-	background-position: right center
+	background-position: right center;
+	text-align: center;
 }
 .header-services-sl ul li a{color: #3C3C3C;}
-.header-services-sl .hsicon {
-	float: left;
-}
-.header-services-sl .hsinfo {
-	margin-left: 65px;
-}
+
 .header-services-sl .hsinfo h3 {
 	margin: 0px;
 	padding: 0px;
@@ -708,7 +704,7 @@ body.cms-home.cms-index-index #maincontent.page-main {
 	margin: 0 -15px;
 }
 .page-header .minicart-wrapper {
-	margin: 0px 0 0 15px;
+	margin: 9px 0 0 15px;
 }
 .page-header .minicart-wrapper .action.showcart {
 	display: block;

@@ -9,13 +9,5 @@
 
         <move element="header.panel.wrapper" destination="header-wrapper" after="top.search" />
 
-<!-- <referenceContainer name="page.top">
-            <block class="Magento\Cms\Block\Block" name="my.custom.block" after="homepage.category.banner">
-                <arguments>
-                    <argument name="block_id" xsi:type="string">header-services</argument>
-                </arguments>
-            </block>
-        </referenceContainer> -->
-
     </body>
 </page>
