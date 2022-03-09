@@ -11,31 +11,31 @@
 
 
         <referenceContainer name="footer-top">
-            <block name="footer.newsletter" template="Magento_Theme::html/footer/footer-newsletter.phtml" />
-            <block name="footer.contact" template="Magento_Theme::html/footer/footer-contact.phtml" />
 
             <container name="footer-main" label="Footer Main" htmlTag="div" htmlClass="footer-main container">
                 <container name="footer-main-row" label="Footer Main Row" htmlTag="div" htmlClass="row">
 
                     <container name="footer-left-column" label="Footer Left Column" htmlTag="div" htmlClass="footer-left-column col-sm-4">
+                        <block name="footer.map-link" template="Magento_Theme::html/footer/footer-address.phtml" />
                         <block name="footer.map-link" template="Magento_Theme::html/footer/footer-map-link.phtml" />
                     </container>
 
                     <container name="footer-center-column" label="Footer Center Column" htmlTag="div" htmlClass="footer-center-column col-sm-4">
-                        <block name="footer.map-link" template="Magento_Theme::html/footer/footer-map-link.phtml" />
+                        <block name="footer.links" template="Magento_Theme::html/footer/footer-links.phtml" />
                     </container>
 
                     <container name="footer-right-column" label="Footer Right Column" htmlTag="div" htmlClass="footer-right-column col-sm-4">
-                        <block name="footer.map-link" template="Magento_Theme::html/footer/footer-map-link.phtml" />
+                        <block name="footer.newsletter" template="Magento_Theme::html/footer/footer-newsletter.phtml" />
                     </container>
 
                 </container>
             </container>
 
+            <block name="footer.contact" template="Magento_Theme::html/footer/footer-contact.phtml" />
+
         </referenceContainer>
 
         <referenceContainer name="footer-container">
-            <block name="footer.links" template="Magento_Theme::html/footer/footer-links.phtml" />
             <block name="footer.bottom" template="Magento_Theme::html/footer/footer-bottom.phtml" />
         </referenceContainer>
 
