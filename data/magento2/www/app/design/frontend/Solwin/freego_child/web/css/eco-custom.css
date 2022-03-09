@@ -1348,28 +1348,7 @@ h2.resp-accordion {
 	padding: 0px;
 	padding-left: 10px;
 }
-.navigation .menu ul li .megamenuLeft > div > li > a {
-	font-size: 13px;
-	padding: 3px 0px
-}
-.navigation .menu ul li .megamenuLeft > div > li > ul > li > a {
-	font-size: 12px;
-	padding: 3px 0;
-	text-transform: capitalize;
-}
-.navigation .menu ul li .megamenuLeft > div > li > ul li {
-	margin: 0px;
-}
-.menu .megamenuLeft .col-10 {
-	display: flex;
-	flex-wrap: wrap;
-	padding: 15px;
-	padding-left: 30px;
-}
-.menu .megamenuLeft .column_mega_menu4 {
-	width: 16.666%;
-	padding: 0 5px;
-}
+
 .menu .rightstatic {
 	background-color: #51b747;
 	padding-top: 15px;
@@ -2607,24 +2586,6 @@ div.menu.mobileMenu .menu-dropdown-icon::before {
 	margin-top:3px;
 }
 
-div.menu.mobileMenu .megamenuLeft .col-10{
--ms-flex: 0 0 100%;
-flex: 0 0 100%;
-max-width: 100%;
-padding: 5px 15px;	
-}
-
-div.menu.mobileMenu .megamenuLeft .column_mega_menu4 {
-    width: 100%;
-    padding: 0;
-}
-div.menu.mobileMenu ul li .megamenuLeft > div > li  {
-    border-bottom: 1px solid #0b4a87;
-}
-div.menu.mobileMenu ul li .megamenuLeft > div > li > a {
-    padding: 10px 0px;
-}
-
 div.menu.mobileMenu ul li ul.submenu{ padding-left:10px; padding-bottom:10px; list-style:none;}
 div.menu.mobileMenu > ul > li{ border-bottom:1px solid #489e3f; background-color:transparent;}
 .nav-sections .navigation{ padding:0;}
@@ -2653,21 +2614,8 @@ div.menu.mobileMenu > ul > li > ul {
     background-color: #125799;
 }
 
-div.menu.mobileMenu ul li .megamenuLeft > div > li > ul > li > a {
-    font-size: 12px;
-    padding: 3px 0;
-    text-transform: capitalize;
-}
-
 div.menu.mobileMenu > ul > li > ul{
 padding:0 15px;	
-}
-
-div.menu.mobileMenu  ul li .megamenuLeft > div > li > a {
-    font-size: 13px;
-}
-div.menu.mobileMenu ul li .megamenuLeft > div > li > ul li {
-    margin: 0px;
 }
 
 .menu-mobile-overlay{
@@ -2711,14 +2659,7 @@ line-height:normal;
 
 .upsell .rightRelatedProductsTitle{ padding-right:95px;}
 
-div.menu.mobileMenu ul li .megamenuLeft > div > li > ul > li.active > a{
-	color:#52b847
-}
-div.menu.mobileMenu ul li .megamenuLeft > div > li.has-active > a{ 
-	color:#52b847	
-}
 }	
-
 
 
 

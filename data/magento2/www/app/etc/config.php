@@ -341,7 +341,6 @@ return [
         'FME_Productattachments' => 1,
         'FishPig_WordPress' => 1,
         'FishPig_WordPress_Yoast' => 1,
-        'Ibnab_MegaMenu' => 1,
         'Klarna_Core' => 0,
         'Klarna_Ordermanagement' => 0,
         'Klarna_Kp' => 0,

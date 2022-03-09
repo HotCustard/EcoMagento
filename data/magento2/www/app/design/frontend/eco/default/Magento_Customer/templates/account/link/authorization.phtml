@@ -13,8 +13,7 @@ if ($block->isLoggedIn()) {
 }
 ?>
 <li class="authorization-link">
-    <a <?php /* @escapeNotVerified */ echo $block->getLinkAttributes(); ?><?php /* @escapeNotVerified */ echo $dataPostParam; ?>>
-        <?php echo $block->escapeHtml($block->getLabel()); ?>
-        <img src="/media/svgs/comments-alt.svg" alt="Message" />
+    <a <?php /* @escapeNotVerified */ echo $block->getLinkAttributes(); ?><?php /* @escapeNotVerified */ echo $dataPostParam; ?>>        
+        <img src="/media/svgs/user.svg" alt="<?php echo $block->escapeHtml($block->getLabel()); ?>" />
     </a>
 </li>
