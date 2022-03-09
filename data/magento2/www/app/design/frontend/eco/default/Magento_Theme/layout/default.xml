@@ -9,34 +9,34 @@
 
         <move element="header.panel.wrapper" destination="header-wrapper" after="top.search" />
 
+        <referenceBlock name="cpanel.footer" remove="true"/>
+        <referenceContainer name="footer" remove="true"/>
 
-        <referenceContainer name="footer-top">
+        <referenceContainer name="footer-container">
 
             <container name="footer-main" label="Footer Main" htmlTag="div" htmlClass="footer-main container">
                 <container name="footer-main-row" label="Footer Main Row" htmlTag="div" htmlClass="row">
 
-                    <container name="footer-left-column" label="Footer Left Column" htmlTag="div" htmlClass="footer-left-column col-sm-4">
-                        <block name="footer.map-link" template="Magento_Theme::html/footer/footer-address.phtml" />
+                    <container name="footer-left-column" label="Footer Left Column" htmlTag="div" htmlClass="footer-left-column col-sm-4" after="-">
+                        <block name="footer.address" template="Magento_Theme::html/footer/footer-address.phtml" />
                         <block name="footer.map-link" template="Magento_Theme::html/footer/footer-map-link.phtml" />
+                        <block name="footer.social" template="Magento_Theme::html/footer/footer-social.phtml" />
                     </container>
 
-                    <container name="footer-center-column" label="Footer Center Column" htmlTag="div" htmlClass="footer-center-column col-sm-4">
+                    <container name="footer-center-column" label="Footer Center Column" htmlTag="div" htmlClass="footer-center-column col-sm-4" after="footer-left-column">
                         <block name="footer.links" template="Magento_Theme::html/footer/footer-links.phtml" />
                     </container>
 
-                    <container name="footer-right-column" label="Footer Right Column" htmlTag="div" htmlClass="footer-right-column col-sm-4">
-                        <block name="footer.newsletter" template="Magento_Theme::html/footer/footer-newsletter.phtml" />
+                    <container name="footer-right-column" label="Footer Right Column" htmlTag="div" htmlClass="footer-right-column col-sm-4" after="footer-center-column">
+                        <block class="Magento\Newsletter\Block\Subscribe" name="form.subscribe" as="subscribe" before="-" template="Magento_Newsletter::subscribe.phtml" ifconfig="newsletter/general/active"/>
                     </container>
 
                 </container>
             </container>
 
             <block name="footer.contact" template="Magento_Theme::html/footer/footer-contact.phtml" />
+            <block name="footer.bottom.bar" template="Magento_Theme::html/footer/footer-bottom.phtml" />
 
-        </referenceContainer>
-
-        <referenceContainer name="footer-container">
-            <block name="footer.bottom" template="Magento_Theme::html/footer/footer-bottom.phtml" />
         </referenceContainer>
 
         <referenceContainer name="footer-bottom">

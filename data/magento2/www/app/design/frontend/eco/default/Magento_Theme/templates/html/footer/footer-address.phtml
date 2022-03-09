@@ -1,3 +1,17 @@
-<div class="footer-contact-section">
-  <h1>FOOTER LOGO</h1>
+<?php
+$helper = $this->helper('Solwin\Cpanel\Helper\Data');
+$baseUrl = $helper->getBaseUrl();
+$mediaurl = $helper->getMediaUrl() . 'social/';
+$footer_logo = $mediaurl . $helper->getFooterlogo();
+?>
+
+<div class="footer-address">
+  <?php if ($footer_logo != '') { ?>
+    <a href="<?php echo $baseUrl; ?>"> <img src="<?php echo $footer_logo; ?>" alt="Logo"> </a>
+  <?php } ?>
+  <address>
+    National Self Build & Renovation Centre,
+    <br />Lydiard Fields, Great Western Way,
+    <br />Swindon SN5 8UB
+  </address>
 </div>

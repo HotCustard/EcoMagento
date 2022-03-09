@@ -125,10 +125,19 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper {
         return $this->scopeConfig->getValue('cpanelsection/footergroup/linkedin_link', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
     }
 
+    public function getInstagramurl() {
+        return $this->scopeConfig->getValue('cpanelsection/footergroup/instagram_link', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+    }
+
     /* Get Footer pinterest enable/disable */
 
     public function getShowpinterest() {
         return $this->scopeConfig->getValue('cpanelsection/footergroup/showpinterest', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+    }
+
+    
+    public function getShowinstagram() {
+        return $this->scopeConfig->getValue('cpanelsection/footergroup/showinstagram', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
     }
 
     /* Get Footer pinterest url */

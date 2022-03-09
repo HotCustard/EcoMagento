@@ -23,6 +23,8 @@
                 <twitter_link>#</twitter_link>
                 <showlinkedin>1</showlinkedin>
                 <linkedin_link>#</linkedin_link>
+                <showinstagram>1</showinstagram>
+                <instagram_link>#</instagram_link>
                 <showpinterest>1</showpinterest>
                 <pinterest_link>#</pinterest_link>
             </footergroup>

@@ -46,7 +46,8 @@
       <block class="Magento\Framework\View\Element\Template" name="report.bugs" template="Magento_Theme::html/bugreport.phtml" />
     </referenceContainer> -->
     <referenceBlock name="report.bugs" remove="true"/>
-    <referenceBlock name="footer" remove="true"/>
+
+
     <move element="minicart" destination = "header.panel" before="header.links" />
 	 
    <!--

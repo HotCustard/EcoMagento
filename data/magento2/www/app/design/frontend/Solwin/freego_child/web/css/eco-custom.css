@@ -206,17 +206,13 @@ body .page-footer {
 	border: 0 !important;
 }
 .footer-social {
-	border-top: 1px solid #e5e5e5;
-	border-bottom: 1px solid #e5e5e5;
-	background-color: #fff;
 	padding: 15px 0;
 	clear: both;
 }
 .footer-social a {
-	width: 57px;
+	width: 30px;
 	height: 30px;
 	display: inline-block;
-	border-right: 1px solid #e5e5e5;
 	text-align: center;
 	color: #000;
 	line-height: 30px;
@@ -360,7 +356,6 @@ body .page-header .header.panel {
 .header-services-sl {
 	background-color: #f3f6fa;
 	width: 100%;
-	float: left;
 	padding: 10px 0;
 	margin: 20px 0 50px;
 }

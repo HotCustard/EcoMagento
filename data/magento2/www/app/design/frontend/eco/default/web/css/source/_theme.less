@@ -86,6 +86,10 @@ ul {
     }
 }
 
+.page-header .block-search input::placeholder {
+    color: #5d03ec;
+}
+
 .page-header {
 
     .panel.wrapper {
@@ -94,6 +98,7 @@ ul {
 
     .block-search {
         flex: 1;
+        padding-right: 60px;
 
         input {
             border-color: #f3f3f3;
@@ -104,7 +109,7 @@ ul {
             padding: 0 25px;
 
             &::placeholder {
-                color: #5E5E5E;
+                color: #2b2b2b;
                 font-size: 1.2em;
             }
         }
@@ -123,6 +128,9 @@ ul {
     }
 }
 
+::placeholder {
+    color:#53B848;
+}
 
 .round-button {
     border-radius: 50px;
@@ -159,8 +167,14 @@ ul {
 }
 
 
+.top-container{
+    background-image: url(/media/wysiwyg/slider-bg.png);
+    background-size: cover;
+}
+
+
 .home-categories {
-    margin: 100px 0 200px;
+    margin: 70px 0 200px;
 
     &>.row {
         margin-bottom: 20px;
