@@ -10,3 +10,4 @@ data/magento2/www/wp/*
 DB.sql
 DB-WP.sql
 data/magento2/www/vendor/*
+data/magento2/data/vendor/*

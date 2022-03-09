@@ -121,18 +121,27 @@ ul {
 .round-button {
     border-radius: 50px;
     background-color: @color-primary;
-    padding: 15px 30px;
+    padding: 12px 30px;
     color: #fff;
-    font-size: 18px;
+    font-size: 13px;
+    font-family: @font-family-header;
     font-weight: 700;
+    &:hover{
+        color: #fff;
+        transform: scale(1.02);
+    }
 }
 
 
 
 .header-services-sl{
-    h3{
-        font-family: 'Montserrat';
-        font-weight: 900;
+    .hsinfo{
+        h3{
+            font-family: @font-family-header;
+            font-weight: 900;
+            font-size: 18px;
+            margin-top: 8px;
+        }
     }
     img{
         max-height: 50px;
@@ -150,7 +159,9 @@ ul {
 
     h2 {
         color: #fff;
-        font-size: 34px;
+        font-family: 'Montserrat';
+        font-weight: 900;
+        font-size: 23px;
         margin: 10px 0;
     }
 
@@ -233,14 +244,16 @@ ul {
 
     h1 {
         color: #035193;
-        font-size: 50px;
+        font-size: 48px;
     }
 
     h2 {
         color: #035193;
-        font-size: 25px;
+        font-size: 22px;
         margin: 30px 0;
         text-transform: none;
+        font-family: @font-family-name__base;
+        font-weight: 700;
     }
 
     .about-image {
@@ -253,7 +266,8 @@ ul {
     .about-text{
         padding: 0 40px;
         p{
-            font-size: 17px;
+            font-size: 18px;
+            font-weight: 700;
         }
     }
 
