@@ -1,0 +1,28 @@
+<?php
+$helper = $this->helper('Solwin\Cpanel\Helper\Data');
+$showsocial = $helper->getShowsocialicons();
+?>
+
+<div class="footer-social">
+  <div class="container">
+    <?php
+    if ($showsocial) {
+      $showfacebook = $helper->getShowfacebook();
+      $showtwitter = $helper->getShowtwitter();
+      $showinstagram = $helper->getShowInstagram();
+      $showpinterest = $helper->getShowpinterest();
+    ?>
+      <div class="social-icons">
+        <?php if ($showtwitter) { ?>
+          <a href="<?php echo $helper->getTwitterurl(); ?>" target="_blank"><i class="fa fa-twitter"></i></a>
+        <?php } ?>
+        <?php if ($showinstagram) { ?>
+          <a href="<?php echo $helper->getInstagramurl(); ?>" target="_blank"><i class="fa fa-instagram"></i></a>
+        <?php } ?>
+        <?php if ($showfacebook) { ?>
+          <a href="<?php echo $helper->getFacebookurl(); ?>" target="_blank"><i class="fa fa-facebook"></i></a>
+        <?php } ?>
+      </div>
+    <?php } ?>
+  </div>
+</div>

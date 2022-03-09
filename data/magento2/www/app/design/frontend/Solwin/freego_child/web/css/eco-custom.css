@@ -407,7 +407,6 @@ body.cms-home.cms-index-index #maincontent.page-main {
 	margin-top: 10px;
 }
 .hb-main.pad-main-bottom .owl-carousel {
-	border: 1px solid #51b747;
 	overflow: hidden;
 }
 .hb-main.pad-main-bottom .owl-pagination {
@@ -564,7 +563,8 @@ body.cms-home.cms-index-index #maincontent.page-main {
 	width: 100%;
 }
 .products-grid .item .add-to-cart-button .button, .itembox .add-to-cart-button .button, .products.products-grid .product-item-inner .actions.product-item-actions .actions-primary button.tocart.primary {
-	width: 100%;
+	padding: 0px 25px;
+  margin: auto;
 	border-radius: 5px;
 	height: 42px;
 	line-height: 38px;
@@ -574,7 +574,6 @@ body.cms-home.cms-index-index #maincontent.page-main {
 	font-size: 16px;
 	color: #fff;
 	border: none;
-	border-bottom: 2px solid #0d7402;
 	display: block;
 	text-align: center;
 	cursor: pointer;

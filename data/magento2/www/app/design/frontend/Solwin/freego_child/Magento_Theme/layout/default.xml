@@ -22,7 +22,7 @@
 	
 		
    
-    <referenceContainer name="footer">
+    <!-- <referenceContainer name="footer">
       <block class="Magento\Store\Block\Switcher" name="store_switcher" as="store_switcher" after="footer_links" template="switch/stores.phtml"/>
     </referenceContainer>
     <referenceContainer name="footer-top">
@@ -44,7 +44,7 @@
     <referenceContainer name="footer-top">
       <block class="Magento\Theme\Block\Html\Footer" name="copyright" after="cpanel.footer" template="html/copyright.phtml"/>
       <block class="Magento\Framework\View\Element\Template" name="report.bugs" template="Magento_Theme::html/bugreport.phtml" />
-    </referenceContainer>
+    </referenceContainer> -->
     <referenceBlock name="report.bugs" remove="true"/>
     <referenceBlock name="footer" remove="true"/>
     <move element="minicart" destination = "header.panel" before="header.links" />
