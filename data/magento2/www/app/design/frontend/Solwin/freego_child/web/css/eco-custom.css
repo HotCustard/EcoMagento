@@ -1,44 +1,8 @@
-@font-face {
-	font-family: 'robotoregular';
-	src: url('../fonts/roboto/Roboto-Regular-webfont.eot');
-	src: url('../fonts/roboto/Roboto-Regular-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/roboto/Roboto-Regular-webfont.woff') format('woff'), url('../fonts/roboto/Roboto-Regular-webfont.ttf') format('truetype'), url('../fonts/roboto/Roboto-Regular-webfont.svg#robotoregular') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-@font-face {
-	font-family: 'robotomedium';
-	src: url('../fonts/roboto/Roboto-Medium-webfont.eot');
-	src: url('../fonts/roboto/Roboto-Medium-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/roboto/Roboto-Medium-webfont.woff') format('woff'), url('../fonts/roboto/Roboto-Medium-webfont.ttf') format('truetype'), url('../fonts/roboto/Roboto-Medium-webfont.svg#robotomedium') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-@font-face {
-	font-family: 'robotobold';
-	src: url('../fonts/roboto/Roboto-Bold-webfont.eot');
-	src: url('../fonts/roboto/Roboto-Bold-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/roboto/Roboto-Bold-webfont.woff') format('woff'), url('../fonts/roboto/Roboto-Bold-webfont.ttf') format('truetype'), url('../fonts/roboto/Roboto-Bold-webfont.svg#robotobold') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-@font-face {
-	font-family: 'roboto_condensedregular';
-	src: url('../fonts/roboto/RobotoCondensed-Regular-webfont.eot');
-	src: url('../fonts/roboto/RobotoCondensed-Regular-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/roboto/RobotoCondensed-Regular-webfont.woff') format('woff'), url('../fonts/roboto/RobotoCondensed-Regular-webfont.ttf') format('truetype'), url('../fonts/roboto/RobotoCondensed-Regular-webfont.svg#roboto_condensedregular') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-@font-face {
-	font-family: 'roboto_condensedbold';
-	src: url('../fonts/roboto/RobotoCondensed-Bold-webfont.eot');
-	src: url('../fonts/roboto/RobotoCondensed-Bold-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/roboto/RobotoCondensed-Bold-webfont.woff') format('woff'), url('../fonts/roboto/RobotoCondensed-Bold-webfont.ttf') format('truetype'), url('../fonts/roboto/RobotoCondensed-Bold-webfont.svg#roboto_condensedbold') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
 * {
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body {
 	width: 100%;
-	font-family: 'robotoregular';
 	background-color: #fff;
 	font-size: 14px;
 }
@@ -68,7 +32,6 @@ img{max-width:100%; height:auto}
 	display: none !important;
 }
 h1, h2, h3, h4, h5, h6 {
-	font-family: 'roboto_condensedbold';
 	margin-top: 0;
 	margin-bottom: 15px;
 }
@@ -160,7 +123,6 @@ em {
 	height: auto;
 }
 header.page-header .panel.wrapper {
-	font: 14px/36px 'robotomedium';
 	padding: 0px;
 }
 header.page-header .panel.wrapper {
@@ -180,7 +142,6 @@ body .page-footer {
 }
 .footer-newsletter h1 {
 	color: #125799;
-	font: 30px 'roboto_condensedbold';
 	border-bottom: 1px solid #c0c0c0;
 	padding-bottom: 10px;
 	margin-bottom: 14px;
@@ -234,7 +195,6 @@ body .page-footer {
 	color: #125799;
 	font-size: 18px;
 	font-weight: normal;
-	font-family: 'robotomedium';
 }
 .footer-menu-inner-wrapper {
 	border-left: 1px solid #c0c0c0;
@@ -247,7 +207,6 @@ body .page-footer {
 	color: #125799;
 	font-size: 18px;
 	font-weight: normal;
-	font-family: 'robotomedium';
 	text-transform: uppercase;
 	margin-bottom: 50px;
 }
@@ -350,7 +309,6 @@ body .page-header .header.panel {
 	padding: 4px 20px 5px;
 	padding-left: 24px;
 	padding-right: 23px;
-	font-family: 'robotomedium';
 	font-size: 15px;
 }
 .header-services-sl {
@@ -384,7 +342,6 @@ body .page-header .header.panel {
 	margin: 0px;
 	text-transform: uppercase;
 	font-size: 13px;
-	font-family: 'robotomedium';
 	padding-top: 5px;
 	padding-bottom: 5px;
 	background-position: right center;
@@ -429,7 +386,6 @@ body.cms-home.cms-index-index #maincontent.page-main {
 	left: 0px;
 	width: 100%;
 	text-align: center;
-	font-family: 'roboto_condensedregular';
 	background-color: rgba(82, 184, 71, 0.8);
 	text-transform: uppercase;
 	font-size: 19px;
@@ -478,7 +434,6 @@ body.cms-home.cms-index-index #maincontent.page-main {
 }
 .home-blog h3, .new-main-product h3 {
 	color: #333;
-	font: 24px 'roboto_condensedbold';
 	border-bottom: 1px solid #c0c0c0;
 	padding-bottom: 10px;
 	margin-bottom: 14px;
@@ -491,7 +446,6 @@ body.cms-home.cms-index-index #maincontent.page-main {
 	width: 100%;
 	min-height: 45px;
 	background: url(../images/dateicon.png) 10px center no-repeat #125799;
-	font-family: 'robotobold';
 	color: #fff;
 	line-height: 45px;
 	text-transform: uppercase;
@@ -521,7 +475,6 @@ body.cms-home.cms-index-index #maincontent.page-main {
 	width: 100%;
 	height: 60px;
 	background-color: rgba(82, 184, 71, .8);
-	font-family: 'robotobold';
 	color: #fff;
 	text-transform: uppercase;
 	padding: 10px;
@@ -565,7 +518,6 @@ body.cms-home.cms-index-index #maincontent.page-main {
 	line-height: 38px;
 	background-color: #52b847;
 	font-weight: normal;
-	font-family: 'robotomedium';
 	font-size: 16px;
 	color: #fff;
 	border: none;
@@ -577,19 +529,16 @@ body.cms-home.cms-index-index #maincontent.page-main {
 	border-radius: 25px;
 }
 .products-grid .itembox h4 {
-	font-family: 'robotomedium';
 	min-height: 40px;
 }
 .products-grid .itembox h4 a .short-name {
 	font-weight: normal;
-	font-family: 'robotomedium';
 	font-size: 14px;
 	color: #484848;
 }
 .price-box .price {
 	color: #54b848;
 	font-weight: normal;
-	font-family: 'robotomedium';
 	font-size: 16px;
 	line-height: 18px;
 }
@@ -649,7 +598,6 @@ body.cms-home.cms-index-index #maincontent.page-main {
 	width: auto;
 	color: #fff;
 	font-size: 15px;
-	font-family: 'robotoregular';
 	height: 33px;
 	line-height: 33px;
 	display: inline-block;
@@ -769,7 +717,6 @@ body.cms-home.cms-index-index #maincontent.page-main {
 }
 .hdSales-heading {
 	float: left;
-	font-family: 'robotobold';
 	font-size: 25px;
 	background: url(../images/divider.png) no-repeat;
 	background-position: right center;
@@ -777,11 +724,9 @@ body.cms-home.cms-index-index #maincontent.page-main {
 }
 .hdInfo {
 	margin-left: 95px;
-	font-family: 'robotomedium';
 }
 .hdInfo h4 {
 	margin: 0px;
-	font-family: 'robotobold';
 	font-size: 26px;
 	color: #125799;
 }
@@ -822,7 +767,6 @@ body.cms-home.cms-index-index #maincontent.page-main {
 	text-align: center;
 	background-color: rgba(82, 184, 71, .95);
 	color: #fff;
-	font-family: 'roboto_condensedbold';
 	font-size: 18px;
 	text-transform: uppercase;
 	height: 58px;
@@ -836,14 +780,12 @@ body.cms-home.cms-index-index #maincontent.page-main {
 	justify-content: center;
 }
 h1.page-title {
-	font-family: 'robotobold';
 	font-size: 25px;
 	padding: 0px;
 	color: #000;
 	margin-bottom: 20px;
 }
 .page-products .category-cms h4 {
-	font-family: 'robotobold';
 	font-size: 18px;
 	padding: 0px;
 	color: #125799;
@@ -912,7 +854,6 @@ h1.page-title {
 	line-height: normal;
 	background-color: #52b847;
 	font-weight: normal;
-	font-family: 'robotomedium';
 	font-size: 16px;
 	color: #fff;
 	border: none;
@@ -945,7 +886,6 @@ h1.page-title {
 }
 .page-products .products .product-item .product-item-info h4 {
 	font-weight: normal;
-	font-family: 'robotomedium';
 	font-size: 14px;
 	color: #484848;
 	margin: 0px 0 10px 0;
@@ -960,7 +900,6 @@ h1.page-title {
 	font-weight: normal;
 	color: #54b848;
 	font-weight: normal;
-	font-family: 'robotomedium';
 	font-size: 16px;
 	line-height: 18px;
 }
@@ -1021,7 +960,6 @@ h1.page-title {
 	color: #fff;
 	margin: 0px;
 	padding: 6px 15px;
-	font-family: 'robotobold';
 	text-align: center;
 	font-size: 30px;
 }
@@ -1063,7 +1001,6 @@ h1.page-title {
 	text-align: left;
 	background-color: transparent;
 	color: #000000;
-	font-family: 'robotoregular';
 	font-size: 15px;
 	text-transform: capitalize;
 	height: auto;
@@ -1081,7 +1018,6 @@ h1.page-title {
 	color: #fff;
 	margin: 0px;
 	padding: 6px 15px;
-	font-family: 'robotobold';
 	text-align: left;
 	font-size: 30px;
 	position: relative;
@@ -1124,7 +1060,6 @@ h1.page-title {
 	line-height: normal;
 	background-color: #52b847;
 	font-weight: normal;
-	font-family: 'robotomedium';
 	font-size: 16px;
 	color: #fff;
 	border: none;
@@ -1309,7 +1244,6 @@ ul.resp-tabs-list {
 .resp-tabs-list li {
 	color: #484848;
 	font-size: 24px;
-	font-family: 'roboto_condensedbold';
 	text-transform: uppercase;
 	font-weight: normal;
 	padding: 0;
@@ -1353,7 +1287,6 @@ nav.navigation ul {
 .navigation .menu > ul > li a {
 	padding: 15px 23px;
 	color: #fff;
-	font-family: 'robotomedium';
 	font-size: 15px;
 	font-weight: normal;
 }
@@ -1453,7 +1386,6 @@ h2.resp-accordion {
 	color: #fff;
 	margin: 5px 0 5px 0;
 	font-size: 17px;
-	font-family: 'robotomedium';
 	line-height: normal
 }
 .menu .rightstatic p {
@@ -1560,7 +1492,6 @@ a.rightRelatedArticlesTitle:link, a.rightRelatedArticlesTitle:visited, a.rightRe
 	background-color: #26569a;
 	color: #fff;
 	text-transform: uppercase;
-	font-family: 'robotoregular';
 	font-size: 22px;
 	padding: 10px 15px;
 	text-align: center;
@@ -1614,7 +1545,6 @@ form.minisearch.active #search_in {
 	display: block;
 }
 #search_in h3 {
-	font-family: 'robotobold';
 	font-size: 15px;
 	color: #125799;
 	text-transform: uppercase;
@@ -1837,7 +1767,6 @@ ul.magepow-categories-grid .magepow-categories-category-wrapper .magepow-categor
 	text-align: center;
 	background-color: rgba(82, 184, 71, .95);
 	color: #fff;
-	font-family: 'roboto_condensedbold';
 	font-size: 18px;
 	text-transform: uppercase;
 	height: 58px;
@@ -1918,12 +1847,8 @@ ul.magepow-categories-grid {
 .owl-carousel-related .product-item .price-box {
 	margin-bottom: 0px;
 }
-.owl-carousel-related h4 {
-	font-family: 'robotomedium';
-}
 .owl-carousel-related h4 a {
 	font-weight: normal;
-	font-family: 'robotomedium';
 	font-size: 14px;
 	color: #484848;
 }
@@ -1973,7 +1898,6 @@ ul.magepow-categories-grid {
 	background-color: transparent;
 	padding: 0px;
 	font-size: 24px;
-	font-family: 'roboto_condensedbold';
 	color: #54b848;
 	border-bottom: 1px solid #ddd !important;
 	padding-bottom: 10px;
@@ -2068,7 +1992,6 @@ button.action.primary.checkout {
 }
 body.cms-page-view .page-main > .page-title-wrapper .page-title, .contact-index-index .page-main > .page-title-wrapper .page-title{
 	display: block;
-	font-family: 'robotobold';
 	color: #125799;
 	font-size: 24px;
 	text-transform: uppercase;
@@ -2078,7 +2001,6 @@ body.cms-page-view .page-main > .page-title-wrapper .page-title, .contact-index-
 body.cms-page-view h2, .page-title, .contact-index-index .page-main > .page-title-wrapper .page-title h2 {
 	font-size: 24px;
 	clear: both;
-	font-family: 'robotobold';
 }
 .action.primary {
 	background-color: #125799;
@@ -2217,7 +2139,6 @@ body.checkout-cart-index .page-main > .page-title-wrapper .page-title {
 }
 #shopping-cart-table .cart.item .product-item-name a {
 	color: #54b848;
-	font-family: 'robotomedium';
 }
 #shopping-cart-table .cart.item .item-options dt {
 	font-weight: 400;
@@ -2471,7 +2392,6 @@ button:focus {
 	margin: -15px;
 	margin-bottom:20px;
 	padding: 6px 15px;
-	font-family: 'robotobold';
 	font-size: 25px;
 	text-transform:uppercase
 }
@@ -2479,7 +2399,6 @@ button:focus {
 .sidebar-main .block.filter .block-title.filter-title strong,
 .sidebar-main .block.filter .title strong
 {
-	font-family: 'robotobold';
 	font-size: 25px;
 		color: #fff;
 		font-weight:normal;
@@ -2490,7 +2409,6 @@ button:focus {
 .sidebar-main .block.filter .filter-options .filter-options-title,
 .sidebar-main .block.filter .content .options dt
 {
-font-family: 'robotomedium';
 font-size: 18px;
 text-transform: uppercase;
 color:
@@ -2512,7 +2430,6 @@ display:block;
 
 color:
 #000000;
-font-family: 'robotoregular';
 font-size: 15px;
 text-transform: capitalize;
 position: relative;
@@ -2728,7 +2645,6 @@ div.menu.mobileMenu > ul > li{ border-bottom:1px solid #489e3f; background-color
 
 div.menu.mobileMenu > ul > li a {
     color: #fff;
-    font-family: 'robotomedium';
     font-size: 15px;
     text-transform: uppercase;
     font-weight: normal;
