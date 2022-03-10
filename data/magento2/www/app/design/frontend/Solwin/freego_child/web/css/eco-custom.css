@@ -1056,9 +1056,9 @@ h1.page-title {
 	display: none;
 }
 .catalog-product-view .product-options-bottom .price-box .price-container .price, .catalog-product-view .product-info-price .price-box .price-container .price {
-	font-size: 25px;
+	font-size: 38px;
+	font-weight: 700;
 	line-height: 25px;
-	color: #26569a;
 }
 .product.overview {
 	padding: 15px;

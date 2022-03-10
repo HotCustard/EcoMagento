@@ -4,7 +4,9 @@
 
 
         <referenceContainer name="content"> 
-          <container name="product.lower" htmlTag="div" htmlClass="product-lower" after="-" />
+          <container name="product.lower" htmlTag="div" htmlClass="product-lower" after="-">
+               <block name="product.tabs.title" template="Magento_Catalog::product/view/tab-title.phtml" before="-" />
+          </container>
         </referenceContainer>
 
         <move element="product.info.details" destination="product.lower" />
