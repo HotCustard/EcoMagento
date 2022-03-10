@@ -115,7 +115,7 @@ body {
         .panel.header {
             display: flex;
             gap: 6px;
-            
+
             &>.header.links {
                 display: flex;
                 gap: 20px;
@@ -129,9 +129,14 @@ body {
     }
 
     .authorization-link {
-        img {
-            width: 24px;
-            max-width: none;
+        content: url(/media/svgs/user.svg);
+        width: 30px;
+        cursor: pointer;
+        position: relative;
+        top: -5px;
+
+        &:hover {
+            content: url(/media/svgs/user-green.svg);
         }
     }
 
@@ -146,7 +151,18 @@ body {
                 width: 30px;
             }
 
+            &:hover {
+                &:before {
+                    content: url(/media/svgs/shopping-cart-green.svg);
+                }
+            }
+
             .counter.qty {
+               display: none;
+            }
+
+            .counter.qty:not(.empty) {
+                display: block;
                 height: 25px;
                 line-height: 26px;
                 color: #ffffff;
@@ -168,6 +184,10 @@ body {
     .register-link {
         content: url(/media/svgs/user-plus.svg);
         width: 33.8px;
+
+        &:hover {
+            content: url(/media/svgs/user-plus-green.svg);
+        }
     }
 
     .block-search {
@@ -267,6 +287,14 @@ body {
 }
 
 
+// BREADCRUMBS
+.breadcrumbs .item:not(:last-child):after {
+    font-size: 28px;
+    line-height: 16px;
+    vertical-align: text-bottom;
+    text-align: left;
+    width: 25px;
+}
 
 .round-button {
     border-radius: 50px;

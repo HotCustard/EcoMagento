@@ -35,15 +35,15 @@ services:
             - "${CONTAINERDATA}/${PROJECT_NAME}/www/var/logs:/var/www/dev/magento2/var/logs"
             - "${CONTAINERDATA}/${PROJECT_NAME}/www/pub/media:/var/www/dev/magento2/pub/media"
         networks:
-            - database
+            # - database
             - wwwserver
         healthcheck:
               test: "curl --fail -sS ${MAGENTO_URL}:80/pub/health_check.php || exit 1"
               interval: 2m
               timeout: 60s
               retries: 5
-        depends_on:
-            - mysql
+        # depends_on:
+        #     - mysql
         env_file: .env
         
 
@@ -112,40 +112,40 @@ services:
           #- "${CONTAINERDATA}/${PROJECT_NAME}/elasticsearch/data1:/usr/share/elasticsearch/data"
           - "${CONTAINERDATA}/${PROJECT_NAME}/data:/home/data"
 
-    mysql:
-        #image: mysql:5.7
-        image: mysql:8.0.21
-        hostname: mysql
-        domainname: "${APPDOMAIN}"
-        volumes:
-            - "${CONTAINERDATA}/${PROJECT_NAME}/mysql:/var/lib/mysql"
-            - "${CONTAINERDATA}/${PROJECT_NAME}/data:/home/data"
-        networks:
-            - database
-        restart: always
-        environment:
-            MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
-            MYSQL_DATABASE: "${MYSQL_DATABASE}"
-            MYSQL_USER: "${MYSQL_USER}"
-            MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
+    # mysql:
+    #     #image: mysql:5.7
+    #     image: mysql:8.0.21
+    #     hostname: mysql
+    #     domainname: "${APPDOMAIN}"
+    #     volumes:
+    #         - "${CONTAINERDATA}/${PROJECT_NAME}/mysql:/var/lib/mysql"
+    #         - "${CONTAINERDATA}/${PROJECT_NAME}/data:/home/data"
+    #     networks:
+    #         - database
+    #     restart: always
+    #     environment:
+    #         MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+    #         MYSQL_DATABASE: "${MYSQL_DATABASE}"
+    #         MYSQL_USER: "${MYSQL_USER}"
+    #         MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
 
-    phpmyadmin:
-        image: phpmyadmin/phpmyadmin
-        hostname: phpmyadmin
-        domainname: "${APPDOMAIN}"
-        expose:
-            - 80
-        networks:
-            - database
-            #- proxy_server
-        depends_on:
-            - mysql
-        environment:
-            PMA_HOST: mysql
-            PMA_ABSOLUTE_URI: "${PMA_ABSOLUTE_URI}"
+    # phpmyadmin:
+    #     image: phpmyadmin/phpmyadmin
+    #     hostname: phpmyadmin
+    #     domainname: "${APPDOMAIN}"
+    #     expose:
+    #         - 80
+    #     networks:
+    #         - database
+    #         #- proxy_server
+    #     depends_on:
+    #         - mysql
+    #     environment:
+    #         PMA_HOST: mysql
+    #         PMA_ABSOLUTE_URI: "${PMA_ABSOLUTE_URI}"
 
 networks:
-    database:
+    # database:
     wwwserver:
     #proxy_server:
       #external: true
