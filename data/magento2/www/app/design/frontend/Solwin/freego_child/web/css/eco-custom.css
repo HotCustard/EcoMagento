@@ -737,9 +737,7 @@ body.cms-home.cms-index-index #maincontent.page-main {
 	color: #51b747
 }
 .page-wrapper .breadcrumbs {
-	background: #fff;
 	padding: 10px 0;
-	border-bottom: 1px solid #51b747;
 }
 .sub-category-list .sub-category-holder {
 	position: relative;
@@ -862,16 +860,6 @@ h1.page-title {
 	background-color: #125799;
 	border-bottom-color: #12304d;
 }
-.page-products .products.grid.products-grid .product-item:hover {
-	box-shadow: none;
-}
-.page-products .products.grid.products-grid .product-item .product-item-info {
-	transition: all 0.3s ease 0s;
-}
-.page-products .products.grid.products-grid .product-item .product-item-info:hover {
-	box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-	transition: all 0.3s ease 0s;
-}
 .page-products .products.grid.products-grid .product-item .product-item-actions .actions-primary {
 	display: block;
 }
@@ -891,9 +879,7 @@ h1.page-title {
 	font-weight: normal;
 }
 .page-products .product-item .price-box .price {
-	font-weight: normal;
 	color: #54b848;
-	font-weight: normal;
 	font-size: 16px;
 	line-height: 18px;
 }
@@ -1613,7 +1599,8 @@ form.minisearch.active #search_in {
 	padding: 0 0px 0 0!important;
 }
 .page-layout-1column .product-info-main {
-	width: 73% !important;
+	width: 50% !important;
+	padding: 40px;
 }
 .page-layout-1column .product-right-col {
 }
@@ -1694,15 +1681,13 @@ body.page-products .products.products-grid .product-item-actions {
 .product-info-main .product-options-bottom .actions button {
 	width: 225px;
 }
-/* 11-7-2020 */
 
 .media {
 	display: block !important;
 }
 .product-col-related {
-	width: 25%;
+	width: 45%;
 	padding-left: 0px;
-	float:left;
 }
 .rel-4 {
 	background-color: #f3f6fb;
@@ -1799,9 +1784,7 @@ ul.magepow-categories-grid {
 .owl-carousel-related ul .product-item-actions {
 	position: relative;
 }
-.product-item .price-box .price {
-	font-weight: normal!important;
-}
+
 .owl-carousel-related .product-item .price-box {
 	margin-bottom: 0px;
 }
@@ -2368,7 +2351,7 @@ font-size: 18px;
 margin-bottom: 10px;
 }
 
-.sidebar-main .block.filter .filter-options-content{ margin-bottom:20px;}
+.sidebar-main .block.filter .filter-options-content{ margin-bottom:30px;}
 .sidebar-main .block.filter .filter-options .filter-options-content .item{ margin:0px;}
 .sidebar-main .block.filter .filter-options .filter-options-content .item a,
 .sidebar-main .block.filter .content .options .item a

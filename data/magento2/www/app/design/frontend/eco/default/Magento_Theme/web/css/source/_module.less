@@ -171,15 +171,28 @@
 
 // CATEGORY PAGE
 .sidebar-main .block.filter {
-
-  .filter-options .filter-options-title,
+  .block-title.filter-title{
+    display: none;
+  }
+  .filter-options.filter-options-title,
   .content .options dt {
     font-family: @font-family-header;
-    font-weight: 700;
+    font-weight: 900;
     font-size: 18px;
     margin-bottom: 10px;
     text-transform: uppercase;
   }
+
+  .filter-options{
+    .count{
+      font-weight: 700;
+    }
+    .count:after,
+    .count:before {
+        content: '';
+    }
+  }
+  
 }
 
 .page-products {
@@ -187,14 +200,19 @@
     width: auto;
   }
 
-  .products.grid.products-grid .product-item-info {
-    text-align: center;
+  .products.grid.products-grid{
+    padding-left: 60px;
+    .product-item-info {
+      text-align: center;
+    }
   }
 
   .product-item-name{
+    margin: 10px 0;
     .product-item-link{
       color: #000;
-      font-size: 18px;
+      font-size: 17px;
+      font-weight: 500;
     }
   }
 }
