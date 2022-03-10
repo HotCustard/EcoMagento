@@ -171,9 +171,10 @@
 
 // CATEGORY PAGE
 .sidebar-main .block.filter {
-  .block-title.filter-title{
+  .block-title.filter-title {
     display: none;
   }
+
   .filter-options.filter-options-title,
   .content .options dt {
     font-family: @font-family-header;
@@ -183,16 +184,17 @@
     text-transform: uppercase;
   }
 
-  .filter-options{
-    .count{
+  .filter-options {
+    .count {
       font-weight: 700;
     }
+
     .count:after,
     .count:before {
-        content: '';
+      content: '';
     }
   }
-  
+
 }
 
 .page-products {
@@ -200,19 +202,29 @@
     width: auto;
   }
 
-  .products.grid.products-grid{
+  .products.grid.products-grid {
     padding-left: 60px;
+
     .product-item-info {
       text-align: center;
     }
   }
 
-  .product-item-name{
+  .product-item-name {
     margin: 10px 0;
-    .product-item-link{
+
+    .product-item-link {
       color: #000;
       font-size: 17px;
       font-weight: 500;
     }
+  }
+}
+
+.product.data.items {
+
+  >.item.title>.switch,
+  >.item.content {
+    border: none;
   }
 }

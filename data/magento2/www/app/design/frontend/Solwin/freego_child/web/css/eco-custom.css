@@ -1865,9 +1865,6 @@ ul.magepow-categories-grid {
 	height: 100%
 }
 @media (min-width: 768px) {
-.page-layout-1column .product-info-main {
-	width: 73% !important;
-}
 .cart-container .cart-summary {
 	float: none;
 	width: 100%;
