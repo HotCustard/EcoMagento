@@ -613,10 +613,6 @@ body.cms-home.cms-index-index #maincontent.page-main {
 	height: auto;
 	z-index: 999;
 }
-.products-grid .item:hover, .itembox:hover {
-	box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-	transition: all 0.3s ease 0s;
-}
 .products-grid .add-to-cart-button .fa {
 	font-size: 13px;
 }
@@ -832,7 +828,6 @@ h1.page-title {
 	padding: 8px;
 	padding-bottom: 8px;
 	border-radius: 4px;
-	border: 1px solid #e8e8e8;
 	height: auto;
 	overflow: hidden;
 	background-color: #fff;
@@ -921,7 +916,6 @@ h1.page-title {
 	display: none;
 }
 .page-products .column.main .toolbar {
-	border-bottom: 3px solid #52b847;
 	position: relative;
 }
 .page-products .column.main .toolbar:last-child {
@@ -940,9 +934,6 @@ h1.page-title {
 .page-products .products.list ul {
 	list-style: disc;
 	padding-left: 20px;
-}
-.page-products .products.list a {
-	color: #53b848
 }
 .page-products .products.list .actions-secondary {
 	display: none;
@@ -1441,14 +1432,8 @@ a.videoButton:active {
 }
 .products.grid.products-grid .product-items .item.product.product-item {
 	max-width: max-content;
-	border: 1px solid #e8e8e8;
-	border-radius: 3px;
-}
-.related .block-title-main h2 {
-	color: #51b747 !important;
 }
 .rightRelatedArticlesTitle {
-	background-color: #efbc02;
 	display: inline-block;
 	cursor: pointer;
 	color: #ffffff;
@@ -1646,11 +1631,8 @@ form.minisearch.active #search_in {
 	display: flex;
 }
 body.page-products .products.products-grid .product-item-inner .actions.product-item-actions .actions-primary button.tocart.primary {
-	position: absolute;
-	left: 8px;
-	bottom: 10px;
-	width: calc(100% - 16px);
 	line-height: normal;
+	text-transform: uppercase;
 }
 body.page-products .products.products-grid .product-item-inner .actions.product-item-actions .actions-primary button.tocart.primary:hover {
 	background-color: #125799;
@@ -2363,8 +2345,6 @@ button:focus {
 .sidebar-main .block.filter .block-title.filter-title,
 .sidebar-main .block.filter .title
  {
-	background-color: #125799;
-	color: #fff;
 	margin: -15px;
 	margin-bottom:20px;
 	padding: 6px 15px;
@@ -2376,8 +2356,7 @@ button:focus {
 .sidebar-main .block.filter .title strong
 {
 	font-size: 25px;
-		color: #fff;
-		font-weight:normal;
+	font-weight:normal;
 }
 
 .sidebar-main .block.filter .block-subtitle.filter-subtitle{ display:none;}
@@ -2386,11 +2365,7 @@ button:focus {
 .sidebar-main .block.filter .content .options dt
 {
 font-size: 18px;
-text-transform: uppercase;
-color:
-#125799;
 margin-bottom: 10px;
-font-weight:normal;	
 }
 
 .sidebar-main .block.filter .filter-options-content{ margin-bottom:20px;}
@@ -2400,8 +2375,6 @@ font-weight:normal;
 {
 padding: 6px 0px;
 padding-right:30px;
-border-bottom: 1px dotted
-#222324;
 display:block;
 
 color:

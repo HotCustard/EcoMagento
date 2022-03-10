@@ -38,6 +38,9 @@ ul {
     padding-left: 0;
 }
 
+dl dd {
+    font-style: normal;
+}
 
 // END reset
 
@@ -288,12 +291,20 @@ body {
 
 
 // BREADCRUMBS
-.breadcrumbs .item:not(:last-child):after {
-    font-size: 28px;
-    line-height: 16px;
-    vertical-align: text-bottom;
-    text-align: left;
-    width: 25px;
+.breadcrumbs{
+    .item:not(:last-child):after {
+        font-size: 28px;
+        line-height: 16px;
+        vertical-align: text-bottom;
+        text-align: left;
+        width: 25px;
+    }
+    .items {
+        font-size: 14px;
+        strong {
+            font-weight: 700;
+        }
+    }
 }
 
 .round-button {

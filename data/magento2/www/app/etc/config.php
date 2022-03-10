@@ -356,7 +356,7 @@ return [
         'PayPal_Braintree' => 1,
         'PayPal_BraintreeGraphQl' => 1,
         'Pektsekye_OptionDependent' => 1,
-        'Pr_CmsSearch' => 1,
+        'Pr_CmsSearch' => 0,
         'Pr_EcoShipping' => 0,
         'Scommerce_Core' => 1,
         'Sebwite_Sidebar' => 0,

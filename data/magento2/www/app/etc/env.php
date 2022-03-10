@@ -24,27 +24,6 @@ return [
     'queue' => [
         'consumers_wait_for_messages' => 1
     ],
-    'cryptXXX' => [
-        'key' => 'a112333d06324033e37c8c32bf5b779f'
-    ],
-    'dbXXX' => [
-        'table_prefix' => '',
-        'connection' => [
-            'default' => [
-                'host' => 'mysql',
-                'dbname' => 'magento',
-                'username' => 'magento',
-                'password' => 'magento',
-                'model' => 'mysql4',
-                'engine' => 'innodb',
-                'initStatements' => 'SET NAMES utf8;',
-                'active' => '1',
-                'driver_options' => [
-                    1014 => false
-                ]
-            ]
-        ]
-    ],
     'resource' => [
         'default_setup' => [
             'connection' => 'default'
