@@ -1035,18 +1035,18 @@ h1.page-title {
 	height: 42px;
 	line-height: normal;
 	background-color: #52b847;
+	border-radius: 50px;
 	font-weight: normal;
 	font-size: 16px;
 	color: #fff;
 	border: none;
-	border-bottom: 2px solid #0d7402;
 	display: block;
 	text-align: center;
 	cursor: pointer;
 	transition: all 0.2s ease-out 0s;
 	box-sizing: border-box;
-	width:100%;
-	max-width:280px;
+	max-width: none;
+	font-weight: 700;
 }
 .catalog-product-view .actions .action.primary:hover {
 	background-color: #26569a;
@@ -3065,7 +3065,7 @@ flex-direction: row-reverse;
 flex: 1 0 0%;
 position:relative!important;
 top:0px!important;
-height:52px!important;
+height:44px!important;
 margin-left:10px!important;
 min-width:180px!important	
 }
@@ -3075,7 +3075,7 @@ min-width:180px!important
 .catalog-product-view .product-options-bottom .box-tocart > .fieldset
 { display:flex; justify-content: space-between; flex-wrap: wrap;}
 
-.wk_qs_quote_button.button.btn-cart.action.primary{height:52px!important;}
+.wk_qs_quote_button.button.btn-cart.action.primary{height:45px!important;}
 
 .product-info-main .product-add-form .box-tocart .field.qty{ margin-bottom:0px;}
 
