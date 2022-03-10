@@ -121,6 +121,7 @@ em {
 .logo img {
 	width: auto;
 	height: auto;
+	margin: 20px 0;
 }
 header.page-header .panel.wrapper {
 	padding: 0px;
@@ -1519,6 +1520,8 @@ a.rightRelatedArticlesTitle:link, a.rightRelatedArticlesTitle:visited, a.rightRe
 }
 form.minisearch.active #search_in {
 	display: block;
+	border-radius: 15px;
+	padding: 10px 25px;
 }
 #search_in.search_in_active {
 	display: block;
@@ -1531,8 +1534,7 @@ form.minisearch.active #search_in {
 	margin: 0;
 }
 #search_in .search_in {
-	background-color: #ececec;
-	padding: 18px 12px 0;
+	padding: 0 7px;
 }
 #search_in .search_in ul {
 	margin: 0px;
@@ -2759,7 +2761,7 @@ body.cms-home .columns .column.main{ padding-bottom:0px;}
 .owl-controls .owl-buttons .owl-prev, .owl-carousel .owl-buttons .owl-next{
 top:-105px;	
 }
-.resp-tab-content-active{ border-bottom:1px solid #c1c1c1}
+
 .panel.header .links{ display:block}
 .page-products .columns{ padding-top:0px;}
 .magepow-categories-grid .magepow-categories-category-image img{

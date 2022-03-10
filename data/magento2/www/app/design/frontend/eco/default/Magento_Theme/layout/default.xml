@@ -12,6 +12,12 @@
         <referenceBlock name="cpanel.footer" remove="true"/>
         <referenceContainer name="footer" remove="true"/>
 
+        <referenceBlock name="register-link">
+            <arguments>
+                <argument name="class" xsi:type="string">register-link</argument>
+            </arguments>
+        </referenceBlock>
+
         <referenceContainer name="footer-container">
 
             <container name="footer-main" label="Footer Main" htmlTag="div" htmlClass="footer-main container">
