@@ -10,6 +10,7 @@
         </referenceContainer>
 
         <move element="product.info.details" destination="product.lower" />
-
+        <move element="catalog.product.related" destination="product.lower" after="product.info.details" />
+        
     </body>
 </page>
