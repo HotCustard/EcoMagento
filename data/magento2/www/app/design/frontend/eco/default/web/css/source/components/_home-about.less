@@ -1,0 +1,106 @@
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+
+    .home-about {
+        margin: 100px 0 200px;
+        position: relative;
+    
+        h1 {
+            color: @primaryBlue;
+            font-size: 32px;
+        }
+    
+        h2 {
+            color: @primaryBlue;
+            font-size: 22px;
+            margin: 30px 0;
+            text-transform: none;
+            font-family: @font-family-name__base;
+            font-weight: 700;
+        }
+    
+        .about-image {
+            position: relative;
+            background-image: url(/media/home/about.png);
+            background-size: cover;
+            aspect-ratio: 1;
+            margin-bottom: 60px;
+        }
+    
+        .about-text {
+            padding: 0 20px;
+    
+            p {
+                font-family: @font-family-name__base;
+                font-size: 18px;
+                font-weight: 700;
+            }
+        }
+    
+        .round-button {
+            font-size: 20px;
+            background-color: #035193;
+            color: #fff;            
+            margin: 30px auto;
+            text-align: center;
+            width: fit-content;
+            display: block;
+        }
+    
+        .home-about-light-blue-area {
+            background-color: #E2E5EC;
+            width: 200px;
+            height: 362px;
+            position: absolute;
+            top: 70px;
+            left: -180px;
+            z-index: -1;
+        }
+    
+        .home-about-blue-area {
+            background-color: #035193;
+            width: 40px;
+            height: 220px;
+            position: absolute;
+            top: 0;
+            right: -20px;
+        }
+    }
+}
+
+
+//
+//  Desktop (style-l.css)
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+
+    .home-about {
+        h1 {
+            font-size: 34px;
+        }
+        .about-text {
+            padding: 0 40px;
+        }
+        .round-button {
+            margin: 30px 0;
+        }
+    }
+}
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .home-about {
+        h1 {
+            font-size: 40px;
+        }
+    }
+}
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__xl) {
+    .home-about {
+        h1 {
+            font-size: 48px;
+        }
+    }
+}

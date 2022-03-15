@@ -313,7 +313,6 @@ body .page-header .header.panel {
 	font-size: 15px;
 }
 .header-services-sl {
-	background-color: #f3f6fa;
 	width: 100%;
 	padding: 10px 0;
 	margin: 20px 0 50px;
@@ -330,17 +329,7 @@ body .page-header .header.panel {
 	margin-right: -15px;
 	margin-left: -15px;
 }
-.header-services-sl ul li {
-	min-height: 1px;
-	padding-right: 15px;
-	padding-left: 15px;
-	position: relative;
-	width: 100%;
-	-webkit-box-flex: 0;
-	-ms-flex: 0 0 25%;
-	flex: 0 0 25%;
-	max-width: 25%;
-	margin: 0px;
+.header-services-sl ul li {	
 	text-transform: uppercase;
 	font-size: 13px;
 	padding-top: 5px;
@@ -2267,9 +2256,6 @@ body.checkout-index-index .modal-header {
 .block-collapsible-nav .item.current a, .block-collapsible-nav .item.current a, .block-collapsible-nav .item.current > strong {
 	border-color: #51b747;
 }
-body.page-print .header-services-sl {
-	display: none;
-}
 body.page-print #maincontent a.logo {
 	margin-bottom: 30px;
 }
@@ -2428,9 +2414,6 @@ margin-top:-5px;
 	flex-wrap:wrap	
 }
 
-body.cms-home .header-services-sl{ display:block}
- .header-services-sl{ display:none}
- 
  
  .fotorama--fullscreen.fotorama-item .fotorama__wrap {
     max-width: 800px !important;
@@ -2674,7 +2657,6 @@ Mobile style's
 	margin-top:0px;
 }
 .footer-bottom h4{ margin-bottom:20px;}	
-body.cms-home .header-services-sl{ display:none;}
 header.page-header .panel.wrapper{ width:100%; float:left;}
 .sections.nav-sections{ left:0px; width:100%; position:inherit; }
 .nav-sections-items{ position:inherit}

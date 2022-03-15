@@ -1,0 +1,134 @@
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common =true) {
+
+    .home-categories {
+        margin: 70px 0 120px;
+
+        h2 {
+            color: #fff;
+            font-family: 'Montserrat';
+            font-weight: 900;
+            font-size: 15px;
+            margin: 10px 0;
+        }
+
+        .round-button {
+            font-size: 11px;
+            white-space: nowrap;
+            padding: 10px 15px;
+        }
+
+        .cat-box {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-end;
+            padding: 20px 15px;
+            margin-bottom: 20px;
+            background-size: cover;
+            aspect-ratio: 1;
+            background-position: center center;
+        }
+
+        .new-product {
+            background-image: url(/media/home/category-new-products.png);
+
+            a {
+                background-color: #D6B125;
+            }
+        }
+
+        .windows-doors {
+            margin-bottom: 20px;
+            background-image: url(/media/home/category-windows-doors.png);
+            aspect-ratio: 2 / 1;
+
+            a {
+                background-color: @primaryGreen;
+            }
+        }
+
+        .airtightness {
+            background-image: url(/media/home/category-airtightness.png);
+            aspect-ratio: 1;
+
+            a {
+                background-color: #2FAACC;
+            }
+        }
+
+        .paints {
+            background-image: url(/media/home/category-paints.png);
+            aspect-ratio: 1;
+
+            a {
+                background-color: #008487;
+            }
+        }
+
+        .lime-products {
+            background-image: url(/media/home/category-lime-products.png);
+            aspect-ratio: 2 / 1;
+
+            a {
+                background-color: #DC211C;
+            }
+        }
+
+        .drainage-water {
+            background-image: url(/media/home/category-drainage-water.png);
+            aspect-ratio: 2 / 1;
+
+            a {
+                background-color: #FA8422;
+            }
+        }
+
+    }
+}
+
+
+
+//
+//  Desktop (style-l.css)
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum ='min') and (@break =@screen__m) {
+    .home-categories {
+        margin: 70px 0 160px;
+
+        h2 {
+            font-size: 17px;
+        }
+
+        .round-button {
+            font-size: 12px;
+            padding: 12px 20px;
+        }
+
+        .cat-box {
+            padding: 25px 16px;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum ='min') and (@break =@screen__l) {
+    .home-categories {
+        margin: 70px 0 200px;
+        h2 {
+            font-size: 23px;
+        }
+
+        .round-button {
+            font-size: 13px;
+            padding: 12px 30px;
+        }
+
+        .cat-box {
+            padding: 30px 30px;
+        }
+    }
+}

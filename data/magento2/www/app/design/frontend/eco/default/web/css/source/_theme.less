@@ -1,3 +1,6 @@
+@import 'components/_home-about.less';
+@import 'components/_home-categories.less';
+
 @navigation__background: @navigation__bg;
 
 
@@ -330,6 +333,7 @@ body {
         font-family: @font-family-name__base;
         font-weight: 500;
         letter-spacing: -0.02em;
+        line-height: 18px;
 
         h3 {
             font-family: @font-family-header;
@@ -343,6 +347,7 @@ body {
     img {
         max-height: 60px;
         max-width: 75px;
+        margin-bottom: 10px;
     }
 }
 
@@ -352,154 +357,3 @@ body {
     background-size: cover;
 }
 
-
-.home-categories {
-    margin: 70px 0 200px;
-
-    &>.row {
-        margin-bottom: 20px;
-    }
-
-    h2 {
-        color: #fff;
-        font-family: 'Montserrat';
-        font-weight: 900;
-        font-size: 23px;
-        margin: 10px 0;
-    }
-
-    .cat-box {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-end;
-        padding: 40px;
-    }
-
-    .new-product {
-        background-image: url(/media/home/category-new-products.png);
-        background-size: cover;
-        aspect-ratio: 1;
-
-        a {
-            background-color: #D6B125;
-        }
-    }
-
-    .windows-doors {
-        margin-bottom: 20px;
-        background-image: url(/media/home/category-windows-doors.png);
-        background-size: cover;
-        aspect-ratio: 2 / 1;
-
-        a {
-            background-color: @primaryGreen;
-        }
-    }
-
-    .airtightness {
-        background-image: url(/media/home/category-airtightness.png);
-        background-size: cover;
-        aspect-ratio: 1;
-
-        a {
-            background-color: #2FAACC;
-        }
-    }
-
-    .paints {
-        background-image: url(/media/home/category-paints.png);
-        background-size: cover;
-        aspect-ratio: 1;
-
-        a {
-            background-color: #008487;
-        }
-    }
-
-    .lime-products {
-        background-image: url(/media/home/category-lime-products.png);
-        background-size: cover;
-        aspect-ratio: 2 / 1;
-
-        a {
-            background-color: #DC211C;
-        }
-    }
-
-    .drainage-water {
-        background-image: url(/media/home/category-drainage-water.png);
-        background-size: cover;
-        aspect-ratio: 2 / 1;
-
-        a {
-            background-color: #FA8422;
-        }
-    }
-
-
-}
-
-
-.home-about {
-    margin: 100px 0 200px;
-    position: relative;
-
-    h1 {
-        color: @primaryBlue;
-        font-size: 48px;
-    }
-
-    h2 {
-        color: @primaryBlue;
-        font-size: 22px;
-        margin: 30px 0;
-        text-transform: none;
-        font-family: @font-family-name__base;
-        font-weight: 700;
-    }
-
-    .about-image {
-        position: relative;
-        background-image: url(/media/home/about.png);
-        background-size: cover;
-        aspect-ratio: 1;
-    }
-
-    .about-text {
-        padding: 0 40px;
-
-        p {
-            font-family: @font-family-name__base;
-            font-size: 18px;
-            font-weight: 700;
-        }
-    }
-
-    .round-button {
-        margin: 30px 0;
-        font-size: 20px;
-        background-color: #035193;
-        color: #fff;
-        display: inline-block;
-    }
-
-    .home-about-light-blue-area {
-        background-color: #E2E5EC;
-        width: 200px;
-        height: 362px;
-        position: absolute;
-        top: 70px;
-        left: -180px;
-        z-index: -1;
-    }
-
-    .home-about-blue-area {
-        background-color: #035193;
-        width: 40px;
-        height: 220px;
-        position: absolute;
-        top: 0;
-        right: -20px;
-    }
-}
